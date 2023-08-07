@@ -40,6 +40,7 @@ export default {
     margin: 20px auto;
     justify-items: center;
     align-items: center;
+    background-color: bisque;
 }
 .cake-image {
     width: 100%;
