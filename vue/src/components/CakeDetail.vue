@@ -5,7 +5,53 @@
     <h3>{{cake.description}} </h3>
     <h3>{{cake.style}} </h3>
     <h3>$ {{cake.price}} </h3>
-    <button class="order-button">Order Now</button>
+    <a
+      id="show-form-button"
+      href="#"
+      v-on:click.prevent="showForm = true"
+      v-if="showForm === false"
+      >Show Form</a
+    >
+    <form v-on:submit.prevent="sumbitOrder" v-if="showForm === true">
+      <div class="form-element">
+        <label for="firstName">First Name: </label>
+        <input id="firstName" type="text" v-model="newOrder.firstName" />
+      </div>
+      <div class="form-element">
+        <label for="lastName">Last Name: </label>
+        <input id="LastName" type="text" v-model="newOrder.lastName" />
+      </div>
+      <div class="form-element">
+        <label for="phoneNumber">Phone Number: </label>
+        <input id="phoneNumber" type="text" v-model="newOrder.phoneNumber" />
+      </div>
+      <div class="form-element">
+        <label for="streetNumber">Street Number: </label>
+        <input id="streetNumber" type="text" v-model="newOrder.streetNumber" />
+      </div>
+      <div class="form-element">
+        <label for="streetName">Street Name: </label>
+        <input id="streetName" type="text" v-model="newOrder.streetName" />
+      </div>
+      <div class="form-element">
+        <label for="city">City: </label>
+        <input id="city" type="text" v-model="newOrder.city" />
+      </div>
+      <div class="form-element">
+        <label for="state">State: </label>
+        <input id="state" type="text" v-model="newOrder.state" />
+      </div>
+      <div class="form-element">
+        <label for="zipCode">Zip Code: </label>
+        <input id="zipCode" type="text" v-model="newOrder.zipCode" />
+      </div>
+      <p>Would you like to add writing to your cake? <input type="checkbox" v-on:change="displayTextArea()"/>
+      </p>
+      <div class="form-element" v-if="showTextArea === true">
+        <label for="cakeWriting">Writing to Appear on cake: </label>
+        <textarea id="cakeWriting" rows="8" cols="60" v-model="newOrder.writing" />
+      </div>
+    </form>
   </div>
 </template>
 
@@ -14,7 +60,10 @@ import CakeService from '../services/CakeService';
 
 export default {
  data() {
-       return {cake : {
+       return {
+         showForm: false,
+         showTextArea: false,
+         cake : {
          cake_id: "",
          title: "",
          description: "",
@@ -26,7 +75,8 @@ export default {
          filling:"",
          availability: "",
          image: ""
-                 }       
+                 },
+         newOrder:{}               
     }
     },
 
@@ -35,6 +85,14 @@ export default {
         CakeService.getCake(this.$route.params.id)
         .then((response) => 
         {this.cake = response.data}).catch((error) => alert(error))
+    },
+    methods: {
+      submitOrder() {
+
+      },
+      displayTextArea() {
+        this.showTextArea =! this.showTextArea
+      }
     }
 }
 </script>
@@ -54,6 +112,9 @@ export default {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
   background-color: #fff; /* Background color for the box */
   overflow: hidden;       /* Hide any content that overflows */
+}
+div.form-element {
+  margin-top: 10px;
 }
 
 </style>

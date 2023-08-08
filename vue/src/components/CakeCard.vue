@@ -37,12 +37,12 @@ export default {
     "name description image";
     border: 2px solid black;
     border-radius: 10px;
-    width: 90%;
-    height: 150px;
+    width: 20%;
+    height: 180px;
     margin: 20px auto;
     justify-items: center;
     align-items: center;
-    background-color: bisque;
+    
 }
 .cake-image {
     width: 100%;
