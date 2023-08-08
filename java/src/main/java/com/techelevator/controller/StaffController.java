@@ -9,6 +9,7 @@ import java.util.List;
 
 @PreAuthorize("isAuthenticated()")
 @RestController
+@CrossOrigin
 public class StaffController {
 
     private final StaffDao staffDao;

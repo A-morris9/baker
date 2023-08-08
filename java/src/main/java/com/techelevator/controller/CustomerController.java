@@ -20,6 +20,7 @@ import java.security.Principal;
 import java.util.List;
 
 @RestController
+@CrossOrigin
 public class CustomerController {
 
     private final CustomerDao customerDao;
