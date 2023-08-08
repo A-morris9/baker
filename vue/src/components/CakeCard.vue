@@ -1,6 +1,6 @@
 <template>
   <div class="cake" v-on:click="viewCake(cake)">
-      <h2 class="cake-name" style ="grid-area: name">{{ cake.name }}</h2>
+      <h2 class="cake-name" style ="grid-area: name">{{ cake.title }}</h2>
       <ul style = "grid-area: description">
           <li> style : {{cake.style}}</li>
           <li> size : {{cake.size}}</li>    
@@ -20,9 +20,11 @@ export default {
     },
     methods: {
         viewCake(cake) {
-            this.$router.push({name:"CakeDetail",params:{name:cake.name}})
+            this.$router.push({name:"CakeDetail",params:{id:cake.cake_id}})
         }
-    }
+    },
+ 
+   
 
 }
 </script>

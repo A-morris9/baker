@@ -22,28 +22,36 @@ export default new Vuex.Store({
     user: currentUser || {},
     cakes: [
       {
-        name: "Classic Chocolate Cake",
-        description: "Moist chocolate cake with rich chocolate frosting." ,
-        price: "25.00" ,
+        cake_id: 1,
+        title: "Classic Chocolate Cake",
+        price: 25.00 ,
         style: "Sheet Cake",
         size: "Medium",
-        flavor: "Chocolate",
-        filling: "None",
         availability: "true",
         image: 'https://img.taste.com.au/qrA0oF1O/taste/2016/11/classic-chocolate-cake-46019-1.jpeg'
       },
       {
-        name: "Vanilla Celebration Cake",
+        cake_id: 2,
+        title: "Vanilla Celebration Cake",
         description: "Fluffy vanilla cake with colorful sprinkles and vanilla buttercream." ,
-        price: "30.00" ,
+        price: 30.00 ,
         style: "Celebration",
         size: "Large",
-        flavor: "Vanilla",
-        filling: "Vanilla",
         availability: "true",
         image: 'https://cdn11.bigcommerce.com/s-w6rae6i8cu/images/stencil/1280x1280/products/115/785/PDP_lifestyle__0007_CELEB_9__96988__08613.1662993858.jpg?c=1'
       }
-    ]
+    ],
+    cake:  {
+      cake_id: 1,
+      title: "Classic Chocolate Cake",
+      description: "Moist chocolate cake with rich chocolate frosting." ,
+      price: "25.00" ,
+      style: "Sheet Cake",
+      size: "Medium",
+      availability: "true",
+      image: 'https://img.taste.com.au/qrA0oF1O/taste/2016/11/classic-chocolate-cake-46019-1.jpeg',
+    ingredients: ["chocolate", "cream cheese", "coffee"] 
+  },
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {

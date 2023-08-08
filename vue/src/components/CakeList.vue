@@ -1,18 +1,27 @@
 <template>
   <div class="cakes">
     Filter cake name by: <input type="text" v-model="filter" class="fancy" />
-    <cake-card v-for="cake in filteredCakes" v-bind:key="cake.name" :cake="cake"></cake-card>
+    <cake-card v-for="cake in filteredCakes" v-bind:key="cake.cake_id" :cake="cake"></cake-card>
   </div>
 </template>
 
 <script>
+import cakeService from "../services/CakeService.js"
 import CakeCard from "./CakeCard.vue"
+
 export default {
-    data() 
-  {
+    data() {
     return {
       filter: "",
+      standardCakes: {
+        standardList: [],
+       }
     };
+  },
+  created(){
+    cakeService.getCakes().then((Response)=> {
+      this.standardCakes.standardList = Response.data;
+    })
   },
     components: {
         CakeCard
@@ -20,8 +29,8 @@ export default {
     computed: {
       filteredCakes() {
       if (this.filter) {
-        return this.$store.state.cakes.filter((cake) => cake.name.toLowerCase().includes(this.filter.toLowerCase()));
-      } else return this.$store.state.cakes;
+        return this.standardCakes.standardList.filter((cake) => cake.title.toLowerCase().includes(this.filter.toLowerCase()));
+      } else return this.standardCakes.standardList;
     },
     }
 
