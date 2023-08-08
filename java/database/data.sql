@@ -46,4 +46,32 @@ VALUES
     ('Creamy Caramel', 0.10, 3, true, 3),
     ('Strawberry Heaven', 0.15, 2, true, 1);
 
+INSERT INTO cakes_frostings (CakeID, FrostingID)
+VALUES
+    (1, 1),  -- CakeID 1 with FrostingID 1
+    (2, 2),  -- CakeID 2 with FrostingID 2
+    (3, 3),  -- CakeID 3 with FrostingID 3
+    (4, 1),  -- CakeID 4 with FrostingID 1
+    (5, 4)  -- CakeID 5 with FrostingID 4
+    -- Add more associations here
+;
+
+INSERT INTO cakes_fillings (CakeID, FillingID)
+VALUES
+    (1, 1),  -- CakeID 1 with FillingID 1
+    (2, 2),  -- CakeID 2 with FillingID 2
+    (3, 3),  -- CakeID 3 with FillingID 3
+    (4, 1),  -- CakeID 4 with FillingID 1
+    (5, 4)  -- CakeID 5 with FillingID 4
+    -- Add more associations here
+;
+INSERT INTO cake_flavors (CakeID, FlavorID)
+VALUES
+    (1, 1),  -- CakeID 1 with FlavorID 1
+    (2, 2),  -- CakeID 2 with FlavorID 2
+    (3, 3),  -- CakeID 3 with FlavorID 3
+    (4, 1),  -- CakeID 4 with FlavorID 1
+    (5, 4)  -- CakeID 5 with FlavorID 4
+    -- Add more associations here
+;
 COMMIT TRANSACTION;

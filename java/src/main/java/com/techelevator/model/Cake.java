@@ -10,21 +10,53 @@ public class Cake {
     private BigDecimal price;
     private String style;
     private String size;
+    private String flavor;
+    private String frosting;
+    private String filling;
     private Boolean availability;
     private String image;
+
 
     public Cake() {
     }
 
-    public Cake(int cake_id, String title, String description, BigDecimal price, String style, String size, Boolean availability, String image) {
+    public Cake(int cake_id, String title, String description, BigDecimal price, String style, String size, Boolean availability, String image, String flavor, String frosting, String filling) {
         this.cake_id = cake_id;
         this.title = title;
         this.description = description;
         this.price = price;
         this.style = style;
         this.size = size;
+        this.flavor = flavor;
+        this.frosting = frosting;
+        this.filling = filling;
         this.availability = availability;
         this.image = image;
+
+    }
+
+    public String getFlavor() {
+        return flavor;
+    }
+
+    public void setFlavor(String flavor) {
+        this.flavor = flavor;
+    }
+
+    public String getFrosting() {
+        return frosting;
+    }
+
+    public void setFrosting(String frosting) {
+        this.frosting = frosting;
+    }
+
+    public String getFilling() {
+        return filling;
+    }
+
+    public void setFilling(String filling) {
+        this.filling = filling;
     }
 
     public String getDescription() {
