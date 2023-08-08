@@ -2,6 +2,7 @@ package com.techelevator.controller;
 
 import com.techelevator.dao.CustomerDao;
 import com.techelevator.model.Cake;
+import com.techelevator.model.Order;
 import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -37,5 +38,10 @@ public class CustomerController {
     @RequestMapping(path = "cakes/{id}", method = RequestMethod.GET)
     public Cake getSingleCake(@PathVariable int id) {
         return customerDao.getStandardCakeById(id);
+    }
+
+    @RequestMapping(path = "order", method = RequestMethod.POST)
+    public void orderStandardCake(@RequestBody Order order){
+        customerDao.orderStandardCake(order);
     }
 }
