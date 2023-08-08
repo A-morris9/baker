@@ -7,27 +7,32 @@ public class Cake {
     private int cake_id;
     private String title;
     private String description;
-    private String image;
     private BigDecimal price;
+    private String style;
+    private String size;
     private Boolean availability;
+    private String image;
 
     public Cake() {
     }
 
-    public Cake(int cake_id, String title, String description, String image, BigDecimal price) {
+    public Cake(int cake_id, String title, String description, BigDecimal price, String style, String size, Boolean availability, String image) {
         this.cake_id = cake_id;
         this.title = title;
         this.description = description;
-        this.image = image;
         this.price = price;
-    }
-
-    public Boolean getAvailability() {
-        return availability;
-    }
-
-    public void setAvailability(Boolean availability) {
+        this.style = style;
+        this.size = size;
         this.availability = availability;
+        this.image = image;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public int getCake_id() {
@@ -46,12 +51,36 @@ public class Cake {
         this.title = title;
     }
 
-    public String getDescription() {
-        return description;
+    public BigDecimal getPrice() {
+        return price;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
+
+    public String getStyle() {
+        return style;
+    }
+
+    public void setStyle(String style) {
+        this.style = style;
+    }
+
+    public String getSize() {
+        return size;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
+    }
+
+    public Boolean getAvailability() {
+        return availability;
+    }
+
+    public void setAvailability(Boolean availability) {
+        this.availability = availability;
     }
 
     public String getImage() {
@@ -61,12 +90,5 @@ public class Cake {
     public void setImage(String image) {
         this.image = image;
     }
-
-    public BigDecimal getPrice() {
-        return price;
-    }
-
-    public void setPrice(BigDecimal price) {
-        this.price = price;
-    }
 }
+

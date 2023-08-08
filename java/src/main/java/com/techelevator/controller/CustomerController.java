@@ -29,12 +29,12 @@ public class CustomerController {
         this.customerDao = customerDao;
     }
 
-    @RequestMapping(path = "customer/cakes", method = RequestMethod.GET)
+    @RequestMapping(path = "cakes", method = RequestMethod.GET)
     public List<Cake> listOfStandardCakes() {
         return customerDao.getListOfStandardCakes();
     }
 
-    @RequestMapping(path = "customer/cakes/{id}", method = RequestMethod.GET)
+    @RequestMapping(path = "cakes/{id}", method = RequestMethod.GET)
     public Cake getSingleCake(@PathVariable int id) {
         return customerDao.getStandardCakeById(id);
     }

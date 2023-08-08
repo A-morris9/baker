@@ -28,7 +28,7 @@ public class CustomerDao{
 
     public List<Cake> getListOfStandardCakes() {
             List<Cake> cakes = new ArrayList<>();
-            String sql = "SELECT cakeid, name, description, price, availability FROM cakes";
+            String sql = "SELECT cakeid, title, description, price, style, size, availability, image FROM cakes";
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
             while (results.next()) {
                 Cake cake = mapRowToCake(results);
@@ -58,10 +58,13 @@ public class CustomerDao{
     private Cake mapRowToCake(SqlRowSet result){
         Cake cake = new Cake();
         cake.setCake_id(result.getInt("cakeid"));
-        cake.setTitle(result.getString("name"));
+        cake.setTitle(result.getString("title"));
         cake.setDescription(result.getString("description"));
         cake.setPrice(result.getBigDecimal("price"));
+        cake.setStyle(result.getString("style"));
+        cake.setSize(result.getString("size"));
         cake.setAvailability(result.getBoolean("availability"));
+        cake.setImage(result.getString("image"));
         return cake;
     }
 }
