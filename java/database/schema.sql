@@ -76,7 +76,7 @@ CREATE TABLE orders (
     CustomerName VARCHAR(255),
     DeliveryAddress VARCHAR(255),
     PhoneNumber VARCHAR(20),
-    OrderDate DATE,
+    OrderDate TIMESTAMP,
     PickupDate TIMESTAMP,
     CustomerWantsWriting BOOLEAN,
     Writing TEXT,

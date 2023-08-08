@@ -2,17 +2,12 @@ package com.techelevator.dao;
 
 import com.techelevator.exception.DaoException;
 import com.techelevator.model.Cake;
+import com.techelevator.model.Order;
 import org.springframework.stereotype.Component;
 import org.springframework.jdbc.BadSqlGrammarException;
 import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
-import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.jdbc.BadSqlGrammarException;
-import org.springframework.jdbc.CannotGetJdbcConnectionException;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.support.rowset.SqlRowSet;
-import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,6 +53,16 @@ public class CustomerDao{
         }
         return cake;
     }
+    public void orderStandardCake(Order order) {
+        String sql = "INSERT INTO orders (orderid, cakeid, customername, deliveryaddress, phonenumber, orderdate," +
+                "pickupdate, customerwantswriting, writing, writingfee, totalamount)" +
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+        jdbcTemplate.update(sql, order.getOrder_id(), order.getCake_id(), order.getCustomerName(), order.getDeliveryAddress(),
+                order.getPhoneNumber(), order.getOrderDate(), order.getPickupDate(), order.getCustomerWantsWriting(), order.getWriting(),
+                order.getWritingFee(), order.getTotalAmount());
+    }
+
+
 
     private Cake mapRowToCakeDetails(SqlRowSet result) {
         Cake cake = new Cake();
