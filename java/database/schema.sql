@@ -1,8 +1,9 @@
 BEGIN TRANSACTION;
 
-DROP TABLE IF EXISTS cakes_properties;
 DROP TABLE IF EXISTS orders;
-DROP TABLE IF EXISTS properties;
+DROP TABLE IF EXISTS flavors;
+DROP TABLE IF EXISTS frostings;
+DROP TABLE IF EXISTS fillings;
 DROP TABLE IF EXISTS cakes;
 DROP TABLE IF EXISTS users;
 
@@ -24,21 +25,49 @@ CREATE TABLE cakes (
     Image VARCHAR(255) NOT NULL
 );
 
-CREATE TABLE properties (
-    PropertiesID SERIAL PRIMARY KEY,
-    Flavor VARCHAR(50) NOT NULL,
-    Frosting VARCHAR(50) NOT NULL,
-    Filling VARCHAR(50) NOT NULL,
-    Availability BOOLEAN
+CREATE TABLE flavors (
+    FlavorID SERIAL PRIMARY KEY,
+    Name VARCHAR(50) NOT NULL,
+    Cost DECIMAL(10, 2) NOT NULL,
+    InventoryAmount INT NOT NULL,
+    Availability BOOLEAN NOT NULL,
+    CakeID INT REFERENCES cakes(CakeID)
 );
 
-CREATE TABLE cakes_properties (
-    CakePropertiesID SERIAL PRIMARY KEY,
-    CakeID INT REFERENCES Cakes(CakeID),
-    PropertiesID INT REFERENCES properties(PropertiesID),
-    Quantity DECIMAL(10, 2),
-    UnitOfMeasure VARCHAR(50),
-    Availability BOOLEAN
+CREATE TABLE frostings (
+    FrostingID SERIAL PRIMARY KEY,
+    Name VARCHAR(50) NOT NULL,
+    Cost DECIMAL(10, 2) NOT NULL,
+    InventoryAmount INT NOT NULL,
+    Availability BOOLEAN NOT NULL,
+    CakeID INT REFERENCES cakes(CakeID)
+);
+
+CREATE TABLE fillings (
+    FillingID SERIAL PRIMARY KEY,
+    Name VARCHAR(50) NOT NULL,
+    Cost DECIMAL(10, 2) NOT NULL,
+    InventoryAmount INT NOT NULL,
+    Availability BOOLEAN NOT NULL,
+    CakeID INT REFERENCES cakes(CakeID)
+);
+
+CREATE TABLE cake_flavors (
+    CakeFlavorID SERIAL PRIMARY KEY,
+    CakeID INT REFERENCES cakes(CakeID),
+    FlavorID INT REFERENCES flavors(FlavorID)
+);
+
+CREATE TABLE cakes_fillings (
+    CakeFillingID SERIAL PRIMARY KEY,
+    CakeID INT REFERENCES cakes(CakeID),
+    FillingID INT REFERENCES fillings(FillingID)
+);
+
+CREATE TABLE cakes_frostings (
+    CakeFrostingID SERIAL PRIMARY KEY,
+    CakeID INT REFERENCES cakes(CakeID),
+    FrostingID INT REFERENCES frostings(FrostingID)
 );
 
 CREATE TABLE orders (
@@ -54,6 +83,5 @@ CREATE TABLE orders (
     WritingFee DECIMAL(10, 2),
     TotalAmount DECIMAL(10, 2)
 );
-
 
 COMMIT TRANSACTION;

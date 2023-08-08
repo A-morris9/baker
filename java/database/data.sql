@@ -16,4 +16,34 @@ VALUES
     ('Strawberry Shortcake', 'Light vanilla cake with fresh strawberries and whipped cream.', 21.00, 'Fruit', 'Small', true, 'strawberry_shortcake.jpg'),
     ('Tiramisu Temptation', 'Classic tiramisu cake with layers of coffee-soaked ladyfingers and mascarpone.', 25.00, 'Coffee', 'Medium', true, 'tiramisu_temptation_cake.jpg');
 
+INSERT INTO flavors (Name, Cost, InventoryAmount, Availability, CakeID)
+VALUES
+    ('Chocolate', 0.10, 1000, true, 1),   -- Classic Chocolate Cake
+    ('Vanilla', 0.08, 1200, true, 2),     -- Velvety Vanilla Delight
+    ('Lemon', 0.05, 800, true, 3),        -- Zesty Lemon Burst
+    ('Mixed Berry', 0.12, 600, true, 4),  -- Berry Bliss
+    ('Red Velvet', 0.15, 1000, true, 5),  -- Decadent Red Velvet
+    ('Caramel', 0.12, 900, true, 6),      -- Caramel Pecan Indulgence
+    ('Coconut', 0.10, 700, true, 7),      -- Coconut Cream Paradise
+    ('Mocha', 0.12, 800, true, 8),        -- Mocha Madness
+    ('Strawberry', 0.10, 600, true, 9),   -- Strawberry Shortcake
+    ('Coffee', 0.12, 1000, true, 10);     -- Tiramisu Temptation
+
+INSERT INTO frostings (Name, Cost, InventoryAmount, Availability, CakeID)
+VALUES
+    ('Chocolate', 0.10, 900, true, 1),    -- Classic Chocolate Cake
+    ('Vanilla', 0.08, 1100, true, 2),      -- Velvety Vanilla Delight
+    ('Cream Cheese', 0.12, 950, true, 2),  -- Decadent Red Velvet
+    ('Coconut Cream', 0.12, 750, true, 7),-- Coconut Cream Paradise
+    ('Mocha', 0.12, 800, true, 8),        -- Mocha Madness
+    ('Whipped Cream', 0.10, 600, true, 9),-- Strawberry Shortcake
+    ('Mascarpone', 0.15, 1000, true, 10); -- Tiramisu Temptation
+
+INSERT INTO fillings (Name, Cost, InventoryAmount, Availability, CakeID)
+VALUES
+    ('Raspberry Bliss', 0.15, 5, true, 1),
+    ('Chocolate Ganache', 0.15, 7, true, 2),
+    ('Creamy Caramel', 0.10, 3, true, 3),
+    ('Strawberry Heaven', 0.15, 2, true, 1);
+
 COMMIT TRANSACTION;
