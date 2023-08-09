@@ -4,28 +4,38 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 public class Order {
-private int order_id;
-private int cake_id;
-private String customerName;
-private String deliveryAddress;
-private String phoneNumber;
-private Date orderDate;
-private Date pickupDate;
-private Boolean customerWantsWriting;
-private String writing;
-private BigDecimal writingFee;
-private BigDecimal totalAmount;
+    private int order_id;
+    private int cake_id;
+    private String firstName;
+    private String lastName;
+    private int streetNumber;
+    private String streetName;
+    private String city;
+    private String state;
+    private int zip;
+    private String phoneNumber;
+    private Date orderDate;
+    private Date pickupDate;
+    private Boolean customerWantsWriting;
+    private String writing;
+    private BigDecimal writingFee;
+    private BigDecimal totalAmount;
 
     public Order() {
     }
 
-    public Order(int order_id, int cake_id, String customerName, String deliveryAddress, String phoneNumber,
-                 Date orderDate, Date pickupDate, Boolean customerWantsWriting, String writing,
-                 BigDecimal writingFee, BigDecimal totalAmount) {
+    public Order(int order_id, int cake_id, String firstName, String lastName, int streetNumber, String streetName,
+                 String city, String state, int zip, String phoneNumber, Date orderDate, Date pickupDate,
+                 Boolean customerWantsWriting, String writing, BigDecimal writingFee, BigDecimal totalAmount) {
         this.order_id = order_id;
         this.cake_id = cake_id;
-        this.customerName = customerName;
-        this.deliveryAddress = deliveryAddress;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.streetNumber = streetNumber;
+        this.streetName = streetName;
+        this.city = city;
+        this.state = state;
+        this.zip = zip;
         this.phoneNumber = phoneNumber;
         this.orderDate = orderDate;
         this.pickupDate = pickupDate;
@@ -33,22 +43,6 @@ private BigDecimal totalAmount;
         this.writing = writing;
         this.writingFee = writingFee;
         this.totalAmount = totalAmount;
-    }
-
-    public Date getOrderDate() {
-        return orderDate;
-    }
-
-    public void setOrderDate(Date orderDate) {
-        this.orderDate = orderDate;
-    }
-
-    public Date getPickupDate() {
-        return pickupDate;
-    }
-
-    public void setPickupDate(Date pickupDate) {
-        this.pickupDate = pickupDate;
     }
 
     public int getOrder_id() {
@@ -67,20 +61,60 @@ private BigDecimal totalAmount;
         this.cake_id = cake_id;
     }
 
-    public String getCustomerName() {
-        return customerName;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setCustomerName(String customerName) {
-        this.customerName = customerName;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getDeliveryAddress() {
-        return deliveryAddress;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setDeliveryAddress(String deliveryAddress) {
-        this.deliveryAddress = deliveryAddress;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public int getStreetNumber() {
+        return streetNumber;
+    }
+
+    public void setStreetNumber(int streetNumber) {
+        this.streetNumber = streetNumber;
+    }
+
+    public String getStreetName() {
+        return streetName;
+    }
+
+    public void setStreetName(String streetName) {
+        this.streetName = streetName;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public int getZip() {
+        return zip;
+    }
+
+    public void setZip(int zip) {
+        this.zip = zip;
     }
 
     public String getPhoneNumber() {
@@ -89,6 +123,22 @@ private BigDecimal totalAmount;
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public Date getOrderDate() {
+        return orderDate;
+    }
+
+    public void setOrderDate(Date orderDate) {
+        this.orderDate = orderDate;
+    }
+
+    public Date getPickupDate() {
+        return pickupDate;
+    }
+
+    public void setPickupDate(Date pickupDate) {
+        this.pickupDate = pickupDate;
     }
 
     public Boolean getCustomerWantsWriting() {
@@ -123,3 +173,8 @@ private BigDecimal totalAmount;
         this.totalAmount = totalAmount;
     }
 }
+
+
+
+
+
