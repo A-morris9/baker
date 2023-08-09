@@ -21,7 +21,7 @@ public class StaffDao{
 
     public List<Cake> getListOfStandardCakes() {
         List<Cake> cakes = new ArrayList<>();
-        String sql = "SELECT cakeid, name, description, price, availability FROM cakes";
+        String sql = "SELECT cakeid, title, description, price, style, size, availability, image FROM cakes";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while (results.next()) {
             Cake cake = mapRowToCake(results);
@@ -31,12 +31,18 @@ public class StaffDao{
     }
    public Cake getStandardCakeById(int id) {
        Cake cake = null;
-       String sql = "SELECT cakeid, name, description, price, availability FROM cakes" +
-               " WHERE cakeid=?";
+       String sql ="SELECT c.CakeID, c.Title, c.Description, c.Price, c.Style,c.Size, f.Name AS Flavor, fr.Name AS Frosting, fi.Name AS Filling, c.availability, c.image\n" +
+               "FROM cakes c LEFT JOIN cake_flavors cf ON c.CakeID = cf.CakeID\n" +
+               "LEFT JOIN flavors f ON cf.FlavorID = f.FlavorID\n" +
+               "LEFT JOIN cakes_frostings cfr ON c.CakeID = cfr.CakeID\n" +
+               "LEFT JOIN frostings fr ON cfr.FrostingID = fr.FrostingID\n" +
+               "LEFT JOIN cakes_fillings cfi ON c.CakeID = cfi.CakeID\n" +
+               "LEFT JOIN fillings fi ON cfi.FillingID = fi.FillingID\n" +
+               "WHERE c.cakeid = ?;";
        try {
            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, id);
            if (results.next()) {
-               cake = mapRowToCake(results);
+               cake = mapRowToCakeDetails(results);
            }
        } catch (CannotGetJdbcConnectionException e) {
            throw new DaoException("Unable to connect to server or database", e);
@@ -50,10 +56,42 @@ public class StaffDao{
         return 0;
    }
 
+   public int toggleAvailabilityOfStandardCake(Cake cake){
+        int affected;
+
+       String sql = "UPDATE cakes\n" +
+               "SET availability = NOT availability\n" +
+               "WHERE cakeid = ?";
+       try {
+          affected = jdbcTemplate.update(sql, cake.getCake_id());
+        } catch (CannotGetJdbcConnectionException e) {
+        throw new DaoException("Unable to connect to server or database", e);
+        } catch (BadSqlGrammarException e) {
+        throw new DaoException("SQL syntax error", e);
+        }
+       return affected;
+   }
+
+    private Cake mapRowToCakeDetails(SqlRowSet result) {
+        Cake cake = new Cake();
+        cake.setCake_id(result.getInt("cakeid"));
+        cake.setTitle(result.getString("title"));
+        cake.setDescription(result.getString("description"));
+        cake.setPrice(result.getBigDecimal("price"));
+        cake.setStyle(result.getString("style"));
+        cake.setSize(result.getString("size"));
+        cake.setFlavor(result.getString("flavor"));
+        cake.setFrosting(result.getString("frosting"));
+        cake.setFilling(result.getString("filling"));
+        cake.setAvailability(result.getBoolean("availability"));
+        cake.setImage(result.getString("image"));
+        return cake;
+    }
+
     private Cake mapRowToCake(SqlRowSet result){
         Cake cake = new Cake();
         cake.setCake_id(result.getInt("cakeid"));
-        cake.setTitle(result.getString("name"));
+        cake.setTitle(result.getString("title"));
         cake.setDescription(result.getString("description"));
         cake.setPrice(result.getBigDecimal("price"));
         cake.setAvailability(result.getBoolean("availability"));
