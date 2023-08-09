@@ -6,6 +6,8 @@ import com.techelevator.model.Cake;
 import com.techelevator.model.Order;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -17,9 +19,14 @@ public class OrderController {
         this.orderDao = orderDao;
     }
     //allows a customer to create an order for a standard cake. Allows for Optional Writing on the cake.
-    @RequestMapping(path = "orders/standard", method = RequestMethod.POST)
-    public void orderStandardCake(@RequestBody Order order){
 
+    LocalDateTime now = LocalDateTime.now();
+    Order testOrder = new Order( 1001,1, "Jo", "Shmoe",123,"Lan Ave",
+            "Norwood", "OH", 45245, "123-345-5678", now, now.plusDays(3), "Happy Birthday",
+            BigDecimal.valueOf(5),BigDecimal.valueOf(30));
+    @RequestMapping(path = "orders/standard", method = RequestMethod.POST)
+    public Order orderStandardCake(){
+        return orderDao.orderStandardCake(testOrder);
     }
 
     //allows a customer to create an order for a custom cake.
@@ -31,14 +38,14 @@ public class OrderController {
 
     //Gives a staff member the ability to see a list of pending orders
     @RequestMapping(path = "orders/pending", method = RequestMethod.GET)
-    public List<Cake> listPendingOrders() {
+    public List<Order> listPendingOrders() {
         return null;
     }
 
     //Gives a staff member the ability to change the status of an order given orderID and status code.
     // 1 = Pending, 2 = Canceled, 3 = Ready, 4 = Complete
     @RequestMapping(path = "orders/changeStatus/{id}", method = RequestMethod.GET)
-    public Cake changeOrderStatusById(@PathVariable int id, @PathVariable int status) {
+    public Order changeOrderStatusById(@PathVariable int id, @PathVariable int status) {
         return null;
     }
 

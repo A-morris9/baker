@@ -1,6 +1,11 @@
 package com.techelevator.model;
 
+import org.apache.tomcat.jni.Local;
+import org.apache.tomcat.jni.Time;
+
 import java.math.BigDecimal;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public class Order {
@@ -14,9 +19,8 @@ public class Order {
     private String state;
     private int zip;
     private String phoneNumber;
-    private Date orderDate;
-    private Date pickupDate;
-    private Boolean customerWantsWriting;
+    private LocalDateTime orderDate;
+    private LocalDateTime pickupDate;
     private String writing;
     private BigDecimal writingFee;
     private BigDecimal totalAmount;
@@ -25,8 +29,8 @@ public class Order {
     }
 
     public Order(int order_id, int cake_id, String firstName, String lastName, int streetNumber, String streetName,
-                 String city, String state, int zip, String phoneNumber, Date orderDate, Date pickupDate,
-                 Boolean customerWantsWriting, String writing, BigDecimal writingFee, BigDecimal totalAmount) {
+                 String city, String state, int zip, String phoneNumber, LocalDateTime orderDate, LocalDateTime pickupDate, String writing,
+                 BigDecimal writingFee, BigDecimal totalAmount) {
         this.order_id = order_id;
         this.cake_id = cake_id;
         this.firstName = firstName;
@@ -39,7 +43,6 @@ public class Order {
         this.phoneNumber = phoneNumber;
         this.orderDate = orderDate;
         this.pickupDate = pickupDate;
-        this.customerWantsWriting = customerWantsWriting;
         this.writing = writing;
         this.writingFee = writingFee;
         this.totalAmount = totalAmount;
@@ -125,28 +128,20 @@ public class Order {
         this.phoneNumber = phoneNumber;
     }
 
-    public Date getOrderDate() {
+    public LocalDateTime getOrderDate() {
         return orderDate;
     }
 
-    public void setOrderDate(Date orderDate) {
-        this.orderDate = orderDate;
+    public void setOrderDate(LocalDateTime orderDate) {
+        this.orderDate = LocalDateTime.now();
     }
 
-    public Date getPickupDate() {
+    public LocalDateTime getPickupDate() {
         return pickupDate;
     }
 
-    public void setPickupDate(Date pickupDate) {
-        this.pickupDate = pickupDate;
-    }
-
-    public Boolean getCustomerWantsWriting() {
-        return customerWantsWriting;
-    }
-
-    public void setCustomerWantsWriting(Boolean customerWantsWriting) {
-        this.customerWantsWriting = customerWantsWriting;
+    public void setPickupDate(LocalDateTime pickupDate) {
+        this.pickupDate = LocalDateTime.now().plusDays(3);
     }
 
     public String getWriting() {
