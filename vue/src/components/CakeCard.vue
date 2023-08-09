@@ -1,10 +1,7 @@
 <template>
   <div class="cake" v-on:click="viewCake(cake)">
       <h2 class="cake-name" style ="grid-area: name">{{ cake.title }}</h2>
-      <ul style = "grid-area: description">
-          <li> style : {{cake.style}}</li>
-          <li> size : {{cake.size}}</li>    
-      </ul>    
+       
       <img class="cake-image" style = "grid-area: image" :src="cake.image"/>
   </div>
 </template>
@@ -32,9 +29,10 @@ export default {
 <style>
 .cake {
     display: grid;
-    grid-template-columns: 150px 1fr 100px;
+    grid-template-rows: 1fr 1fr;
     grid-template-areas:
-    "name description image";
+    "name" 
+    "image";
     border: 2px solid black;
     border-radius: 10px;
     width: 20%;
@@ -42,10 +40,14 @@ export default {
     margin: 20px auto;
     justify-items: center;
     align-items: center;
+    text-align: center;
+    cursor: pointer;
     
 }
 .cake-image {
-    width: 100%;
+    width: 70%;
+    height: 80%;
+    margin-top: -10px
 }
 
 </style>

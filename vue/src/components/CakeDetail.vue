@@ -45,7 +45,7 @@
         <label for="zipCode">Zip Code: </label>
         <input id="zipCode" type="text" v-model="newOrder.zipCode" />
       </div>
-      <p>Would you like to add writing to your cake? <input type="checkbox" v-on:change="displayTextArea()"/>
+      <p>Would you like to add writing to your cake? (+5$) <input type="checkbox" v-on:change="displayTextArea()"/>
       </p>
       <div class="form-element" v-if="showTextArea === true">
         <label for="cakeWriting">Writing to Appear on cake: </label>
@@ -97,7 +97,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .cake-image {
   width: 20%;
 }
