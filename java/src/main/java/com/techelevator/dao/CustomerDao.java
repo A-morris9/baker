@@ -53,14 +53,14 @@ public class CustomerDao{
         }
         return cake;
     }
-    public void orderStandardCake(Order order) {
-        String sql = "INSERT INTO orders (orderid, cakeid, customername, deliveryaddress, phonenumber, orderdate," +
-                "pickupdate, customerwantswriting, writing, writingfee, totalamount)" +
-                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
-        jdbcTemplate.update(sql, order.getOrder_id(), order.getCake_id(), order.getCustomerName(), order.getDeliveryAddress(),
-                order.getPhoneNumber(), order.getOrderDate(), order.getPickupDate(), order.getCustomerWantsWriting(), order.getWriting(),
-                order.getWritingFee(), order.getTotalAmount());
-    }
+   // public void orderStandardCake(Order order) {
+     //   String sql = "INSERT INTO orders (orderid, cakeid, customername, deliveryaddress, phonenumber, orderdate," +
+       //         "pickupdate, customerwantswriting, writing, writingfee, totalamount)" +
+      //          "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+      //  jdbcTemplate.update(sql, order.getOrder_id(), order.getCake_id(), order.getCustomerName(), order.getDeliveryAddress(),
+      //          order.getPhoneNumber(), order.getOrderDate(), order.getPickupDate(), order.getCustomerWantsWriting(), order.getWriting(),
+       //         order.getWritingFee(), order.getTotalAmount());
+   // }
 
 
 

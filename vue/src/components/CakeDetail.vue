@@ -31,7 +31,7 @@
       </div>
       <div class="form-element">
         <label for="streetName">Street Name: </label>
-        <input id="streetName" type="text" v-model="newOrder.streetName" />
+        <input id="streetName" placeholder="Street Name" type="text" v-model="newOrder.streetName" />
       </div>
       <div class="form-element">
         <label for="city">City: </label>
@@ -43,13 +43,17 @@
       </div>
       <div class="form-element">
         <label for="zipCode">Zip Code: </label>
-        <input id="zipCode" type="text" v-model="newOrder.zipCode" />
+        <input id="zipCode" type="text" v-model="newOrder.zip" />
       </div>
       <p>Would you like to add writing to your cake? (+5$) <input type="checkbox" v-on:change="displayTextArea()"/>
       </p>
       <div class="form-element" v-if="showTextArea === true">
         <label for="cakeWriting">Writing to Appear on cake: </label>
         <textarea id="cakeWriting" rows="8" cols="60" v-model="newOrder.writing" />
+      </div>
+      <div class="actions" v-if="showForm === true">
+        <button v-on:click="resetForm" type="button">Cancel</button>
+        <button>Submit</button>
       </div>
     </form>
   </div>
@@ -76,7 +80,10 @@ export default {
          availability: "",
          image: ""
                  },
-         newOrder:{}               
+         newOrder:{
+           cake_id: this.params.id,
+           customerWantsWriting: false
+         }               
     }
     },
 
@@ -92,6 +99,12 @@ export default {
       },
       displayTextArea() {
         this.showTextArea =! this.showTextArea
+        this.newOrder.customerWantsWriting = true
+      },
+      resetForm() {
+        this.showForm = false;
+        this.showTextArea = false;
+        this.newOrder = {}
       }
     }
 }

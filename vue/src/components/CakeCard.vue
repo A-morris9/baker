@@ -33,15 +33,16 @@ export default {
     grid-template-areas:
     "name" 
     "image";
-    border: 2px solid black;
+    border: 2px solid rgb(119, 114, 114);
     border-radius: 10px;
-    width: 20%;
-    height: 180px;
+    width: 170px;
+    height: 230px;
     margin: 20px auto;
     justify-items: center;
     align-items: center;
     text-align: center;
     cursor: pointer;
+     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     
 }
 .cake-image {
