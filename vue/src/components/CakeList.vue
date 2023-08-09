@@ -1,15 +1,17 @@
 <template>
-  <div class="cakes">
+  <div>
     <div class="scrolling-h1">
       <h1>Feast Your Eyes On Our Delectable Confections</h1>
     </div>
-    <hr /> 
-    <hr />
-    <div> 
-     Filter cake name by: <input type="text" v-model="filter" class="fancy" />
-    </div>
+    <hr class = "divider"/> 
+    <hr class = "divider" />
+    Filter cake name by: <input type="text" v-model="filter" class="fancy" />
+   <div class="cakes">
+    <hr class = "divider" /> 
+    <hr class = "divider"/>
     <cake-card v-for="cake in filteredCakes" v-bind:key="cake.cake_id" :cake="cake"></cake-card>
-  </div>
+   </div>
+  </div> 
 </template>
 
 <script>
@@ -66,9 +68,8 @@ export default {
  .cakes {
   display: flex; 
   flex-wrap : wrap;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
-  background-image: url(https://c4.wallpaperflare.com/wallpaper/958/739/664/birthday-party-wallpaper-preview.jpg) ;
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -76,5 +77,9 @@ export default {
 .fancy {
   background-color: rgb(0, 68, 100);
   margin-top: 10px;
+}
+.divider {
+  border: none; /* Remove the border */
+  
 }
 </style>
