@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@PreAuthorize("isAuthenticated()")
+//@PreAuthorize("isAuthenticated()")
 @RestController
 @CrossOrigin
 public class StaffController {
@@ -39,9 +39,10 @@ public class StaffController {
     }
 
     //Gives a staff member the ability to toggle the availability of a standard cake.
-    @RequestMapping(path = "staff/availability/{id}", method = RequestMethod.GET)
-    public Cake toggleAvailablityOfStandardCake(@PathVariable int id) {
-        return null;
+    @RequestMapping(path = "staff/availability/{id}", method = RequestMethod.PUT)
+    public void toggleAvailabilityOfStandardCake(@PathVariable int id) {
+        Cake cake = staffDao.getStandardCakeById(id);
+        staffDao.toggleAvailabilityOfStandardCake(cake);
     }
 
     //Gives a staff member the ability to see a list of pending orders
