@@ -1,0 +1,45 @@
+package com.techelevator.controller;
+
+import com.techelevator.dao.CakeDao;
+import com.techelevator.dao.OrderDao;
+import com.techelevator.model.Cake;
+import com.techelevator.model.Order;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@CrossOrigin
+public class OrderController {
+    private final OrderDao orderDao;
+
+    public OrderController(OrderDao orderDao) {
+        this.orderDao = orderDao;
+    }
+    //allows a customer to create an order for a standard cake. Allows for Optional Writing on the cake.
+    @RequestMapping(path = "orders/standard", method = RequestMethod.POST)
+    public void orderStandardCake(@RequestBody Order order){
+
+    }
+
+    //allows a customer to create an order for a custom cake.
+    // Allows for customization of Filling, Frosting, Flavor, and Optional Writing on the cake.
+    @RequestMapping(path = "orders/custom", method = RequestMethod.POST)
+    public void orderCustomCake(@RequestBody Order order){
+
+    }
+
+    //Gives a staff member the ability to see a list of pending orders
+    @RequestMapping(path = "orders/pending", method = RequestMethod.GET)
+    public List<Cake> listPendingOrders() {
+        return null;
+    }
+
+    //Gives a staff member the ability to change the status of an order given orderID and status code.
+    // 1 = Pending, 2 = Canceled, 3 = Ready, 4 = Complete
+    @RequestMapping(path = "orders/changeStatus/{id}", method = RequestMethod.GET)
+    public Cake changeOrderStatusById(@PathVariable int id, @PathVariable int status) {
+        return null;
+    }
+
+}
