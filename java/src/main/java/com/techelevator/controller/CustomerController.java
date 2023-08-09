@@ -43,10 +43,10 @@ public class CustomerController {
     }
 
     //allows a customer to create an order for a standard cake. Allows for Optional Writing on the cake.
-  //  @RequestMapping(path = "cakes/order", method = RequestMethod.POST)
-   // public void orderStandardCake(@RequestBody Order order){
-   //     customerDao.orderStandardCake(order);
-   // }
+    @RequestMapping(path = "cakes/order", method = RequestMethod.POST)
+    public void orderStandardCake(@RequestBody Order order){
+        customerDao.orderStandardCake(order);
+    }
 
     //allows a customer to create an order for a custom cake.
     // Allows for customization of Filling, Frosting, Flavor, and Optional Writing on the cake.

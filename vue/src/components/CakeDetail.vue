@@ -80,8 +80,8 @@ export default {
          availability: "",
          image: ""
                  },
-         newOrder:{
-           cake_id: this.params.id,
+        newOrder:{
+           cake_id: this.$route.params.id,
            customerWantsWriting: false
          }               
     }
