@@ -75,7 +75,7 @@ CREATE TABLE orders (
     CakeID INT REFERENCES cakes(CakeID),
     customerFirstName VARCHAR(255),
     customerLastName VARCHAR(255),
-    streetNumber INT(255),
+    streetNumber INT,
     PhoneNumber VARCHAR(20),
     OrderDate TIMESTAMP,
     PickupDate TIMESTAMP,
