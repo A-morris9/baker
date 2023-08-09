@@ -12,6 +12,6 @@ export default {
 
 <style>
 .me {
-  background-color: yellow;
+  background-color: bisque;
 }
 </style>

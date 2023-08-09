@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class = "fancy-background">
     <div class="scrolling-h1">
       <h1>Feast Your Eyes On Our Delectable Confections</h1>
     </div>
@@ -7,9 +7,8 @@
     <hr class = "divider" />
     Filter cake name by: <input type="text" v-model="filter" class="fancy" />
    <div class="cakes">
-    <hr class = "divider" /> 
-    <hr class = "divider"/>
-    <cake-card v-for="cake in filteredCakes" v-bind:key="cake.cake_id" :cake="cake"></cake-card>
+   
+    <cake-card v-for="cake in filteredCakes" v-bind:key="cake.cake_id" :cake="cake" class="cake-card"></cake-card>
    </div>
   </div> 
 </template>
@@ -65,17 +64,28 @@ export default {
     white-space: nowrap; 
     animation: scroll 10s linear infinite; 
   }
- .cakes {
+ .cakes {  
   display: flex; 
   flex-wrap : wrap;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
+  padding: 20px;
+  gap:100px
+}
+.cake-card {
+  width: calc(250px - 20px); /* 20% width with 20px spacing */
+  height: 300px;
+  margin-bottom: 20px; /* Add some bottom margin for spacing */
+  justify-content: center;
+}
+.fancy-background {
+  background-image: url('https://img.freepik.com/free-vector/blank-leafy-frame-social-ads_53876-100923.jpg?w=2000');
 }
 .fancy {
-  background-color: rgb(0, 68, 100);
+  background-color: bisque;
   margin-top: 10px;
 }
 .divider {

@@ -62,6 +62,7 @@
 <script>
 import CakeService from '../services/CakeService';
 
+
 export default {
  data() {
        return {
@@ -95,7 +96,13 @@ export default {
     },
     methods: {
       submitOrder() {
+        const Order = this.newOrder
+        CakeService.placeOrder(Order).then(response => {
+          if (response.status === 201) {
+            this.$router.push({name: 'OrderConfirmation'})
+          }
 
+        })
       },
       displayTextArea() {
         this.showTextArea =! this.showTextArea
@@ -125,6 +132,7 @@ export default {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
   background-color: #fff; /* Background color for the box */
   overflow: hidden;       /* Hide any content that overflows */
+  background-image: url('https://img.freepik.com/free-vector/blank-leafy-frame-social-ads_53876-100923.jpg?w=2000');
 }
 div.form-element {
   margin-top: 10px;
