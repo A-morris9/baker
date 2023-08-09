@@ -1,7 +1,7 @@
 <template>
   <div class="template-container">
    <div class = "me">
-     <h1>The Very Best Cake Shop.</h1>
+     <h1>THE VERY BEST CAKE SHOP</h1>
    </div>
    <router-link :to="{name : 'login'}" id = "left-aligned">Staff Login</router-link>
   </div>
@@ -11,6 +11,8 @@
 
 <style scoped>
 .template-container {
+  font-family:'Big Shoulders Display', cursive;
+  color:#444;
   background-color: bisque;
 }
 .me {

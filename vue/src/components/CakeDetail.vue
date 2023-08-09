@@ -10,7 +10,7 @@
       href="#"
       v-on:click.prevent="showForm = true"
       v-if="showForm === false"
-      >Show Form</a
+      >Place An Order</a
     >
     <form v-on:submit.prevent="sumbitOrder" v-if="showForm === true">
       <div class="form-element">
@@ -83,7 +83,6 @@ export default {
                  },
         newOrder:{
            cake_id: this.$route.params.id,
-           customerWantsWriting: false
          }               
     }
     },
@@ -99,14 +98,13 @@ export default {
         const Order = this.newOrder
         CakeService.placeOrder(Order).then(response => {
           if (response.status === 201) {
-            this.$router.push({name: 'OrderConfirmation'})
+            this.$router.push({name: 'OrderConfirmation', params: {orderid:response.data.order_id}})
           }
 
         })
       },
       displayTextArea() {
         this.showTextArea =! this.showTextArea
-        this.newOrder.customerWantsWriting = true
       },
       resetForm() {
         this.showForm = false;

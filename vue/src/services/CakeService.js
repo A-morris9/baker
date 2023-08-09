@@ -12,6 +12,6 @@ export default {
         return http.get(`/cakes/${cake_id}`)
     },
     placeOrder(order){
-        return http.post(`/cakes/${order}`)
+        return http.post('/orders/standard', order)
     }
 }

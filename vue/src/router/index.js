@@ -64,7 +64,7 @@ const router = new Router({
       }
     },
     {
-      path: "/orderConfirmation",
+      path: "/orderConfirmation/:orderid",
       name: "OrderConfirmation",
       component: OrderConfirmation,
       meta: {

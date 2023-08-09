@@ -7,7 +7,6 @@
     <hr class = "divider" />
     Filter cake name by: <input type="text" v-model="filter" class="fancy" />
    <div class="cakes">
-   
     <cake-card v-for="cake in filteredCakes" v-bind:key="cake.cake_id" :cake="cake" class="cake-card"></cake-card>
    </div>
   </div> 
