@@ -22,7 +22,7 @@ CREATE TABLE cakes (
     Style VARCHAR(255) NOT NULL,
     Size VARCHAR(255) NOT NULL,
     Availability BOOLEAN NOT NULL,
-    Image VARCHAR(255) NOT NULL
+    Image TEXT NOT NULL
 );
 
 CREATE TABLE flavors (
@@ -73,8 +73,9 @@ CREATE TABLE cakes_frostings (
 CREATE TABLE orders (
     OrderID SERIAL PRIMARY KEY,
     CakeID INT REFERENCES cakes(CakeID),
-    CustomerName VARCHAR(255),
-    DeliveryAddress VARCHAR(255),
+    customerFirstName VARCHAR(255),
+    customerLastName VARCHAR(255),
+    streetNumber INT,
     PhoneNumber VARCHAR(20),
     OrderDate TIMESTAMP,
     PickupDate TIMESTAMP,
