@@ -28,6 +28,7 @@ export default {
 
 <style>
 .cake {
+    font-family:'Big Shoulders Display', cursive;
     display: grid;
     grid-template-rows: 1fr 1fr;
     grid-template-areas:
@@ -43,8 +44,7 @@ export default {
     text-align: center;
     cursor: pointer;
      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    background-color: bisque; 
-    
+    background-color: bisque;
 }
 .cake-image {
     width: 70%;

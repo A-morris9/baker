@@ -1,10 +1,10 @@
 <template>
   <div class = "cake-box">  
-    <h2>{{cake.title}}</h2>
+    <h2 class="title">{{cake.title}}</h2>
     <img class="cake-image" :src="cake.image" />
     <h3>{{cake.description}} </h3>
-    <h3>{{cake.style}} </h3>
-    <h3>$ {{cake.price}}</h3>
+    <h3>Cake Type:  {{cake.style}} </h3>
+    <h3>Price: $ {{cake.price}}</h3>
     <a
       id="show-form-button"
       href="#"
@@ -12,7 +12,7 @@
       v-if="showForm === false"
       >Place An Order</a
     >
-    <form v-on:submit.prevent="sumbitOrder" v-if="showForm === true">
+    <form class="form-style" v-on:submit.prevent="sumbitOrder" v-if="showForm === true">
       <div class="form-element">
         <label for="firstName">First Name: </label>
         <input id="firstName" type="text" v-model="newOrder.firstName" />
@@ -31,7 +31,7 @@
       </div>
       <div class="form-element">
         <label for="streetName">Street Name: </label>
-        <input id="streetName" placeholder="Street Name" type="text" v-model="newOrder.streetName" />
+        <input id="streetName" type="text" v-model="newOrder.streetName" />
       </div>
       <div class="form-element">
         <label for="city">City: </label>
@@ -135,9 +135,19 @@ export default {
   background-color: #fff; /* Background color for the box */
   overflow: hidden;       /* Hide any content that overflows */
   background-image: url('https://img.freepik.com/free-vector/blank-leafy-frame-social-ads_53876-100923.jpg?w=2000');
+ font-family: poppins, sans-serif;
+ }
+.title{
+   font-family:'Big Shoulders Display', cursive;
 }
 div.form-element {
   margin-top: 10px;
 }
-
+#show-form-button{
+  font-weight: bold;
+}
+.form-style{
+  font-family: poppins,sans-serif;
+  font-weight: bold;
+}
 </style>
