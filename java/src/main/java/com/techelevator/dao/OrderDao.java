@@ -9,6 +9,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 @Component
@@ -26,11 +27,14 @@ public class OrderDao {
                "pickupdate, writing, writingfee, totalamount)" +
                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING orderid;";
 
+        LocalDateTime orderDate = LocalDateTime.now();
+        LocalDateTime deliveryDate = orderDate.plusDays(3);
+        int writingFee = 5;
         try {
             int newOrderId = jdbcTemplate.queryForObject(sql, int.class, order.getCake_id(), order.getFirstName(),
                     order.getLastName(), order.getStreetNumber(), order.getStreetName(), order.getCity(), order.getState(),
-                    order.getZip(), order.getPhoneNumber(), order.getOrderDate(), order.getPickupDate(), order.getWriting(),
-                    order.getWritingFee(), order.getTotalAmount());
+                    order.getZip(), order.getPhoneNumber(), orderDate, deliveryDate, order.getWriting(),
+                    writingFee, order.getTotalAmount());
             newOrder = getOrderById(newOrderId);
         } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database", e);

@@ -4,7 +4,7 @@
     <img class="cake-image" :src="cake.image" />
     <h3>{{cake.description}} </h3>
     <h3>{{cake.style}} </h3>
-    <h3>$ {{cake.price}} </h3>
+    <h3>$ {{cake.price}}</h3>
     <a
       id="show-form-button"
       href="#"
@@ -82,7 +82,8 @@ export default {
          image: ""
                  },
         newOrder:{
-           cake_id: this.$route.params.id,
+           
+
          }               
     }
     },
@@ -91,7 +92,10 @@ export default {
         //this.cake= this.$store.state.cake
         CakeService.getCake(this.$route.params.id)
         .then((response) => 
-        {this.cake = response.data}).catch((error) => alert(error))
+        {this.cake = response.data
+        this.newOrder.price = this.cake.price
+        this.newOrder.cake_id = this.cake.cake_id}).catch((error) => alert(error))
+
     },
     methods: {
       submitOrder() {
