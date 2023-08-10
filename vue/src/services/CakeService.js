@@ -13,5 +13,9 @@ export default {
     },
     placeOrder(order){
         return http.post('/orders/standard', order)
-    }
+    },
+    getOrder(order_id){
+        return http.get(`/orders/${order_id}`)
+    },
+
 }
