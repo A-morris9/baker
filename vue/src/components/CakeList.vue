@@ -1,8 +1,6 @@
 <template>
   <div class = "fancy-background">
-    <div class="scrolling-h1">
-      <h1>Feast Your Eyes On Our Delectable Confections</h1>
-    </div>
+  
     <hr class = "divider"/> 
     <hr class = "divider" />
     Filter cake name by: <input type="text" v-model="filter" class="fancy" />
@@ -45,24 +43,6 @@ export default {
 </script>
 
 <style>
-  
-  @keyframes scroll {
-    0% {
-        transform: translateX(100%);
-    }
-    100% {
-        transform: translateX(-100%);
-    }
-  }
-  .scrolling-h1 {
-    position: absolute;
-    top: 11%;
-    right: 0;
-    left: 0;
-    transform: translateX(-100%);
-    white-space: nowrap; 
-    animation: scroll 10s linear infinite; 
-  }
  .cakes {  
   display: flex; 
   flex-wrap : wrap;

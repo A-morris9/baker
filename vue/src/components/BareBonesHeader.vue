@@ -1,7 +1,7 @@
 <template>
   <div class="template-container">
    <div class = "me">
-     <h1>THE VERY BEST CAKE SHOP</h1>
+     <img class="logo" v-bind:src="require('../assets/logo.png')" />
    </div>
    <router-link :to="{name : 'login'}" id = "left-aligned">Staff Login</router-link>
   </div>
@@ -22,5 +22,8 @@
 
 #left-aligned {
   text-align: left;
+}
+.logo{
+  width: 180px;
 }
 </style>
