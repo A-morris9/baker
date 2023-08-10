@@ -43,10 +43,16 @@ public class OrderController {
     }
 
     //Gives a staff member the ability to change the status of an order given orderID and status code.
-    // 1 = Pending, 2 = Canceled, 3 = Ready, 4 = Complete
+    // 1 = Pending, 2 = Canceled, 3 = Ready,
     @RequestMapping(path = "orders/changeStatus/{id}", method = RequestMethod.GET)
     public Order changeOrderStatusById(@PathVariable int id, @PathVariable int status) {
         return null;
     }
+
+    @RequestMapping(path = "orders/{id}", method = RequestMethod.GET)
+    public Order getSingleCake(@PathVariable int id) {
+        return orderDao.getOrderById(id);
+    }
+    
 
 }

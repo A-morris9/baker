@@ -12,7 +12,7 @@
       v-if="showForm === false"
       >Place An Order</a
     >
-    <form class="form-style" v-on:submit.prevent="sumbitOrder" v-if="showForm === true">
+    <form class="form-style" v-on:submit.prevent="submitOrder" v-if="showForm === true">
       <div class="form-element">
         <label for="firstName">First Name: </label>
         <input id="firstName" type="text" v-model="newOrder.firstName" />

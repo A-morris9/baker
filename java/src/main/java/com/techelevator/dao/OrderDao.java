@@ -29,6 +29,7 @@ public class OrderDao {
                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING orderid;";
 
         LocalDateTime orderDate = LocalDateTime.now();
+        //TO DO: Add deliverydate as a database default
         LocalDateTime deliveryDate = orderDate.plusDays(3);
         BigDecimal writingFee = new BigDecimal(5);
         BigDecimal totalPrice = order.getPrice().add(writingFee);
@@ -59,9 +60,9 @@ public class OrderDao {
 //       return 0;
     }
 
-    private Order getOrderById(int id) {
+    public Order getOrderById(int id) {
             Order order = null;
-            String sql = "select orderid, cakeid, customerfirstname, customerlastname, streetnumber, streetname, city, state, zip, " +
+            String sql = "select orderid, cakeid, status, customerfirstname, customerlastname, streetnumber, streetname, city, state, zip, " +
                     "phonenumber, orderdate,pickupdate, writing, writingfee, totalamount FROM Orders WHERE orderid = ?;";
             try {
                 SqlRowSet results = jdbcTemplate.queryForRowSet(sql, id);
@@ -80,6 +81,7 @@ public class OrderDao {
         Order order = new Order();
         order.setOrder_id(result.getInt("orderid"));
         order.setCake_id(result.getInt("cakeid"));
+        order.setStatus(result.getString("status"));
         order.setFirstName(result.getString("customerfirstname"));
         order.setLastName(result.getString("customerlastname"));
         order.setStreetNumber(result.getInt("streetnumber"));
