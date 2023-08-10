@@ -29,6 +29,7 @@ public class OrderDao {
                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING orderid;";
 
         LocalDateTime orderDate = LocalDateTime.now();
+        //TO DO: Add deliverydate as a database default
         LocalDateTime deliveryDate = orderDate.plusDays(3);
         BigDecimal writingFee = new BigDecimal(5);
         BigDecimal totalPrice = order.getPrice().add(writingFee);

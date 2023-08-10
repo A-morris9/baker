@@ -69,10 +69,11 @@ CREATE TABLE cakes_frostings (
     CakeID INT REFERENCES cakes(CakeID),
     FrostingID INT REFERENCES frostings(FrostingID)
 );
-
+CREATE Type order_status AS ENUM('Pending', 'Canceled', 'Ready');
 CREATE TABLE orders (
     OrderID SERIAL PRIMARY KEY,
     CakeID INT REFERENCES cakes(CakeID),
+    status order_status NOT NULL DEFAULT 'Pending',
     customerFirstName VARCHAR(255),
     customerLastName VARCHAR(255),
     streetNumber INT,

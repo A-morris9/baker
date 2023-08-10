@@ -11,6 +11,7 @@ import java.util.Date;
 public class Order {
     private int order_id;
     private int cake_id;
+    private String status;
     private String firstName;
     private String lastName;
     private int streetNumber;
@@ -30,11 +31,12 @@ public class Order {
     public Order() {
     }
 
-    public Order(int order_id, int cake_id, String firstName, String lastName, int streetNumber, String streetName,
+    public Order(int order_id, int cake_id, String status, String firstName, String lastName, int streetNumber, String streetName,
                  String city, String state, int zip, String phoneNumber, LocalDateTime orderDate, LocalDateTime pickupDate, String writing,
                  BigDecimal writingFee, BigDecimal totalAmount, BigDecimal price) {
         this.order_id = order_id;
         this.cake_id = cake_id;
+        this.status = status;
         this.firstName = firstName;
         this.lastName = lastName;
         this.streetNumber = streetNumber;
@@ -50,6 +52,15 @@ public class Order {
         this.totalAmount = totalAmount;
         this.price = price;
     }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     public BigDecimal getPrice() {
         return price;
     }
