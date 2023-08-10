@@ -49,6 +49,10 @@ public class OrderController {
         return null;
     }
 
+    @RequestMapping(path = "orders/{id}", method = RequestMethod.GET)
+    public Order getSingleCake(@PathVariable int id) {
+        return orderDao.getOrderById(id);
+    }
     
 
 }
