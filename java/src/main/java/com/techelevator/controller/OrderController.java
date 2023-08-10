@@ -20,19 +20,19 @@ public class OrderController {
     }
     //allows a customer to create an order for a standard cake. Allows for Optional Writing on the cake.
 
-    LocalDateTime now = LocalDateTime.now();
-    Order testOrder = new Order( 1001,1, "Jo", "Shmoe",123,"Lan Ave",
-            "Norwood", "OH", 45245, "123-345-5678", now, now.plusDays(3), "Happy Birthday",
-            BigDecimal.valueOf(5),BigDecimal.valueOf(30));
+ //   LocalDateTime now = LocalDateTime.now();
+//    Order testOrder = new Order( 1001,1, "Jo", "Shmoe",123,"Lan Ave",
+//            "Norwood", "OH", 45245, "123-345-5678", now, now.plusDays(3), "Happy Birthday",
+//            BigDecimal.valueOf(5),BigDecimal.valueOf(30));
     @RequestMapping(path = "orders/standard", method = RequestMethod.POST)
-    public Order orderStandardCake(){
-        return orderDao.orderStandardCake(testOrder);
+    public Order createStandardOrder(@RequestBody Order order){
+        return orderDao.createStandardOrder(order);
     }
 
     //allows a customer to create an order for a custom cake.
     // Allows for customization of Filling, Frosting, Flavor, and Optional Writing on the cake.
     @RequestMapping(path = "orders/custom", method = RequestMethod.POST)
-    public void orderCustomCake(@RequestBody Order order){
+    public void createCustomOrder(@RequestBody Order order){
 
     }
 

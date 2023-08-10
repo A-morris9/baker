@@ -20,14 +20,14 @@ public class OrderDao {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    public Order orderStandardCake(Order order) {
+    public Order createStandardOrder(Order order) {
         Order newOrder = null;
        String sql = "INSERT INTO orders (cakeid, customerfirstname, customerlastname, streetnumber, streetname, city, state, zip, phonenumber, orderdate," +
                "pickupdate, writing, writingfee, totalamount)" +
                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING orderid;";
 
         try {
-            int newOrderId = jdbcTemplate.queryForObject(sql, int.class, order.getFirstName(),
+            int newOrderId = jdbcTemplate.queryForObject(sql, int.class, order.getCake_id(), order.getFirstName(),
                     order.getLastName(), order.getStreetNumber(), order.getStreetName(), order.getCity(), order.getState(),
                     order.getZip(), order.getPhoneNumber(), order.getOrderDate(), order.getPickupDate(), order.getWriting(),
                     order.getWritingFee(), order.getTotalAmount());
@@ -54,7 +54,7 @@ public class OrderDao {
 
     private Order getOrderById(int id) {
             Order order = null;
-            String sql = "select orderid, customerfirstname, customerlastname, streetnumber, streetname, city, state, zip, " +
+            String sql = "select orderid, cakeid, customerfirstname, customerlastname, streetnumber, streetname, city, state, zip, " +
                     "phonenumber, orderdate,pickupdate, writing, writingfee, totalamount FROM Orders WHERE orderid = ?;";
             try {
                 SqlRowSet results = jdbcTemplate.queryForRowSet(sql, id);
@@ -71,24 +71,25 @@ public class OrderDao {
 
     private Order mapRowToOrder(SqlRowSet result){
         Order order = new Order();
-        order.setCake_id(result.getInt("orderid"));
-        order.setFirstName(result.getString("firstName"));
-        order.setLastName(result.getString("lastName"));
-        order.setStreetNumber(result.getInt("streetNumber"));
-        order.setStreetName(result.getString("streetName"));
+        order.setOrder_id(result.getInt("orderid"));
+        order.setCake_id(result.getInt("cakeid"));
+        order.setFirstName(result.getString("customerfirstname"));
+        order.setLastName(result.getString("customerlastname"));
+        order.setStreetNumber(result.getInt("streetnumber"));
+        order.setStreetName(result.getString("streetname"));
         order.setCity(result.getString("city"));
         order.setState(result.getString("state"));
         order.setZip(result.getInt("zip"));
-        order.setPhoneNumber(result.getString("phoneNumber"));
-        if (result.getObject("orderDate") != null) {
-            order.setOrderDate(result.getDate("orderDate").toLocalDate().atTime(LocalTime.now()));
+        order.setPhoneNumber(result.getString("phonenumber"));
+        if (result.getObject("orderdate") != null) {
+            order.setOrderDate(result.getDate("orderdate").toLocalDate().atTime(LocalTime.now()));
         }
-        if (result.getObject("pickupDate") != null) {
-            order.setPickupDate(result.getDate("pickupDate").toLocalDate().atTime(LocalTime.now()));
+        if (result.getObject("pickupdate") != null) {
+            order.setPickupDate(result.getDate("pickupdate").toLocalDate().atTime(LocalTime.now()));
         }
         order.setWriting(result.getString("writing"));
-        order.setWritingFee(result.getBigDecimal("writingFee"));
-        order.setTotalAmount(result.getBigDecimal("totalAmount"));
+        order.setWritingFee(result.getBigDecimal("writingfee"));
+        order.setTotalAmount(result.getBigDecimal("totalamount"));
         return order;
 
         //this.order_id = order_id;
