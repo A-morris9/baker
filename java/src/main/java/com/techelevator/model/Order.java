@@ -25,12 +25,14 @@ public class Order {
     private BigDecimal writingFee;
     private BigDecimal totalAmount;
 
+    private BigDecimal price;
+
     public Order() {
     }
 
     public Order(int order_id, int cake_id, String firstName, String lastName, int streetNumber, String streetName,
                  String city, String state, int zip, String phoneNumber, LocalDateTime orderDate, LocalDateTime pickupDate, String writing,
-                 BigDecimal writingFee, BigDecimal totalAmount) {
+                 BigDecimal writingFee, BigDecimal totalAmount, BigDecimal price) {
         this.order_id = order_id;
         this.cake_id = cake_id;
         this.firstName = firstName;
@@ -46,6 +48,14 @@ public class Order {
         this.writing = writing;
         this.writingFee = writingFee;
         this.totalAmount = totalAmount;
+        this.price = price;
+    }
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
     }
 
     public int getOrder_id() {

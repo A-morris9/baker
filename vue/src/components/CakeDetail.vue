@@ -45,78 +45,83 @@
         <label for="zipCode">Zip Code: </label>
         <input id="zipCode" type="text" v-model="newOrder.zip" />
       </div>
-      <p>Would you like to add writing to your cake? (+5$) <input type="checkbox" v-on:change="displayTextArea()"/>
+      <p>
+        Would you like to add writing to your cake? (+5$)
+        <input type="checkbox" v-on:change="displayTextArea()" />
       </p>
       <div class="form-element" v-if="showTextArea === true">
         <label for="cakeWriting">Writing to Appear on cake: </label>
-        <textarea id="cakeWriting" rows="8" cols="60" v-model="newOrder.writing" />
+        <textarea
+          id="cakeWriting"
+          rows="8"
+          cols="60"
+          v-model="newOrder.writing"
+        />
       </div>
       <div class="actions" v-if="showForm === true">
         <button v-on:click="resetForm" type="button">Cancel</button>
-        <button>Submit</button>
+        <button type="submit">Submit</button>
       </div>
     </form>
   </div>
 </template>
 
 <script>
-import CakeService from '../services/CakeService';
-
+import CakeService from "../services/CakeService";
 
 export default {
- data() {
-       return {
-         showForm: false,
-         showTextArea: false,
-         cake : {
-         cake_id: "",
-         title: "",
-         description: "",
-         price: "",
-         style: "",
-         size: "",
-         flavor: "",
-         frosting: "",
-         filling:"",
-         availability: "",
-         image: ""
-                 },
-        newOrder:{
-           
-
-         }               
-    }
-    },
-
-    created() { //$route.params.cake_id
-        //this.cake= this.$store.state.cake
-        CakeService.getCake(this.$route.params.id)
-        .then((response) => 
-        {this.cake = response.data
-        this.newOrder.price = this.cake.price
-        this.newOrder.cake_id = this.cake.cake_id}).catch((error) => alert(error))
-
-    },
-    methods: {
-      submitOrder() {
-        const Order = this.newOrder
-        CakeService.placeOrder(Order).then(response => {
-          if (response.status === 201) {
-            this.$router.push({name: 'OrderConfirmation', params: {orderid:response.data.order_id}})
-          }
-
-        })
+  data() {
+    return {
+      showForm: false,
+      showTextArea: false,
+      cake: {
+        cake_id: "",
+        title: "",
+        description: "",
+        price: "",
+        style: "",
+        size: "",
+        flavor: "",
+        frosting: "",
+        filling: "",
+        availability: "",
+        image: "",
       },
-      displayTextArea() {
-        this.showTextArea =! this.showTextArea
-      },
-      resetForm() {
-        this.showForm = false;
-        this.showTextArea = false;
-        this.newOrder = {}
-      }
-    }
-}
+      newOrder: {},
+    };
+  },
+
+  created() {
+    //$route.params.cake_id
+    //this.cake= this.$store.state.cake
+    CakeService.getCake(this.$route.params.id)
+      .then((response) => {
+        this.cake = response.data;
+      })
+      .catch((error) => alert(error));
+  },
+  methods: {
+    submitOrder() {
+      this.newOrder.price = this.cake.price;
+      this.newOrder.cake_id = this.cake.cake_id;
+      CakeService.placeOrder(this.newOrder).then((response) => {
+          this.$router.push({
+            name: "OrderConfirmation",
+            params: { orderid: response.data.order_id },
+          });
+        
+      });
+    },
+    displayTextArea() {
+      this.showTextArea = !this.showTextArea;
+    },
+    resetForm() {
+      this.showForm = false;
+      this.showTextArea = false;
+      this.newOrder = {};
+    },
+  },
+};
 </script>
 
 <style scoped>
@@ -129,8 +134,8 @@ export default {
   flex-direction: column;
   align-items: center;
   border: 1px solid #ccc; /* Add a border around the box */
-  border-radius: 10px;    /* Rounded edges */
-  padding: 20px 10px;     /* Vertical padding: 20px, Horizontal padding: 10px */
+  border-radius: 10px; /* Rounded edges */
+  padding: 20px 10px; /* Vertical padding: 20px, Horizontal padding: 10px */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
   background-color: #fff; /* Background color for the box */
   overflow: hidden;       /* Hide any content that overflows */

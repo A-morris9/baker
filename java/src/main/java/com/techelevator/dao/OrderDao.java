@@ -9,6 +9,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
@@ -29,12 +30,14 @@ public class OrderDao {
 
         LocalDateTime orderDate = LocalDateTime.now();
         LocalDateTime deliveryDate = orderDate.plusDays(3);
-        int writingFee = 5;
+        BigDecimal writingFee = new BigDecimal(5);
+        BigDecimal totalPrice = order.getPrice().add(writingFee);
+
         try {
             int newOrderId = jdbcTemplate.queryForObject(sql, int.class, order.getCake_id(), order.getFirstName(),
                     order.getLastName(), order.getStreetNumber(), order.getStreetName(), order.getCity(), order.getState(),
                     order.getZip(), order.getPhoneNumber(), orderDate, deliveryDate, order.getWriting(),
-                    writingFee, order.getTotalAmount());
+                    writingFee, totalPrice);
             newOrder = getOrderById(newOrderId);
         } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database", e);
