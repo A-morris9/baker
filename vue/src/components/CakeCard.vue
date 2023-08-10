@@ -20,8 +20,6 @@ export default {
             this.$router.push({name:"CakeDetail",params:{id:cake.cake_id}})
         }
     },
- 
-   
 
 }
 </script>
@@ -34,7 +32,7 @@ export default {
     grid-template-areas:
     "name" 
     "image";
-    border: 2px solid rgb(119, 114, 114);
+    border: 1px solid rgb(119, 114, 114);
     border-radius: 10px;
     width: 170px;
     height: 230px;
@@ -43,7 +41,7 @@ export default {
     align-items: center;
     text-align: center;
     cursor: pointer;
-     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+     box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.1);
     background-color: bisque;
 }
 .cake-image {
