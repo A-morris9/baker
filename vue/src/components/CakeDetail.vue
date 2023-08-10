@@ -10,7 +10,7 @@
       href="#"
       v-on:click.prevent="showForm = true"
       v-if="showForm === false"
-      >Show Form</a
+      >Place An Order</a
     >
     <form v-on:submit.prevent="sumbitOrder" v-if="showForm === true">
       <div class="form-element">
@@ -62,6 +62,7 @@
 <script>
 import CakeService from '../services/CakeService';
 
+
 export default {
  data() {
        return {
@@ -82,7 +83,6 @@ export default {
                  },
         newOrder:{
            cake_id: this.$route.params.id,
-           customerWantsWriting: false
          }               
     }
     },
@@ -95,11 +95,16 @@ export default {
     },
     methods: {
       submitOrder() {
+        const Order = this.newOrder
+        CakeService.placeOrder(Order).then(response => {
+          if (response.status === 201) {
+            this.$router.push({name: 'OrderConfirmation', params: {orderid:response.data.order_id}})
+          }
 
+        })
       },
       displayTextArea() {
         this.showTextArea =! this.showTextArea
-        this.newOrder.customerWantsWriting = true
       },
       resetForm() {
         this.showForm = false;
@@ -125,6 +130,7 @@ export default {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
   background-color: #fff; /* Background color for the box */
   overflow: hidden;       /* Hide any content that overflows */
+  background-image: url('https://img.freepik.com/free-vector/blank-leafy-frame-social-ads_53876-100923.jpg?w=2000');
 }
 div.form-element {
   margin-top: 10px;
