@@ -1,10 +1,8 @@
 <template>
   <div class = "fancy-background">
-  
-    <hr class = "divider"/> 
-    <hr class = "divider" />
-    Filter cake name by: <input type="text" v-model="filter" class="fancy" />
-    <router-link v-bind:to="{name: 'CustomCakeOrder'}">Order A Custom Cake</router-link>
+    <label class="custom-style" for="filter"> Filter Cake Name By: </label>
+     <input type="text" v-model="filter" class="fancy" />
+    <router-link class="custom-style" v-bind:to="{name: 'CustomCakeOrder'}"> Order A Custom Cake</router-link>
    <div class="cakes">
     <cake-card v-for="cake in filteredCakes" v-bind:key="cake.cake_id" :cake="cake" class="cake-card"></cake-card>
    </div>
@@ -62,7 +60,7 @@ export default {
   justify-content: center;
 }
 .fancy-background {
-  background-image: url('https://img.freepik.com/free-vector/blank-leafy-frame-social-ads_53876-100923.jpg?w=2000');
+  background-image: url('../assets/Background.png');
 }
 .fancy {
   background-color: bisque;
@@ -70,6 +68,10 @@ export default {
 }
 .divider {
   border: none; /* Remove the border */
-  
+}
+.custom-style {
+font-family: 'Big Shoulders Display', cursive;
+font-size: 20px;
+text-decoration: none;
 }
 </style>

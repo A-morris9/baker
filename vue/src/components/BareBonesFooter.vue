@@ -12,6 +12,6 @@ export default {
 
 <style>
 .me {
-  background-color: bisque;
+  background-color: rgb(	210, 80, 128);
 }
 </style>

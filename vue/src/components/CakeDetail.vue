@@ -59,8 +59,9 @@
         />
       </div>
       <div class="actions" v-if="showForm === true">
+          <button type="submit">Submit</button>
         <button v-on:click="resetForm" type="button">Cancel</button>
-        <button type="submit">Submit</button>
+      
       </div>
     </form>
   </div>
@@ -139,7 +140,7 @@ export default {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
   background-color: #fff; /* Background color for the box */
   overflow: hidden;       /* Hide any content that overflows */
-  background-image: url('https://img.freepik.com/free-vector/blank-leafy-frame-social-ads_53876-100923.jpg?w=2000');
+  background-image: url('../assets/Background.png');
  font-family: poppins, sans-serif;
  }
 .title{

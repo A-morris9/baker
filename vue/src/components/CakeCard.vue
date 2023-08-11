@@ -1,7 +1,6 @@
 <template>
   <div class="cake" v-on:click="viewCake(cake)">
       <h2 class="cake-name" style ="grid-area: name">{{ cake.title }}</h2>
-       
       <img class="cake-image" style = "grid-area: image" :src="cake.image"/>
   </div>
 </template>
