@@ -93,7 +93,7 @@ public class CakeDao {
         cake.setFlavor(result.getString("flavor"));
         cake.setFrosting(result.getString("frosting"));
         cake.setFilling(result.getString("filling"));
-        cake.setAvailability(result.getBoolean("availability"));
+        cake.setAvailability(result.getBoolean("isavailable"));
         cake.setImage(result.getString("image"));
         return cake;
     }
