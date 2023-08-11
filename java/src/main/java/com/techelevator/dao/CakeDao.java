@@ -2,7 +2,6 @@ package com.techelevator.dao;
 
 import com.techelevator.exception.DaoException;
 import com.techelevator.model.Cake;
-import com.techelevator.model.Order;
 import org.springframework.jdbc.BadSqlGrammarException;
 import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -61,8 +60,9 @@ public class CakeDao {
         return cake;
     }
 
-    public int addCake(){
-        return 0;
+    public Cake addCake(Cake cake){
+        Cake newCake = null;
+        return newCake;
     }
 
     public int toggleAvailabilityOfStandardCake(Cake cake){

@@ -1,6 +1,10 @@
 BEGIN TRANSACTION;
 
+DROP TABLE IF EXISTS cakes_fillings;
+DROP TABLE IF EXISTS cakes_frostings;
+DROP TABLE IF EXISTS cakes_flavors;
 DROP TABLE IF EXISTS orders;
+DROP TABLE IF EXISTS category;
 DROP TABLE IF EXISTS flavors;
 DROP TABLE IF EXISTS frostings;
 DROP TABLE IF EXISTS fillings;
@@ -14,6 +18,16 @@ CREATE TABLE users (
     role VARCHAR(50) NOT NULL
 );
 
+CREATE TABLE category (
+    CategoryID SERIAL PRIMARY KEY,
+    Description VARCHAR(50) NOT NULL
+);
+INSERT INTO category (Description)
+VALUES
+    ('Layer'),
+    ('Sheet'),
+    ('Cup-cake');
+
 CREATE TABLE cakes (
     CakeID SERIAL PRIMARY KEY,
     Title VARCHAR(255) NOT NULL,
@@ -21,40 +35,39 @@ CREATE TABLE cakes (
     Price DECIMAL(10, 2) NOT NULL,
     Style VARCHAR(255) NOT NULL,
     Size VARCHAR(255) NOT NULL,
-    isAvailable BOOLEAN NOT NULL,
-    isStandard BOOLEAN NOT NULL DEFAULT false;
-    isDeleted BOOLEAN NOT NULL DEFAULT false;
-    Image TEXT NOT NULL
+    isAvailable BOOLEAN NOT NULL DEFAULT true,
+    isStandard BOOLEAN NOT NULL DEFAULT false,
+    isDeleted BOOLEAN NOT NULL DEFAULT false,
+    CategoryID INT REFERENCES category(CategoryID) DEFAULT 1,
+    Image TEXT
 );
+
 
 CREATE TABLE flavors (
     FlavorID SERIAL PRIMARY KEY,
-    Name VARCHAR(50) NOT NULL,
+    Description VARCHAR(50) NOT NULL,
     Cost DECIMAL(10, 2) NOT NULL,
     InventoryAmount INT NOT NULL,
-    isAvailabile BOOLEAN NOT NULL,
-    CakeID INT REFERENCES cakes(CakeID)
+    isAvailable BOOLEAN NOT NULL
 );
 
 CREATE TABLE frostings (
     FrostingID SERIAL PRIMARY KEY,
-    Name VARCHAR(50) NOT NULL,
+    Description VARCHAR(50) NOT NULL,
     Cost DECIMAL(10, 2) NOT NULL,
     InventoryAmount INT NOT NULL,
-    isAvailabile BOOLEAN NOT NULL,
-    CakeID INT REFERENCES cakes(CakeID)
+    isAvailable BOOLEAN NOT NULL
 );
 
 CREATE TABLE fillings (
     FillingID SERIAL PRIMARY KEY,
-    Name VARCHAR(50) NOT NULL,
+    Description VARCHAR(50) NOT NULL,
     Cost DECIMAL(10, 2) NOT NULL,
     InventoryAmount INT NOT NULL,
-    isAvailabile BOOLEAN NOT NULL,
-    CakeID INT REFERENCES cakes(CakeID)
+    isAvailable BOOLEAN NOT NULL
 );
 
-CREATE TABLE cake_flavors (
+CREATE TABLE cakes_flavors (
     CakeFlavorID SERIAL PRIMARY KEY,
     CakeID INT REFERENCES cakes(CakeID),
     FlavorID INT REFERENCES flavors(FlavorID)
@@ -71,6 +84,7 @@ CREATE TABLE cakes_frostings (
     CakeID INT REFERENCES cakes(CakeID),
     FrostingID INT REFERENCES frostings(FrostingID)
 );
+
 CREATE Type order_status AS ENUM('Pending', 'Canceled', 'Ready');
 CREATE TABLE orders (
     OrderID SERIAL PRIMARY KEY,
