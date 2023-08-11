@@ -17,5 +17,10 @@ export default {
     getOrder(order_id){
         return http.get(`/orders/${order_id}`)
     },
-
+    getFlavors(){
+        return http.get('/cakes/flavors')
+    },
+    getFrostings(){
+        return http.get('/cakes/frostings')
+    }
 }

@@ -7,6 +7,7 @@ import Register from '../views/Register.vue'
 import store from '../store/index'
 import CakeDetail from '../components/CakeDetail.vue'
 import OrderConfirmation from '../views/OrderConfirmation.vue'
+import CustomCakeOrder from '../components/CustomCakeOrder.vue'
 
 Vue.use(Router)
 
@@ -67,6 +68,14 @@ const router = new Router({
       path: "/orderConfirmation/:orderid",
       name: "OrderConfirmation",
       component: OrderConfirmation,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: '/customCakeOrder',
+      name: 'CustomCakeOrder',
+      component: CustomCakeOrder,
       meta: {
         requiresAuth: false
       }
