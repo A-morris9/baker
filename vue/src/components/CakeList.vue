@@ -4,6 +4,7 @@
     <hr class = "divider"/> 
     <hr class = "divider" />
     Filter cake name by: <input type="text" v-model="filter" class="fancy" />
+    <router-link v-bind:to="{name: 'CustomCakeOrder'}">Order A Custom Cake</router-link>
    <div class="cakes">
     <cake-card v-for="cake in filteredCakes" v-bind:key="cake.cake_id" :cake="cake" class="cake-card"></cake-card>
    </div>
