@@ -36,8 +36,13 @@ public class CakeController {
 
     //Gives a staff member the ability to create a new standard cake,
     //allowing for customization of Style, Size, Flavor, Frosting, and Filling, Name, and Price.
-    @RequestMapping(path = "cakes/create", method = RequestMethod.GET)
-    public Cake addCake(@RequestBody Cake cake) {
-        return cakeDao.addCake(cake);
+    @RequestMapping(path = "cakes/custom", method = RequestMethod.POST)
+    public Cake addCustomCake(@RequestBody Cake cake) {
+        return cakeDao.addCustomCake(cake);
+    }
+
+    @RequestMapping(path = "cakes/standard", method = RequestMethod.POST)
+    public Cake addStandardCake(@RequestBody Cake cake) {
+        return cakeDao.addStandardCake(cake);
     }
 }
