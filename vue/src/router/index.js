@@ -73,6 +73,15 @@ const router = new Router({
       }
     },
     {
+      path: "/orderConfirmation",
+      name: "OrderConfirmation",
+      component: OrderConfirmation,
+      meta: {
+        requiresAuth: false
+      }
+    },
+
+    {
       path: '/customCakeOrder',
       name: 'CustomCakeOrder',
       component: CustomCakeOrder,

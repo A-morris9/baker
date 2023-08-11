@@ -41,7 +41,7 @@
             <!-- Add more parameter rows as needed -->
         </tbody>
     </table>
-    <form class="form-style">
+    <form class="form-style" v-on:submit.prevent="submitOrder">
       <div class="form-element">
         <label for="firstName">First Name: </label>
         <input id="firstName" type="text" v-model="newCustomOrder.firstName" />
@@ -89,6 +89,7 @@
       </div>
       <div>
         <button v-on:click="resetForm" type="button">Cancel</button>
+        <button type="submit">Submit Order</button>
       </div>
     </form>
   </body>
@@ -133,6 +134,7 @@ export default {
           this.showTextArea = false;
           this.newCustomCake = {};
       },
+          
       }
   };
 
