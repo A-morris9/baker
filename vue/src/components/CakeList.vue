@@ -4,7 +4,8 @@
     <input type="text" v-model="filter" class="fancy" />
     <router-link class="custom-style" v-bind:to="{ name: 'CustomCakeOrder' }">
       Order A Custom Cake</router-link>
-    <router-link v-bind:to="{name: 'OrderConfirmation'}">View Order Status</router-link>
+    <router-link v-bind:to="{name: 'OrderStatusCustomer'}">View Order Status</router-link>
+    <router-link v-bind:to="{name: 'OrderStatusBaker'}">View All Orders</router-link>
    
     <div class="carousel__container">
       <cake-card

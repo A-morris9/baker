@@ -8,6 +8,8 @@ import store from '../store/index'
 import CakeDetail from '../components/CakeDetail.vue'
 import OrderConfirmation from '../views/OrderConfirmation.vue'
 import CustomCakeOrder from '../components/CustomCakeOrder.vue'
+import OrderStatusCustomer from '../components/OrderStatusCustomer.vue'
+import OrderStatusBaker from '../components/OrderStatusBaker.vue'
 
 Vue.use(Router)
 
@@ -73,18 +75,25 @@ const router = new Router({
       }
     },
     {
-      path: "/orderConfirmation",
-      name: "OrderConfirmation",
-      component: OrderConfirmation,
+      path: "/orderStatusCustomer",
+      name: "OrderStatusCustomer",
+      component: OrderStatusCustomer,
       meta: {
         requiresAuth: false
       }
     },
-
     {
       path: '/customCakeOrder',
       name: 'CustomCakeOrder',
       component: CustomCakeOrder,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: '/orderStatusBaker',
+      name: 'OrderStatusBaker',
+      component: OrderStatusBaker,
       meta: {
         requiresAuth: false
       }
