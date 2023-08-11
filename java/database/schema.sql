@@ -30,12 +30,12 @@ VALUES
 
 CREATE TABLE cakes (
     CakeID SERIAL PRIMARY KEY,
-    Title VARCHAR(255) NOT NULL,
-    Description TEXT NOT NULL,
+    Title VARCHAR(255),
+    Description TEXT,
     Price DECIMAL(10, 2) NOT NULL,
-    Style VARCHAR(255) NOT NULL,
+    Style VARCHAR(255) NOT NULL
     Size VARCHAR(255) NOT NULL,
-    isAvailable BOOLEAN NOT NULL DEFAULT true,
+    isAvailable BOOLEAN NOT NULL DEFAULT false,
     isStandard BOOLEAN NOT NULL DEFAULT false,
     isDeleted BOOLEAN NOT NULL DEFAULT false,
     CategoryID INT REFERENCES category(CategoryID) DEFAULT 1,

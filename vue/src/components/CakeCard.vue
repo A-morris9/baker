@@ -1,5 +1,5 @@
 <template>
-        <div class="carousel-item">
+        <div class="carousel-item" v-on:click="viewCake(cake)">
           <img class="carousel-item__img" :src="cake.image"/>
           <div class="carousel-item__details">
             <div class="controls">

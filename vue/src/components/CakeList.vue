@@ -3,8 +3,8 @@
     <label class="custom-style" for="filter"> Filter Cake Name By: </label>
     <input type="text" v-model="filter" class="fancy" />
     <router-link class="custom-style" v-bind:to="{ name: 'CustomCakeOrder' }">
-      Order A Custom Cake</router-link
-    >
+      Order A Custom Cake</router-link>
+    <router-link v-bind:to="{name: 'OrderConfirmation'}">View Order Status</router-link>
    
     <div class="carousel__container">
       <cake-card
@@ -15,6 +15,7 @@
       ></cake-card>
     </div>
   </div>
+
 </template>
 
 <script>

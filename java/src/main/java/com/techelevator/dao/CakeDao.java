@@ -60,8 +60,21 @@ public class CakeDao {
         return cake;
     }
 
-    public Cake addCake(Cake cake){
+    public Cake addCustomCake(Cake cake){
         Cake newCake = null;
+
+
+
+
+        return newCake;
+    }
+
+    public Cake addStandardCake(Cake cake){
+        Cake newCake = null;
+
+
+
+
         return newCake;
     }
 
