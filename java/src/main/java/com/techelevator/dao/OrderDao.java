@@ -1,6 +1,7 @@
 package com.techelevator.dao;
 
 import com.techelevator.exception.DaoException;
+import com.techelevator.model.Cake;
 import com.techelevator.model.Order;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.jdbc.BadSqlGrammarException;
@@ -12,6 +13,8 @@ import org.springframework.stereotype.Component;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Component
 public class OrderDao {
@@ -20,6 +23,18 @@ public class OrderDao {
 
     public OrderDao(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
+    }
+
+    public List<Order> getListOfOrders() {
+        List<Order> orders = new ArrayList<>();
+        String sql ="Select * FROM orders";
+
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+        while (results.next()) {
+            Order order = mapRowToOrder(results);
+            orders.add(order);
+        }
+        return orders;
     }
 
     public Order createStandardOrder(Order order) {

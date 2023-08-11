@@ -24,6 +24,11 @@ public class OrderController {
 //    Order testOrder = new Order( 1001,1, "Jo", "Shmoe",123,"Lan Ave",
 //            "Norwood", "OH", 45245, "123-345-5678", now, now.plusDays(3), "Happy Birthday",
 //            BigDecimal.valueOf(5),BigDecimal.valueOf(30));
+
+    @RequestMapping(path = "orders", method = RequestMethod.GET)
+    public List<Order> listOfOrders() {
+        return orderDao.getListOfOrders();
+    }
     @RequestMapping(path = "orders/standard", method = RequestMethod.POST)
     public Order createStandardOrder(@RequestBody Order order){
         //
