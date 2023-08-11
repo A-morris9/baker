@@ -22,7 +22,7 @@ public class CakeDao {
 
     public List<Cake> getListOfStandardCakes() {
         List<Cake> cakes = new ArrayList<>();
-        String sql ="SELECT c.CakeID, c.Title, c.Description, c.Price, c.Style,c.Size, f.Name AS Flavor, fr.Name AS Frosting, fi.Name AS Filling, c.availability, c.image\n" +
+        String sql ="SELECT c.CakeID, c.Title, c.Description, c.Price, c.Style,c.Size, f.Description AS Flavor, fr.Description AS Frosting, fi.Description AS Filling, c.availability, c.image\n" +
                 "FROM cakes c LEFT JOIN cakes_flavors cf ON c.CakeID = cf.CakeID\n" +
                 "LEFT JOIN flavors f ON cf.FlavorID = f.FlavorID\n" +
                 "LEFT JOIN cakes_frostings cfr ON c.CakeID = cfr.CakeID\n" +
@@ -39,7 +39,7 @@ public class CakeDao {
     }
     public Cake getStandardCakeById(int id) {
         Cake cake = null;
-        String sql ="SELECT c.CakeID, c.Title, c.Description, c.Price, c.Style,c.Size, f.Name AS Flavor, fr.Name AS Frosting, fi.Name AS Filling, c.availability, c.image\n" +
+        String sql ="SELECT c.CakeID, c.Title, c.Description, c.Price, c.Style,c.Size, f.Description AS Flavor, fr.Description AS Frosting, fi.Description AS Filling, c.availability, c.image\n" +
                 "FROM cakes c LEFT JOIN cakes_flavors cf ON c.CakeID = cf.CakeID\n" +
                 "LEFT JOIN flavors f ON cf.FlavorID = f.FlavorID\n" +
                 "LEFT JOIN cakes_frostings cfr ON c.CakeID = cfr.CakeID\n" +
