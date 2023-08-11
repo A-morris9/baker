@@ -26,6 +26,7 @@ public class OrderController {
 //            BigDecimal.valueOf(5),BigDecimal.valueOf(30));
     @RequestMapping(path = "orders/standard", method = RequestMethod.POST)
     public Order createStandardOrder(@RequestBody Order order){
+        //
         return orderDao.createStandardOrder(order);
     }
 
@@ -53,6 +54,4 @@ public class OrderController {
     public Order getSingleCake(@PathVariable int id) {
         return orderDao.getOrderById(id);
     }
-    
-
 }

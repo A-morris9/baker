@@ -21,7 +21,9 @@ CREATE TABLE cakes (
     Price DECIMAL(10, 2) NOT NULL,
     Style VARCHAR(255) NOT NULL,
     Size VARCHAR(255) NOT NULL,
-    Availability BOOLEAN NOT NULL,
+    isAvailable BOOLEAN NOT NULL,
+    isStandard BOOLEAN NOT NULL DEFAULT false;
+    isDeleted BOOLEAN NOT NULL DEFAULT false;
     Image TEXT NOT NULL
 );
 
@@ -30,7 +32,7 @@ CREATE TABLE flavors (
     Name VARCHAR(50) NOT NULL,
     Cost DECIMAL(10, 2) NOT NULL,
     InventoryAmount INT NOT NULL,
-    Availability BOOLEAN NOT NULL,
+    isAvailabile BOOLEAN NOT NULL,
     CakeID INT REFERENCES cakes(CakeID)
 );
 
@@ -39,7 +41,7 @@ CREATE TABLE frostings (
     Name VARCHAR(50) NOT NULL,
     Cost DECIMAL(10, 2) NOT NULL,
     InventoryAmount INT NOT NULL,
-    Availability BOOLEAN NOT NULL,
+    isAvailabile BOOLEAN NOT NULL,
     CakeID INT REFERENCES cakes(CakeID)
 );
 
@@ -48,7 +50,7 @@ CREATE TABLE fillings (
     Name VARCHAR(50) NOT NULL,
     Cost DECIMAL(10, 2) NOT NULL,
     InventoryAmount INT NOT NULL,
-    Availability BOOLEAN NOT NULL,
+    isAvailabile BOOLEAN NOT NULL,
     CakeID INT REFERENCES cakes(CakeID)
 );
 

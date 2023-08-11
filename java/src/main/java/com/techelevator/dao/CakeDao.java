@@ -61,7 +61,7 @@ public class CakeDao {
         return cake;
     }
 
-    public int addStandardCake(){
+    public int addCake(){
         return 0;
     }
 
