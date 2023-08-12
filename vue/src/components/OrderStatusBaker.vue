@@ -51,7 +51,7 @@
       <tbody>
         <tr v-for="cake in listOfCakes" v-bind:key="cake.cake_id">
           <td>{{cake.cake_id}}</td>
-          <td>{{getAvailabilityText(cake.Availability)}}</td>
+          <td>{{getAvailabilityText(cake.availability)}}</td>
           <td>
                 <button @click="updateCakeStatus(cake.cake_id)">Change Cake Availability</button>
           </td>
@@ -86,15 +86,12 @@ export default {
           },
       
       updateCakeStatus(id) {
-        CakeService.changeCakeAvailibility(id)
-        this.toggleStatus
+        CakeService.changeCakeAvailibility(id).then(window.location.reload())
       },
        getAvailabilityText(Availability) {
-        return Availability ? 'Not Available' : 'Available';
+        return Availability ? 'Available' : 'Not Available';
       },
-      toggleStatus(){
-        this.cake.Availability = (this.cake.Availability === 'available') ? 'not available' : 'available'
-      }
+      
           
           },
     } 
