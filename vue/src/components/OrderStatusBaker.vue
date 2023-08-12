@@ -27,10 +27,17 @@
               <td>{{order.writing}}</td>
               <td>{{order.totalAmount}}</td>
               <td>{{order.phoneNumber}}</td>
-              <td>{{order.status}}</td>  
+              <td>{{order.status}}</td>
+              <td>
+                <input type="checkbox" v-bind:value="order.order_id" v-model="boxChecked" />
+              </td>
          </tr>
       </tbody>
-    </table>   
+    </table>
+    <div class="all-actions">
+      <button @click="MarkAsCompleted(boxChecked)">Complete Orders</button>
+      <button @click="DeleteCanceled(boxChecked)">Cancel Orders</button>
+    </div>   
  </div> 
 </template>
 
@@ -40,6 +47,7 @@ import OrderService from "../services/OrderService";
 export default {
     data() {
     return {
+        boxChecked : [],
         orderid: "",
         order : {},
         cake : {},
@@ -52,12 +60,19 @@ export default {
         })
     },
     methods:{
-
+      MarkAsCompleted(boxChecked) {
+          OrderService.changeToComplete(boxChecked) 
+          //create method in OrderService to shoot the boxChecked array to the backend to update the status of all of the array's orders
+          },
     } 
 
     }
 </script>
 
 <style>
+
+.all-actions {
+  margin-bottom: 40px;
+}
 
 </style>
