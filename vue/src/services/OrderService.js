@@ -11,4 +11,7 @@ export default {
     getOrders(){
         return http.get('/orders')
     },
+    changeOrderStatus(id, newStatus){
+        return http.put(`/orders/changeStatus/${id}/${newStatus}`)
+    }
 }

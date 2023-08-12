@@ -3,7 +3,7 @@ BEGIN TRANSACTION;
 DROP TABLE IF EXISTS cakes_fillings;
 DROP TABLE IF EXISTS cakes_frostings;
 DROP TABLE IF EXISTS cakes_flavors;
-DROP TABLE IF EXISTS orders;
+--DROP TABLE IF EXISTS orders;
 DROP TABLE IF EXISTS category;
 DROP TABLE IF EXISTS flavors;
 DROP TABLE IF EXISTS frostings;
@@ -85,11 +85,11 @@ CREATE TABLE cakes_frostings (
     FrostingID INT REFERENCES frostings(FrostingID)
 );
 
-CREATE Type order_status AS ENUM('Pending', 'Canceled', 'Ready', 'Complete');
+--CREATE Type order_status AS ENUM('Pending', 'Canceled', 'Ready', 'Complete');
 CREATE TABLE orders (
     OrderID SERIAL PRIMARY KEY,
     CakeID INT REFERENCES cakes(CakeID),
-    status order_status NOT NULL DEFAULT 'Pending',
+    status VARCHAR(15) NOT NULL DEFAULT 'Pending',
     customerFirstName VARCHAR(255),
     customerLastName VARCHAR(255),
     streetNumber INT,

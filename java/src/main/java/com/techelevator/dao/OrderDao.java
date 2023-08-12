@@ -41,9 +41,7 @@ public class OrderDao {
 
     public void changeOrderStatusById(int id, String status){
 
-        String sql = "UPDATE order\n" +
-                "SET status = ?" +
-                "WHERE orderid = ?";
+        String sql = "UPDATE orders SET status = ? WHERE orderid = ?;";
         try {
             jdbcTemplate.update(sql, status, id);
         } catch (CannotGetJdbcConnectionException e) {

@@ -7,13 +7,14 @@
           <th>Order ID</th>
           <th>Cake ID</th>
           <th>Last Name</th>
-          <th>Phone Number/th>
+          <th>Phone Number</th>
           <th>Order Date</th>
           <th>Pick-Up Date</th>
           <th>Writing</th>
           <th>Price</th>
           <th>Phone Number</th>
-          <th>Status</th>
+          <th>Current Order Status</th>
+          <th>Change Order Status</th>
         </tr>
       </thead>
       <tbody> 
@@ -29,15 +30,16 @@
               <td>{{order.phoneNumber}}</td>
               <td>{{order.status}}</td>
               <td>
-                <input type="checkbox" v-bind:value="order.order_id" v-model="boxChecked" />
+                <select @change="updateOrderStatus(order.order_id, $event.target.value)">
+                 <option value="Pending">Pending</option>
+                 <option value="Canceled">Canceled</option>
+                 <option value="Ready">Ready</option>
+                 <option value="Complete">Complete</option>
+                </select>
               </td>
          </tr>
       </tbody>
-    </table>
-    <div class="all-actions">
-      <button @click="MarkAsCompleted(boxChecked)">Complete Orders</button>
-      <button @click="DeleteCanceled(boxChecked)">Cancel Orders</button>
-    </div>   
+    </table>  
  </div> 
 </template>
 
@@ -47,11 +49,7 @@ import OrderService from "../services/OrderService";
 export default {
     data() {
     return {
-        boxChecked : [],
-        orderid: "",
-        order : {},
-        cake : {},
-        listOfOrders : []
+        listOfOrders : [],
     }
     },
     created() {
@@ -60,9 +58,8 @@ export default {
         })
     },
     methods:{
-      MarkAsCompleted(boxChecked) {
-          OrderService.changeToComplete(boxChecked) 
-          //create method in OrderService to shoot the boxChecked array to the backend to update the status of all of the array's orders
+      updateOrderStatus(id, newStatus) {
+          OrderService.changeOrderStatus(id, newStatus) 
           },
     } 
 
