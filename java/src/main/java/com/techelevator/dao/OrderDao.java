@@ -37,20 +37,20 @@ public class OrderDao {
         return orders;
     }
 
-    public int toggleAvailabilityOfOrder(int id){
-        int affected;
+
+
+    public void changeOrderStatusById(String status, int id){
 
         String sql = "UPDATE order\n" +
-                "SET availability = NOT availability\n" +
+                "SET status = ?" +
                 "WHERE orderid = ?";
         try {
-            affected = jdbcTemplate.update(sql, id);
+            jdbcTemplate.update(sql, status, id);
         } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database", e);
         } catch (BadSqlGrammarException e) {
             throw new DaoException("SQL syntax error", e);
         }
-        return affected;
     }
 
     public Order createStandardOrder(Order order) {
@@ -149,4 +149,6 @@ public class OrderDao {
         //        this.totalAmount = totalAmount;
 
     }
+
+
 }
