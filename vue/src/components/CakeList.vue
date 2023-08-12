@@ -2,11 +2,6 @@
   <div class="fancy-background carousel">
     <label class="custom-style" for="filter"> Filter Cake Name By: </label>
     <input type="text" v-model="filter" class="fancy" />
-    <router-link class="custom-style" v-bind:to="{ name: 'CustomCakeOrder' }">
-      Order A Custom Cake</router-link>
-    <router-link v-bind:to="{name: 'OrderStatusCustomer'}">View Order Status</router-link>
-    <router-link v-bind:to="{name: 'OrderStatusBaker'}">View All Orders</router-link>
-   
     <div class="carousel__container">
       <cake-card
         v-for="cake in filteredCakes"
@@ -72,9 +67,10 @@ export default {
 
 .fancy-background {
   background-image: url('../assets/Background.png');
+  
 }
 .fancy {
-  background-color: bisque;
+  background-color: rgb(238, 229, 220e);
   margin-top: 10px;
 }
 .divider {
@@ -85,6 +81,6 @@ export default {
 font-family: 'Big Shoulders Display', cursive;
 font-size: 20px;
 text-decoration: none;
-
+color: rgb(	185, 194, 23);
 }
 </style>
