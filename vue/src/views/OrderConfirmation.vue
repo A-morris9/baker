@@ -37,10 +37,10 @@ export default {
     
 </script>
 
-<style>
+<style scoped>
 
 body {
-  background-image: url('https://img.freepik.com/free-vector/blank-leafy-frame-social-ads_53876-100923.jpg?w=2000');
+  background-image: url('../assets/Background.png');
 }
 
 .centered-content{

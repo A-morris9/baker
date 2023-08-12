@@ -10,7 +10,6 @@ import OrderConfirmation from '../views/OrderConfirmation.vue'
 import CustomCakeOrder from '../components/CustomCakeOrder.vue'
 import OrderStatusCustomer from '../components/OrderStatusCustomer.vue'
 import OrderStatusBaker from '../components/OrderStatusBaker.vue'
-
 Vue.use(Router)
 
 /**

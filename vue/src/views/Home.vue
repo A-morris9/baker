@@ -1,7 +1,7 @@
 <template>
   <div class="home">
-    <bare-bones-header style="grid-area: header" />
-    <bare-bones-footer style="grid-area: footer" />
+    <bare-bones-header class="header" style="grid-area: header" />
+    <bare-bones-footer class="footer" style="grid-area: footer" />
     <cake-list style="grid-area: list" />
   </div>
 </template>
@@ -22,6 +22,9 @@ export default {
 </script>
 
 <style scoped>
+body {
+  overflow: hidden;
+}
 .home {
   display: grid;
   grid-template-columns: 150px 1fr 100px;
@@ -31,9 +34,16 @@ export default {
     "list list list"
     "footer footer footer";
   height: 100vh;
-  gap: 5px;
   background: gray;
-  
+  margin: 0;
+  padding: 0;
+  border: none;
+  gap:0;
 }
-
+.header{
+  position: sticky;
+}
+.footer{
+  position: sticky;
+}
 </style>

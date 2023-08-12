@@ -9,6 +9,7 @@
             <h6 class="carousel-item__details--subtitle">Date and Duration</h6>
           </div>
         </div>
+    
 </template>
 
 <script>
@@ -46,6 +47,7 @@ export default {
   -webkit-transform-origin: center left;
   transform-origin: center left;
   position: relative;
+  
 }
 
 .carousel-item:hover ~ .carousel-item {
