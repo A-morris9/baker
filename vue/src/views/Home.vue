@@ -25,7 +25,7 @@ export default {
 .home {
   display: grid;
   grid-template-columns: 150px 1fr 100px;
-  grid-template-rows: 220px 1fr 30px;
+  grid-template-rows: 220px 1fr 50px;
   grid-template-areas:
     "header header header"
     "list list list"
@@ -33,6 +33,7 @@ export default {
   height: 100vh;
   gap: 5px;
   background: gray;
+  
 }
 
 </style>
