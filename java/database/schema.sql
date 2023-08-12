@@ -33,7 +33,7 @@ CREATE TABLE cakes (
     Title VARCHAR(255),
     Description TEXT,
     Price DECIMAL(10, 2) NOT NULL,
-    Style VARCHAR(255) NOT NULL
+    Style VARCHAR(255) NOT NULL,
     Size VARCHAR(255) NOT NULL,
     isAvailable BOOLEAN NOT NULL DEFAULT false,
     isStandard BOOLEAN NOT NULL DEFAULT false,
@@ -85,7 +85,7 @@ CREATE TABLE cakes_frostings (
     FrostingID INT REFERENCES frostings(FrostingID)
 );
 
-CREATE Type order_status AS ENUM('Pending', 'Canceled', 'Ready');
+CREATE Type order_status AS ENUM('Pending', 'Canceled', 'Ready', 'Complete');
 CREATE TABLE orders (
     OrderID SERIAL PRIMARY KEY,
     CakeID INT REFERENCES cakes(CakeID),

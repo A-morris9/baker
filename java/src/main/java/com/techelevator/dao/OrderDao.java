@@ -37,6 +37,22 @@ public class OrderDao {
         return orders;
     }
 
+    public int toggleAvailabilityOfOrder(int id){
+        int affected;
+
+        String sql = "UPDATE order\n" +
+                "SET availability = NOT availability\n" +
+                "WHERE orderid = ?";
+        try {
+            affected = jdbcTemplate.update(sql, id);
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        } catch (BadSqlGrammarException e) {
+            throw new DaoException("SQL syntax error", e);
+        }
+        return affected;
+    }
+
     public Order createStandardOrder(Order order) {
         Order newOrder = null;
        String sql = "INSERT INTO orders (cakeid, customerfirstname, customerlastname, streetnumber, streetname, city, state, zip, phonenumber, orderdate," +
