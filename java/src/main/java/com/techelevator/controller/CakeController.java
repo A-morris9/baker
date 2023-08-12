@@ -30,8 +30,7 @@ public class CakeController {
     //Gives a staff member the ability to toggle the availability of a standard cake.
     @RequestMapping(path = "cakes/availability/{id}", method = RequestMethod.PUT)
     public void toggleAvailabilityOfCake(@PathVariable int id) {
-        Cake cake = cakeDao.getStandardCakeById(id);
-        cakeDao.toggleAvailabilityOfStandardCake(cake);
+        cakeDao.toggleAvailabilityOfStandardCake(id);
     }
 
     //Gives a staff member the ability to create a new standard cake,

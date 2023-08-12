@@ -78,20 +78,19 @@ public class CakeDao {
         return newCake;
     }
 
-    public int toggleAvailabilityOfStandardCake(Cake cake){
-        int affected;
+    public void toggleAvailabilityOfStandardCake(int id){
+
 
         String sql = "UPDATE cakes\n" +
-                "SET availability = NOT availability\n" +
+                "SET isavailable = NOT isavailable\n" +
                 "WHERE cakeid = ?";
         try {
-            affected = jdbcTemplate.update(sql, cake.getCake_id());
+            jdbcTemplate.update(sql, id);
         } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database", e);
         } catch (BadSqlGrammarException e) {
             throw new DaoException("SQL syntax error", e);
         }
-        return affected;
     }
 
 
