@@ -51,8 +51,8 @@ public class OrderController {
 
     //Gives a staff member the ability to change the status of an order given orderID and status code.
     // 1 = Pending, 2 = Canceled, 3 = Ready, 4 = Complete
-    @RequestMapping(path = "orders/changeStatus/{id}/{status}", method = RequestMethod.POST)
-    public void changeOrderStatusById(@RequestBody String status, @RequestBody int id) {
+    @RequestMapping(path = "orders/changeStatus/{id}/{status}", method = RequestMethod.PUT)
+    public void changeOrderStatusById(@PathVariable String status, @PathVariable int id) {
         orderDao.changeOrderStatusById(status, id);
     }
 
