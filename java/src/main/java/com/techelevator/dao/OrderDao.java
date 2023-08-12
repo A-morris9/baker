@@ -39,7 +39,7 @@ public class OrderDao {
 
 
 
-    public void changeOrderStatusById(String status, int id){
+    public void changeOrderStatusById(int id, String status){
 
         String sql = "UPDATE order\n" +
                 "SET status = ?" +
