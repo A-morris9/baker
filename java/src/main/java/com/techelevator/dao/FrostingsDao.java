@@ -21,7 +21,7 @@ public class FrostingsDao {
 
     public List<Frosting> getListOfFrostings() {
         List<Frosting> frostings = new ArrayList<>();
-        String sql ="";
+        String sql ="Select * FROM frostings";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while (results.next()) {

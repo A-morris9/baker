@@ -26,7 +26,7 @@
                 <td>Flavor</td>
                 <td>
                     <label v-for="flavor in Flavors" v-bind:key="flavor.id">
-                        <input type="radio" name="param2" value="option1" v-model="newCustomCake.flavor"> {{ flavor.name }}
+                        <input type="radio" name="param2" value="option1" v-model="newCustomCake.flavor"> {{ flavor.description }}
                     </label>
                 </td>
             </tr>
@@ -34,7 +34,7 @@
                 <td>Frosting</td>
                 <td>
                     <label v-for="frosting in Frostings" v-bind:key="frosting.id">
-                        <input type="radio" name="param3" value="option1" v-model="newCustomCake.frosting"> {{ frosting.name }}
+                        <input type="radio" name="param3" value="option1" v-model="newCustomCake.frosting"> {{ frosting.description }}
                     </label>
                 </td>
             </tr>

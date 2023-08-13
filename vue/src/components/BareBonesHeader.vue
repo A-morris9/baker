@@ -18,7 +18,7 @@
       View Order Status
     </router-link>
     |
-    <router-link class="custom-style" v-bind:to="{ name: 'OrderStatusBaker' }">
+    <router-link class="custom-style" v-bind:to="{ name: 'BakersView' }">
       View All Orders
     </router-link>
   </div>

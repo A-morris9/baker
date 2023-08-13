@@ -20,7 +20,7 @@ public class FlavorsDao {
 
     public List<Flavor> getListOfFlavors() {
         List<Flavor> flavors = new ArrayList<>();
-        String sql ="";
+        String sql ="Select * FROM flavors";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while (results.next()) {

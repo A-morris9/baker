@@ -9,7 +9,7 @@ import CakeDetail from '../components/CakeDetail.vue'
 import OrderConfirmation from '../views/OrderConfirmation.vue'
 import CustomCakeOrder from '../components/CustomCakeOrder.vue'
 import OrderStatusCustomer from '../components/OrderStatusCustomer.vue'
-import OrderStatusBaker from '../components/OrderStatusBaker.vue'
+import BakersView from '../views/BakersView.vue'
 
 Vue.use(Router)
 
@@ -91,9 +91,9 @@ const router = new Router({
       }
     },
     {
-      path: '/orderStatusBaker',
-      name: 'OrderStatusBaker',
-      component: OrderStatusBaker,
+      path: '/bakersView',
+      name: 'BakersView',
+      component: BakersView,
       meta: {
         requiresAuth: false
       }

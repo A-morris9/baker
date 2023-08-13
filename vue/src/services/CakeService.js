@@ -18,12 +18,15 @@ export default {
         return http.get(`/orders/${order_id}`)
     },
     getFlavors(){
-        return http.get('/cakes/flavors')
+        return http.get('/flavors')
     },
     getFrostings(){
-        return http.get('/cakes/frostings')
+        return http.get('/frostings')
     },
     changeCakeAvailibility(id) {
         return http.put(`/cakes/availability/${id}`)
-    }
+    },
+    // addStandardCake(cake) {
+        // return http.post('/cakes/standard',cake)
+    // }
 }

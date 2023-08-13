@@ -30,7 +30,7 @@
               <td>{{order.phoneNumber}}</td>
               <td>{{order.status}}</td>
               <td>
-                <select @change="updateOrderStatus(order.order_id, $event.target.value)">
+                <select @change="updateOrderStatus(order, $event.target.value)">
                  <option value="">Select Status</option>
                  <option value="Pending">Pending</option>
                  <option value="Canceled">Canceled</option>
@@ -40,59 +40,35 @@
               </td>
          </tr>
       </tbody>
-    </table>
-    <table>
-      <thead>
-        <tr>
-          <th>Cake ID</th>
-          <th>Cake Availability Status</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="cake in listOfCakes" v-bind:key="cake.cake_id">
-          <td>{{cake.cake_id}}</td>
-          <td>{{getAvailabilityText(cake.availability)}}</td>
-          <td>
-                <button @click="updateCakeStatus(cake.cake_id)">Change Cake Availability</button>
-          </td>
-        </tr>  
-      </tbody>    
-    </table>    
+    </table>   
  </div> 
 </template>
 
 <script>
-import CakeService from '../services/CakeService';
 import OrderService from "../services/OrderService";
 
 export default {
     data() {
     return {
         listOfOrders : [],
-        listOfCakes : []
     }
     },
     created() {
         OrderService.getOrders().then((response) => {
-            this.listOfOrders = response.data
+            this.listOfOrders = response.data;
+            this.sortOrders();
         })
-        CakeService.getCakes().then((response) => {
-          this.listOfCakes = response.data
-        })
+        
     },
     methods:{
-      updateOrderStatus(id, newStatus) {
-          OrderService.changeOrderStatus(id, newStatus).then(window.location.reload())
+      updateOrderStatus(order, newStatus) {
+          OrderService.changeOrderStatus(order.order_id, newStatus).then(() => {
+            order.status = newStatus;
+          })
           },
-      
-      updateCakeStatus(id) {
-        CakeService.changeCakeAvailibility(id).then(window.location.reload())
-      },
-       getAvailabilityText(Availability) {
-        return Availability ? 'Available' : 'Not Available';
-      },
-      
-          
+      sortOrders() {
+        this.listOfOrders.sort((a,b) => a.order_id - b.order_id);
+      }    
           },
     } 
 
