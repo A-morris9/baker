@@ -60,5 +60,12 @@ export default {
 </script>
 
 <style scoped>
+table .button{
+font-family: 'Poppins', cursive;
+}
 
+h1, th {
+    color:rgb(80,71,66)
+
+}
 </style>

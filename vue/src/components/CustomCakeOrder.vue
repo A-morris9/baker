@@ -88,8 +88,8 @@
         />
       </div>
       <div>
-        <button v-on:click="resetForm" type="button">Cancel</button>
         <button type="submit">Submit Order</button>
+        <button v-on:click="resetForm" type="button">Cancel</button>
       </div>
     </form>
   </body>
@@ -144,10 +144,20 @@ export default {
 .form-style{
   font-family: 'poppins', cursive;
   font-weight: bold;
+  color: rgba(80,71,66);
 }
 
 div.form-element {
   margin-top: 10px;
+}
+
+th, td  {
+  color: rgba(80,71,66);
+  font-family: 'Poppins', cursive;
+}
+
+td {
+  font-weight: bold;
 }
 
 </style>

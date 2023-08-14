@@ -1,6 +1,7 @@
 <template>
   <div>
       <order-status-baker/>
+      <div class="divider"></div>
       <standard-cakes-baker/>
   </div>   
 </template>
@@ -18,6 +19,11 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+.divider{
+    width: 100%;
+    height: 1px;
+    background-color: rgb(	80, 71, 66);
+}
+</style>>
 
-</style>

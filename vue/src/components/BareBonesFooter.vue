@@ -14,4 +14,7 @@ export default {
 .me {
   background-color: rgb(	210, 80, 128);
 }
+body{
+  color: rgb(	80, 71, 66) ;
+}
 </style>

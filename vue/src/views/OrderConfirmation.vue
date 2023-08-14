@@ -43,13 +43,16 @@ body {
   background-image: url('../assets/Background.png');
 }
 
+</style>
+
+<style scoped>
 .centered-content {
   text-align: center;
 }
-h1{
+h1 , .style {
   font-family: 'Big Shoulders Display', cursive;
 }
-h2, .style {
+h2 {
   font-family: 'Poppins', cursive;
 }
 </style>

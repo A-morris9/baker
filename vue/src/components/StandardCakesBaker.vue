@@ -4,13 +4,15 @@
     <table>
       <thead>
         <tr>
-          <th>Cake ID</th>
+          <th>Cake ID </th>
+          <th>Cake Name </th>
           <th>Cake Availability Status</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="cake in listOfCakes" v-bind:key="cake.cake_id">
           <td>{{cake.cake_id}}</td>
+          <td>{{cake.title}}</td>
           <td>{{getAvailabilityText(cake.availability)}}</td>
           <td>
                 <button @click="updateCakeStatus(cake.cake_id)">Change Cake Availability</button>
@@ -18,6 +20,7 @@
         </tr>  
       </tbody>    
     </table>
+    <div class = divider></div>
     <table>
         <thead>
             <tr>
@@ -131,10 +134,28 @@ export default {
   
 </script>
 
-<style>
+<style scoped>
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background-color: rgb(80, 71, 66);
+}
 
 .all-actions {
   margin-bottom: 40px;
 }
 
+h1, th {
+  font-family: 'Big Shoulders Display', cursive;
+  color: rgb(80, 71, 66);
+}
+td {
+  font-family: 'Poppins', cursive;
+  color: rgb(	80, 71, 66) ;
+  font-weight: bold;
+}
+th {
+  font-size: 20px;
+}
 </style>

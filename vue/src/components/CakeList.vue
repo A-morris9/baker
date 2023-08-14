@@ -74,13 +74,13 @@ export default {
   margin-top: 10px;
 }
 .divider {
-  border: none; /* Remove the border */
+  border: none; 
 
 }
 .custom-style {
 font-family: 'Big Shoulders Display', cursive;
 font-size: 20px;
 text-decoration: none;
-color: rgb(	185, 194, 23);
+color: rgb(	80, 71, 66);
 }
 </style>

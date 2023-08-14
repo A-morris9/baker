@@ -68,11 +68,9 @@ export default {
 label {
   margin-right: 0.5rem;
 }
-#login{
-  background-image: url('../assets/Background.png');
-}
 h1{
   font-family: 'Big Shoulders Display', cursive;
+  color: rgba(80,71,66);
 }
 .style {
   font-family: 'Poppins', cursive;

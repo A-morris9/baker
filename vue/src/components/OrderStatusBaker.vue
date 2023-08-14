@@ -4,17 +4,17 @@
   <table>
       <thead>
         <tr>
-          <th>Order ID</th>
-          <th>Cake ID</th>
-          <th>Last Name</th>
-          <th>Phone Number</th>
-          <th>Order Date</th>
-          <th>Pick-Up Date</th>
-          <th>Writing</th>
-          <th>Price</th>
-          <th>Phone Number</th>
-          <th>Current Order Status</th>
-          <th>Change Order Status</th>
+          <th> Order ID |</th> 
+          <th> Cake ID |</th> 
+          <th> Last Name |</th> 
+          <th> Phone Number |</th> 
+          <th> Order Date |</th> 
+          <th> Pick-Up Date |</th> 
+          <th> Writing |</th> 
+          <th> Price |</th> 
+          <th> Phone Number |</th> 
+          <th> Current Order Status |</th> 
+          <th> Change Order Status </th>
         </tr>
       </thead>
       <tbody> 
@@ -76,7 +76,13 @@ export default {
 </script>
 
 <style scoped>
-
+h1, th {
+  font-family: 'Big Shoulders Display', cursive;
+  color: rgb(80, 71, 66);
+}
+th {
+  font-size: 20px;
+}
 .all-actions {
   margin-bottom: 40px;
 }
