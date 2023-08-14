@@ -20,6 +20,10 @@ public class CakeController {
     public List<Cake> listOfStandardCakes() {
         return cakeDao.getListOfStandardCakes();
     }
+    @RequestMapping(path = "cakes/all", method = RequestMethod.GET)
+    public List<Cake> listOfAllStandardCakes() {
+        return cakeDao.getListOfAllStandardCakes();
+    }
 
     //allows a user to see a full cake model of a single standard cake.
     @RequestMapping(path = "cakes/{id}", method = RequestMethod.GET)

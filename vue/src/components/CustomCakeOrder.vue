@@ -18,7 +18,7 @@
                 <td>Cake Style</td>
                 <td>
                     <label v-for="style in Styles" v-bind:key="style.id">
-                        <input type="radio" name="param1" value="option1" v-model="newCustomCake.style"> {{style.name}}
+                        <input type="radio" name="param1" :value="style.id" v-model="newCustomCake.style"> {{style.name}}
                     </label>
                 </td>
             </tr>
@@ -33,15 +33,23 @@
             <tr>
                 <td>Frosting</td>
                 <td>
-                    <label v-for="frosting in Frostings" v-bind:key="frosting.id">
-                        <input type="radio" name="param3" value="option1" v-model="newCustomCake.frosting"> {{ frosting.description }}
+                    <label v-for="frosting in Frostings" v-bind:key="frosting.frosting_id">
+                        <input type="radio" name="param3" v-bind:value="frosting.frosting_id" v-model="newCustomCake.frosting"> {{ frosting.description }}
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td>Filling</td>
+                <td>
+                    <label v-for="filling in Fillings" v-bind:key="filling.filling_id">
+                        <input type="radio" name="param4" v-bind:value="filling.filling_id" v-model="newCustomCake.filling"> {{ filling.description }}
                     </label>
                 </td>
             </tr>
             <!-- Add more parameter rows as needed -->
         </tbody>
     </table>
-    <form class="form-style" v-on:submit.prevent="submitOrder">
+    <form class="form-style" v-on:submit.prevent="submitCustomOrder">
       <div class="form-element">
         <label for="firstName">First Name: </label>
         <input id="firstName" type="text" v-model="newCustomOrder.firstName" />
@@ -110,8 +118,14 @@ export default {
         ],
         Flavors : [],
         Frostings : [],
-        newCustomCake : {},
-        newCustomOrder: {}
+        Fillings : [],
+        newCustomCake : {
+          price : 27
+        },
+        newCustomOrder: {
+          price: 27,
+          cakeId: 0
+        }
        }
     },
     created() {
@@ -120,6 +134,10 @@ export default {
     CakeService.getFlavors()
       .then((response) => {
         this.Flavors = response.data;
+      });
+      CakeService.getFillings()
+      .then((response) => {
+        this.Fillings = response.data;
       });
     CakeService.getFrostings()
       .then((response) => {
@@ -133,7 +151,15 @@ export default {
           resetForm() {
           this.showTextArea = false;
           this.newCustomCake = {};
-      },
+          },
+          submitCustomOrder() {
+            CakeService.addCustomCake(this.newCustomCake).then ((response) => {
+              this.newCustomOrder.cakeId = response.data.cake.cake_id;
+              this.submitNewOrder(this.newCustomOrder)
+            })},
+           submitNewOrder(newCustomOrder) { 
+            CakeService.placeCustomOrder(newCustomOrder)
+           }
           
       }
   };

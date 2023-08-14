@@ -1,6 +1,8 @@
 <template>
  <div>
   <h1>this is an order list page for bakers only</h1>
+  <label for="filter"> Filter Orders by Current Order Status: </label>
+  <input type="text" v-model="filter" />
   <table>
       <thead>
         <tr>
@@ -18,7 +20,7 @@
         </tr>
       </thead>
       <tbody> 
-         <tr v-for="order in listOfOrders" v-bind:key="order.order_id"> 
+         <tr v-for="order in filteredOrders" v-bind:key="order.order_id"> 
               <td>{{order.order_id}}</td>  
               <td>{{order.cake_id}}</td>
               <td>{{order.lastName}}</td>
@@ -50,6 +52,7 @@ import OrderService from "../services/OrderService";
 export default {
     data() {
     return {
+        filter : "",
         listOfOrders : [],
     }
     },
@@ -69,7 +72,16 @@ export default {
       sortOrders() {
         this.listOfOrders.sort((a,b) => a.order_id - b.order_id);
       }    
-          },
+      },
+     computed: {
+      filteredOrders() {
+      if (this.filter) {
+        return this.listOfOrders.filter((order) =>
+          order.status.toLowerCase().includes(this.filter.toLowerCase())
+        );
+      } else return this.listOfOrders;
+    },
+     } 
     } 
 
   

@@ -117,7 +117,7 @@ export default {
     }
     },
     created() {
-        CakeService.getCakes()
+        CakeService.getAllCakes()
         .then((response) => {
           this.listOfCakes = response.data
         })

@@ -19,7 +19,7 @@
     </router-link>
     |
     <router-link class="custom-style" v-bind:to="{ name: 'BakersView' }">
-      View All Orders
+      Bakers Home Page
     </router-link>
   </div>
 </template>
