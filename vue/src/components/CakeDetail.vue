@@ -16,6 +16,7 @@
       <div class="form-element">
         <label for="firstName">First Name: </label>
         <input id="firstName" type="text" v-model="newOrder.firstName" />
+        <span class="error" v-if="!newOrder.firstName">First name is required</span>
       </div>
       <div class="form-element">
         <label for="lastName">Last Name: </label>
@@ -59,7 +60,7 @@
         />
       </div>
       <div class="actions" v-if="showForm === true">
-          <button type="submit">Submit</button>
+          <button type="submit" :disabled="!isFormValid">Submit</button>
         <button v-on:click="resetForm" type="button">Cancel</button>
       
       </div>
@@ -123,6 +124,13 @@ export default {
       this.newOrder = {};
     },
   },
+  computed: {
+    isFormValid() {
+      return (
+        this.newOrder.firstName
+      )
+    }
+  }
 };
 </script>
 
