@@ -21,7 +21,7 @@ public class FillingsDao {
 
     public List<Filling> getListOfFillings() {
         List<Filling> fillings = new ArrayList<>();
-        String sql ="";
+        String sql ="Select * FROM fillings";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while (results.next()) {

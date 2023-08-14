@@ -37,7 +37,8 @@ export default {
   border-radius: 10px;
   background-color: #95bcd6;
   overflow: hidden;
-  margin-right: 10px;
+  margin-right: 40px;
+  margin-left: 40px;
   margin-top: 70px;
   display: inline-block;
   cursor: pointer;
@@ -53,9 +54,7 @@ export default {
   transform: translate3d(100px, 0, 0);
 }
 
-.carousel__container:hover .carousel-item {
-  opacity: 0.3;
-}
+
 
 .carousel__container:hover .carousel-item:hover {
   -webkit-transform: scale(1.5);

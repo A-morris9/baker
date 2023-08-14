@@ -2,12 +2,15 @@ package com.techelevator.dao;
 
 import com.techelevator.exception.DaoException;
 import com.techelevator.model.Cake;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.jdbc.BadSqlGrammarException;
 import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -62,6 +65,23 @@ public class CakeDao {
 
     public Cake addCustomCake(Cake cake){
         Cake newCake = null;
+//        String sql = "INSERT INTO cakes (cakeid, customerfirstname, customerlastname, streetnumber, streetname, city, state, zip, phonenumber, orderdate," +
+//                "pickupdate, writing, writingfee, totalamount)" +
+//                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING orderid;";
+//
+//        try {
+//            int newCakeId = jdbcTemplate.queryForObject(sql, int.class, order.getCake_id(), order.getFirstName(),
+//                    order.getLastName(), order.getStreetNumber(), order.getStreetName(), order.getCity(), order.getState(),
+//                    order.getZip(), order.getPhoneNumber(), orderDate, deliveryDate, order.getWriting(),
+//                    writingFee, totalPrice);
+//            newOrder = getOrderById(newOrderId);
+//        } catch (CannotGetJdbcConnectionException e) {
+//            throw new DaoException("Unable to connect to server or database", e);
+//        } catch (BadSqlGrammarException e) {
+//            throw new DaoException("SQL syntax error", e);
+//        } catch (DataIntegrityViolationException e) {
+//            throw new DaoException("Data integrity violation", e);
+//        }
 
 
 

@@ -23,6 +23,9 @@ export default {
     getFrostings(){
         return http.get('/frostings')
     },
+    getFillings(){
+        return http.get('/fillings')
+    },
     changeCakeAvailibility(id) {
         return http.put(`/cakes/availability/${id}`)
     },
