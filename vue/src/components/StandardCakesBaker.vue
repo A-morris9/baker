@@ -45,23 +45,31 @@
                 <td>Cake Style</td>
                 <td>
                     <label v-for="style in Styles" v-bind:key="style.id">
-                        <input type="radio" name="param1" value="option1" v-model="newStandardCake.style"> {{style.name}}
+                        <input type="radio" name="param1" :value="style.id" v-model="newStandardCake.style"> {{style.name}}
                     </label>
                 </td>
             </tr>
             <tr>
                 <td>Flavor</td>
                 <td>
-                    <label v-for="flavor in Flavors" v-bind:key="flavor.id">
-                        <input type="radio" name="param2" value="option1" v-model="newStandardCake.flavor"> {{ flavor.description }}
+                    <label v-for="flavor in Flavors" v-bind:key="flavor.flavor_id">
+                        <input type="radio" name="param2" :value="flavor.flavor_id" v-model="newStandardCake.flavor"> {{ flavor.description }}
                     </label>
                 </td>
             </tr>
             <tr>
                 <td>Frosting</td>
                 <td>
-                    <label v-for="frosting in Frostings" v-bind:key="frosting.id">
-                        <input type="radio" name="param3" value="option1" v-model="newStandardCake.frosting"> {{ frosting.description }}
+                    <label v-for="frosting in Frostings" v-bind:key="frosting.frosting_id">
+                        <input type="radio" name="param3" :value="frosting.frosting_id" v-model="newStandardCake.frosting"> {{ frosting.description }}
+                    </label>
+                </td>
+            </tr>
+             <tr>
+                <td>Filling</td>
+                <td>
+                    <label v-for="filling in Fillings" v-bind:key="filling.filling_id">
+                        <input type="radio" name="param4" :value="filling.filling_id" v-model="newStandardCake.filling"> {{ filling.description }}
                     </label>
                 </td>
             </tr>
@@ -97,7 +105,15 @@ export default {
         ],
         Flavors : [],
         Frostings : [],
-        newStandardCake : []
+        Fillings: [],
+        newStandardCake : {
+          flavor: 0,
+          frosting: 0,
+          filling: 0,
+          price: 27,
+          style: 0,
+
+        }
     }
     },
     created() {
@@ -113,6 +129,10 @@ export default {
         .then((response) => {
         this.Frostings = response.data;
         }); 
+        CakeService.getFillings()
+        .then((response) => {
+        this.Fillings = response.data;
+        }); 
     },
     methods:{
       
@@ -125,9 +145,7 @@ export default {
       addStandardCake(newStandardCake) {
         CakeService.addStandardCake(newStandardCake);
       }
-
-      
-          
+   
     },
     } 
 

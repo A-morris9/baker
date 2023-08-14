@@ -39,7 +39,8 @@ public class OrderController {
     //allows a customer to create an order for a custom cake.
     // Allows for customization of Filling, Frosting, Flavor, and Optional Writing on the cake.
     @RequestMapping(path = "orders/custom", method = RequestMethod.POST)
-    public void createCustomOrder(@RequestBody Order order){
+    public Order createCustomOrder(@RequestBody Order order){
+        return orderDao.createStandardOrder(order);
 
     }
 

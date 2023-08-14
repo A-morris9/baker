@@ -23,10 +23,13 @@ export default {
     getFrostings(){
         return http.get('/frostings')
     },
+    getFillings(){
+        return http.get('/fillings')
+    },
     changeCakeAvailibility(id) {
         return http.put(`/cakes/availability/${id}`)
     },
-    // addStandardCake(cake) {
-        // return http.post('/cakes/standard',cake)
-    // }
+     addStandardCake(cake) {
+         return http.post('/cakes/standard',cake)
+     }
 }

@@ -30,16 +30,16 @@ VALUES
 
 CREATE TABLE cakes (
     CakeID SERIAL PRIMARY KEY,
-    Title VARCHAR(255),
-    Description TEXT,
-    Price DECIMAL(10, 2) NOT NULL,
-    Style VARCHAR(255) NOT NULL,
-    Size VARCHAR(255) NOT NULL,
+    Title VARCHAR(255) DEFAULT 'Custom Cake',
+    Description TEXT DEFAULT 'Custom Cake',
+    Price DECIMAL(10, 2) NOT NULL DEFAULT 27.00,
+    Style VARCHAR(255) NOT NULL DEFAULT 'Layer',
+    Size VARCHAR(255) NOT NULL DEFAULT 'Medium',
     isAvailable BOOLEAN NOT NULL DEFAULT false,
     isStandard BOOLEAN NOT NULL DEFAULT false,
     isDeleted BOOLEAN NOT NULL DEFAULT false,
     CategoryID INT REFERENCES category(CategoryID) DEFAULT 1,
-    Image TEXT
+    Image TEXT DEFAULT 'Add URL Here'
 );
 
 
