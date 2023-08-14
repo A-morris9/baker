@@ -80,12 +80,6 @@ public class CakeDao {
         return newCakeId;
     }
 
-
-
-
-        return newCake;
-    }
-
     public int addStandardCake(Cake cake){
         int newCakeId = 0;
         String sql = "INSERT INTO cakes (title, description, price, style, image)" +
