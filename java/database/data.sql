@@ -16,6 +16,21 @@ VALUES
     ('Strawberry Shortcake', 'Light vanilla cake with fresh strawberries and whipped cream.', 21.00, 'Fruit', 'Small', true, 'https://stylesweet.com/wp-content/uploads/2022/06/Summer_Category-500x500.jpg'),
     ('Tiramisu Temptation', 'Classic tiramisu cake with layers of coffee-soaked ladyfingers and mascarpone.', 25.00, 'Coffee', 'Medium', true, 'https://soghaqatar.com/resources/assets/images/product_images/1584085851.temptations-tiramisu-cake-01.jpg');
 
+    ('Raspberry White Chocolate Dream', 'Delicate white chocolate cake with raspberry filling.', 29.00, 'Fruit', 'Medium', true, 'https://www.lifeloveandsugar.com/wp-content/uploads/2021/04/White-Chocolate-Raspberry-Cake-5.jpg'),
+    ('Hazelnut Heaven', 'Decadent hazelnut cake with Nutella-infused frosting.', 28.00, 'Nut', 'Large', true, 'https://www.handletheheat.com/wp-content/uploads/2017/07/Nutella-Layer-Cake-10-Square.jpg'),
+    ('Pumpkin Spice Elegance', 'Spiced pumpkin cake with cream cheese frosting.', 23.00, 'Seasonal', 'Medium', true, 'https://www.livewellbakeoften.com/wp-content/uploads/2017/09/Pumpkin-Cake-Recipe-6.jpg'),
+    ('Luscious Lavender Lemon', 'Lavender-infused lemon cake with lavender glaze.', 25.00, 'Citrus', 'Small', true, 'https://www.thecreativebite.com/wp-content/uploads/2019/04/Lemon-Lavender-Cake-3.jpg'),
+    ('Cherry Almond Delight', 'Almond-flavored cake with cherry compote and almond slices.', 24.00, 'Fruit', 'Large', true, 'https://sugargeekshow.com/wp-content/uploads/2020/06/Cherry-cake-2020-1.jpg'),
+    ('Mango Tango', 'Tropical mango cake with layers of fresh mango slices.', 26.00, 'Fruit', 'Medium', true, 'https://www.livewellbakeoften.com/wp-content/uploads/2020/06/Mango-Cake-6.jpg'),
+    ('Cookies and Cream Fantasy', 'Cookies and cream-flavored cake with crushed cookie pieces.', 22.00, 'Chocolate', 'Small', true, 'https://sugargeekshow.com/wp-content/uploads/2020/05/cookies-and-cream-cake-14.jpg'),
+    ('Blueberry Bliss', 'Blueberry-infused cake with blueberry compote and cream cheese frosting.', 27.00, 'Fruit', 'Large', true, 'https://cdn.sallysbakingaddiction.com/wp-content/uploads/2018/06/triple-layer-blueberry-cake.jpg'),
+    ('Cinnamon Swirl Sensation', 'Cinnamon-swirled cake with cream cheese drizzle.', 21.00, 'Seasonal', 'Small', true, 'https://www.handletheheat.com/wp-content/uploads/2019/05/Cinnamon-Roll-Cake-9-Square.jpg'),
+    ('Pistachio Passion', 'Pistachio-flavored cake with pistachio buttercream and chopped pistachios.', 23.00, 'Nut', 'Medium', true, 'https://livforcake.com/wp-content/uploads/2018/08/pistachio-cake-3.jpg');
+    ('Matcha Green Tea Delight', 'Fluffy matcha-infused cake with matcha buttercream.', 26.50, 'Specialty', 'Medium', true, 'https://i.pinimg.com/originals/e1/7f/06/e17f0679ac68f6855e54c3a665edc2aa.jpg'),
+    ('Choco-Berry Explosion', 'Decadent chocolate cake with layers of mixed berries.', 29.00, 'Chocolate', 'Large', true, 'https://www.sugarsaltmagic.com/wp-content/uploads/2021/07/Chocolate-Berry-Cake-square.jpg'),
+    ('Pineapple Upside-Down Bliss', 'Classic pineapple upside-down cake with caramelized pineapple topping.', 24.50, 'Fruit', 'Medium', true, 'https://www.kingarthurbaking.com/sites/default/files/styles/featured_image/public/2019-02/pineapple-upside-down-cake.jpg?itok=fRs3lASB'),
+    ('Almond Raspberry Romance', 'Almond cake layered with raspberry jam and almond buttercream.', 27.50, 'Nut', 'Small', true, 'https://bakingamoment.com/wp-content/uploads/2020/01/IMG_8444-almond-cake-square.jpg');
+
 
 INSERT INTO flavors (Description, Cost, InventoryAmount, isAvailable)
 VALUES
