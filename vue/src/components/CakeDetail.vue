@@ -10,41 +10,48 @@
       href="#"
       v-on:click.prevent="showForm = true"
       v-if="showForm === false"
-      >Place An Order</a
+      >Place An Order (All fields are required)</a
     >
     <form class="form-style" v-on:submit.prevent="submitOrder" v-if="showForm === true">
       <div class="form-element">
         <label for="firstName">First Name: </label>
         <input id="firstName" type="text" v-model="newOrder.firstName" />
-        <span class="error" v-if="!newOrder.firstName">First name is required</span>
+        <span class="error" v-if="!newOrder.firstName"></span>
       </div>
       <div class="form-element">
         <label for="lastName">Last Name: </label>
         <input id="LastName" type="text" v-model="newOrder.lastName" />
+        <span class="error" v-if="!newOrder.lastName"></span>
       </div>
       <div class="form-element">
         <label for="phoneNumber">Phone Number: </label>
         <input id="phoneNumber" type="text" v-model="newOrder.phoneNumber" />
+        <span class="error" v-if="!newOrder.phoneNumber"></span>
       </div>
       <div class="form-element">
         <label for="streetNumber">Street Number: </label>
         <input id="streetNumber" type="text" v-model="newOrder.streetNumber" />
+        <span class="error" v-if="!newOrder.streetNumber"></span>
       </div>
       <div class="form-element">
         <label for="streetName">Street Name: </label>
         <input id="streetName" type="text" v-model="newOrder.streetName" />
+        <span class="error" v-if="!newOrder.streetName"></span>
       </div>
       <div class="form-element">
         <label for="city">City: </label>
         <input id="city" type="text" v-model="newOrder.city" />
+        <span class="error" v-if="!newOrder.city"></span>
       </div>
       <div class="form-element">
         <label for="state">State: </label>
         <input id="state" type="text" v-model="newOrder.state" />
+        <span class="error" v-if="!newOrder.state"></span>
       </div>
       <div class="form-element">
         <label for="zipCode">Zip Code: </label>
         <input id="zipCode" type="text" v-model="newOrder.zip" />
+        <span class="error" v-if="!newOrder.zip"></span>
       </div>
       <p>
         Would you like to add writing to your cake? (+5$)
@@ -127,7 +134,14 @@ export default {
   computed: {
     isFormValid() {
       return (
-        this.newOrder.firstName
+      this.newOrder.firstName &&
+      this.newOrder.lastName &&
+      this.newOrder.phoneNumber &&
+      this.newOrder.streetNumber &&
+      this.newOrder.streetName &&
+      this.newOrder.city &&
+      this.newOrder.state &&
+      this.newOrder.zip
       )
     }
   }

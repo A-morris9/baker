@@ -15,7 +15,6 @@ VALUES
     ('Mocha Madness', 'Coffee and chocolate cake with mocha buttercream.', 27.00, 'Mocha', 'Large', true, 'https://livforcake.com/wp-content/uploads/2015/08/mocha_cake_black-1.jpg'),
     ('Strawberry Shortcake', 'Light vanilla cake with fresh strawberries and whipped cream.', 21.00, 'Fruit', 'Small', true, 'https://stylesweet.com/wp-content/uploads/2022/06/Summer_Category-500x500.jpg'),
     ('Tiramisu Temptation', 'Classic tiramisu cake with layers of coffee-soaked ladyfingers and mascarpone.', 25.00, 'Coffee', 'Medium', true, 'https://soghaqatar.com/resources/assets/images/product_images/1584085851.temptations-tiramisu-cake-01.jpg'),
-
     ('Raspberry White Chocolate Dream', 'Delicate white chocolate cake with raspberry filling.', 29.00, 'Fruit', 'Medium', true, 'https://i0.wp.com/loskitchenco.com/wp-content/uploads/2020/02/IMG_1159-4.jpg?resize=1024%2C819&ssl=1'),
     ('Hazelnut Heaven', 'Decadent hazelnut cake with Nutella-infused frosting.', 28.00, 'Nut', 'Large', true, 'https://cutterandsquidge.com/cdn/shop/products/90920211125_cutterandsquidge1291_1000x1000_crop_center.jpg?v=1642076489'),
     ('Pumpkin Spice Elegance', 'Spiced pumpkin cake with cream cheese frosting.', 23.00, 'Seasonal', 'Medium', true, 'https://hips.hearstapps.com/hmg-prod/images/pumpkin-cakes-1561151560.jpg?crop=1.00xw:0.758xh;0,0.142xh&resize=1200:*'),
