@@ -124,7 +124,7 @@ export default {
         },
         newCustomOrder: {
           price: 27,
-          cakeId: 0
+          cake_id: 0
         }
        }
     },
@@ -154,11 +154,16 @@ export default {
           },
           submitCustomOrder() {
             CakeService.addCustomCake(this.newCustomCake).then ((response) => {
-              this.newCustomOrder.cakeId = response.data.cake.cake_id;
+              this.newCustomOrder.cake_id = response.data.cake_id;
               this.submitNewOrder(this.newCustomOrder)
             })},
            submitNewOrder(newCustomOrder) { 
-            CakeService.placeCustomOrder(newCustomOrder)
+            CakeService.placeCustomOrder(newCustomOrder).then((response) => {
+              this.$router.push({
+            name: "OrderConfirmation",
+            params: { orderid: response.data.order_id },
+          });
+            })
            }
           
       }
