@@ -37,11 +37,21 @@ public class CakeController {
     //allowing for customization of Style, Size, Flavor, Frosting, and Filling, Name, and Price.
     @RequestMapping(path = "cakes/custom", method = RequestMethod.POST)
     public Cake addCustomCake(@RequestBody Cake cake) {
-        return cakeDao.addCustomCake(cake);
+        Cake newCake = new Cake();
+        int cakeId = 0;
+        cakeId = cakeDao.addCustomCake(cake);
+        cakeDao.addFlavor(cake, cakeId);
+        cakeDao.addFrosting(cake, cakeId);
+        cakeDao.addFilling(cake, cakeId);
+        newCake = cakeDao.getStandardCakeById(cakeId);
+        return newCake;
     }
 
     @RequestMapping(path = "cakes/standard", method = RequestMethod.POST)
-    public Cake addStandardCake(@RequestBody Cake cake) {
-        return cakeDao.addStandardCake(cake);
+    public void addStandardCake(@RequestBody Cake cake) {
+        int cakeId = cakeDao.addStandardCake(cake);
+        cakeDao.addFlavor(cake, cakeId);
+        cakeDao.addFrosting(cake, cakeId);
+        cakeDao.addFilling(cake, cakeId);
     }
 }

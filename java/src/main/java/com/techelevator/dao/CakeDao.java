@@ -63,25 +63,22 @@ public class CakeDao {
         return cake;
     }
 
-    public Cake addCustomCake(Cake cake){
-        Cake newCake = null;
-//        String sql = "INSERT INTO cakes (cakeid, customerfirstname, customerlastname, streetnumber, streetname, city, state, zip, phonenumber, orderdate," +
-//                "pickupdate, writing, writingfee, totalamount)" +
-//                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING orderid;";
-//
-//        try {
-//            int newCakeId = jdbcTemplate.queryForObject(sql, int.class, order.getCake_id(), order.getFirstName(),
-//                    order.getLastName(), order.getStreetNumber(), order.getStreetName(), order.getCity(), order.getState(),
-//                    order.getZip(), order.getPhoneNumber(), orderDate, deliveryDate, order.getWriting(),
-//                    writingFee, totalPrice);
-//            newOrder = getOrderById(newOrderId);
-//        } catch (CannotGetJdbcConnectionException e) {
-//            throw new DaoException("Unable to connect to server or database", e);
-//        } catch (BadSqlGrammarException e) {
-//            throw new DaoException("SQL syntax error", e);
-//        } catch (DataIntegrityViolationException e) {
-//            throw new DaoException("Data integrity violation", e);
-//        }
+    public int addCustomCake(Cake cake){
+        int newCakeId = 0;
+        String sql = "INSERT INTO cakes (title, description, price, style, image)" +
+                "VALUES (?, ?, ?, ?, ?) RETURNING cakeid;";
+        try {
+            newCakeId = jdbcTemplate.queryForObject(sql, int.class, cake.getTitle(), cake.getDescription(),
+                    cake.getPrice(), cake.getStyle(), cake.getImage());
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        } catch (BadSqlGrammarException e) {
+            throw new DaoException("SQL syntax error", e);
+        } catch (DataIntegrityViolationException e) {
+            throw new DaoException("Data integrity violation", e);
+        }
+        return newCakeId;
+    }
 
 
 
@@ -89,13 +86,75 @@ public class CakeDao {
         return newCake;
     }
 
-    public Cake addStandardCake(Cake cake){
-        Cake newCake = null;
+    public int addStandardCake(Cake cake){
+        int newCakeId = 0;
+        String sql = "INSERT INTO cakes (title, description, price, style, image)" +
+                "VALUES (?, ?, ?, ?, ?) RETURNING cakeid;";
+        try {
+            newCakeId = jdbcTemplate.queryForObject(sql, int.class, cake.getTitle(), cake.getDescription(),
+                    cake.getPrice(), cake.getStyle(), cake.getImage());
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        } catch (BadSqlGrammarException e) {
+            throw new DaoException("SQL syntax error", e);
+        } catch (DataIntegrityViolationException e) {
+            throw new DaoException("Data integrity violation", e);
+        }
+        return newCakeId;
+    }
+
+    public void addFlavor(Cake cake, int cakeId) {
+
+        String flavor = cake.getFlavor();
+        int flavorId = Integer.parseInt(flavor);
+        String sql = "INSERT INTO cakes_flavors (CakeID, FlavorID)\n" +
+                "VALUES (?, ?);\n";
+
+        try {
+            jdbcTemplate.update(sql, cakeId, flavorId);
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        } catch (BadSqlGrammarException e) {
+            throw new DaoException("SQL syntax error", e);
+        } catch (DataIntegrityViolationException e) {
+            throw new DaoException("Data integrity violation", e);
+        }
+    }
+
+    public void addFrosting(Cake cake, int cakeId) {
+        String frosting = cake.getFrosting();
+        int frostingId = Integer.parseInt(frosting);
+
+        String sql = "INSERT INTO cakes_frostings (CakeID, FrostingID)\n" +
+                "VALUES (?, ?);\n";
 
 
+        try {
+            jdbcTemplate.update(sql, cakeId, frostingId);
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        } catch (BadSqlGrammarException e) {
+            throw new DaoException("SQL syntax error", e);
+        } catch (DataIntegrityViolationException e) {
+            throw new DaoException("Data integrity violation", e);
+        }
+    }
 
+    public void addFilling(Cake cake, int cakeId) {
+        String filling = cake.getFilling();
+        int fillingId = Integer.parseInt(filling);
+        String sql = "INSERT INTO cakes_fillings (CakeID, FillingID)\n" +
+                "VALUES (?, ?);\n";
 
-        return newCake;
+        try {
+            jdbcTemplate.update(sql, cakeId, fillingId);
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        } catch (BadSqlGrammarException e) {
+            throw new DaoException("SQL syntax error", e);
+        } catch (DataIntegrityViolationException e) {
+            throw new DaoException("Data integrity violation", e);
+        }
     }
 
     public void toggleAvailabilityOfStandardCake(int id){
@@ -129,4 +188,6 @@ public class CakeDao {
         cake.setImage(result.getString("image"));
         return cake;
     }
+
+
 }

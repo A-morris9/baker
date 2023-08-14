@@ -29,7 +29,7 @@ export default {
     changeCakeAvailibility(id) {
         return http.put(`/cakes/availability/${id}`)
     },
-    // addStandardCake(cake) {
-        // return http.post('/cakes/standard',cake)
-    // }
+     addStandardCake(cake) {
+         return http.post('/cakes/standard',cake)
+     }
 }

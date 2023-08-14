@@ -142,9 +142,7 @@ export default {
       addStandardCake(newStandardCake) {
         CakeService.addStandardCake(newStandardCake);
       }
-
-      
-          
+   
     },
     } 
 
