@@ -74,6 +74,12 @@
                 </td>
             </tr>
             <tr>
+                <td>Price</td>
+                <td>
+                   <input id="price" type="text" v-model="newStandardCake.price" />
+                </td>
+            </tr>
+            <tr>
                 <td>Image (url)</td>
                 <td>
                     <input id="cakeImage" type="text" v-model="newStandardCake.image" />
@@ -110,7 +116,6 @@ export default {
           flavor: 0,
           frosting: 0,
           filling: 0,
-          price: 27,
           style: 0,
 
         }
