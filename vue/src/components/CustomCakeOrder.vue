@@ -140,9 +140,9 @@ export default {
 
 </script>
 
-<style>
+<style scoped>
 .form-style{
-  font-family: poppins,sans-serif;
+  font-family: 'poppins', cursive;
   font-weight: bold;
 }
 

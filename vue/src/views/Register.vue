@@ -6,19 +6,19 @@
         {{ registrationErrorMsg }}
       </div>
       <div class="form-input-group">
-        <label for="username">Username</label>
+        <label class="style" for="username">Username</label>
         <input type="text" id="username" v-model="user.username" required autofocus />
       </div>
       <div class="form-input-group">
-        <label for="password">Password</label>
+        <label class="style" for="password">Password</label>
         <input type="password" id="password" v-model="user.password" required />
       </div>
       <div class="form-input-group">
-        <label for="confirmPassword">Confirm Password</label>
+        <label class="style" for="confirmPassword">Confirm Password</label>
         <input type="password" id="confirmPassword" v-model="user.confirmPassword" required />
       </div>
-      <button type="submit">Create Account</button>
-      <p><router-link :to="{ name: 'login' }">Already have an account? Log in.</router-link></p>
+      <button class="style" type="submit">Create Account</button>
+      <p><router-link class="style" :to="{ name: 'login' }">Already have an account? Log in.</router-link></p>
     </form>
   </div>
 </template>
@@ -74,6 +74,15 @@ export default {
 </script>
 
 <style scoped>
+h1{
+  font-family: 'Big Shoulders Display', cursive;
+}
+.style{
+  font-family: 'Poppins', cursive;
+}
+.text-center{
+  background-image: url('../assets/Background.png');
+}
 .form-input-group {
   margin-bottom: 1rem;
 }

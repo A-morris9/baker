@@ -4,7 +4,7 @@
     <h2> Feel free to track your order progress by entering your order number on our home page</h2>
     <table>
       <thead>
-        <tr>
+        <tr class="style">
           <th>Order Number</th>
           <th>Customer Name</th>
           <th>Pickup Date</th>
@@ -40,11 +40,16 @@ export default {
 <style>
 
 body {
-  background-image: url('https://img.freepik.com/free-vector/blank-leafy-frame-social-ads_53876-100923.jpg?w=2000');
+  background-image: url('../assets/Background.png');
 }
 
-.centered-content{
+.centered-content {
   text-align: center;
 }
-
+h1{
+  font-family: 'Big Shoulders Display', cursive;
+}
+h2, .style {
+  font-family: 'Poppins', cursive;
+}
 </style>

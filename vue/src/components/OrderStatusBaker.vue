@@ -75,7 +75,7 @@ export default {
   
 </script>
 
-<style>
+<style scoped>
 
 .all-actions {
   margin-bottom: 40px;
