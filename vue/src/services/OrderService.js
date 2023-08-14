@@ -13,5 +13,8 @@ export default {
     },
     changeOrderStatus(id, newStatus){
         return http.put(`/orders/changeStatus/${id}/${newStatus}`)
-    }
+    },
+    placeCustomOrder(order) {
+        return http.post('/orders/custom', order)
+    },
 }

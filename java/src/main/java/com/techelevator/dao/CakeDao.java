@@ -31,7 +31,8 @@ public class CakeDao {
                 "LEFT JOIN cakes_frostings cfr ON c.CakeID = cfr.CakeID\n" +
                 "LEFT JOIN frostings fr ON cfr.FrostingID = fr.FrostingID\n" +
                 "LEFT JOIN cakes_fillings cfi ON c.CakeID = cfi.CakeID\n" +
-                "LEFT JOIN fillings fi ON cfi.FillingID = fi.FillingID";
+                "LEFT JOIN fillings fi ON cfi.FillingID = fi.FillingID\n" +
+                "WHERE c.isavailable = true;";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while (results.next()) {
@@ -40,6 +41,25 @@ public class CakeDao {
         }
         return cakes;
     }
+    public List<Cake> getListOfAllStandardCakes() {
+        List<Cake> cakes = new ArrayList<>();
+        String sql ="SELECT c.CakeID, c.Title, c.Description, c.Price, c.Style,c.Size, f.Description AS Flavor, fr.Description AS Frosting, fi.Description AS Filling, c.isAvailable, c.image\n" +
+                "FROM cakes c LEFT JOIN cakes_flavors cf ON c.CakeID = cf.CakeID\n" +
+                "LEFT JOIN flavors f ON cf.FlavorID = f.FlavorID\n" +
+                "LEFT JOIN cakes_frostings cfr ON c.CakeID = cfr.CakeID\n" +
+                "LEFT JOIN frostings fr ON cfr.FrostingID = fr.FrostingID\n" +
+                "LEFT JOIN cakes_fillings cfi ON c.CakeID = cfi.CakeID\n" +
+                "LEFT JOIN fillings fi ON cfi.FillingID = fi.FillingID;";
+
+
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+        while (results.next()) {
+            Cake cake = mapRowToCake(results);
+            cakes.add(cake);
+        }
+        return cakes;
+    }
+
     public Cake getStandardCakeById(int id) {
         Cake cake = null;
         String sql ="SELECT c.CakeID, c.Title, c.Description, c.Price, c.Style,c.Size, f.Description AS Flavor, fr.Description AS Frosting, fi.Description AS Filling, c.isAvailable, c.image\n" +
@@ -79,8 +99,6 @@ public class CakeDao {
         }
         return newCakeId;
     }
-
-
 
 
 
