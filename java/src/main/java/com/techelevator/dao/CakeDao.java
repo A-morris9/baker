@@ -83,8 +83,7 @@ public class CakeDao {
 
 
 
-        return newCake;
-    }
+
 
     public int addStandardCake(Cake cake){
         int newCakeId = 0;

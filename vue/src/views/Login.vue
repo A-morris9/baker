@@ -1,6 +1,7 @@
 <template>
-  <div id="login">
-    <form @submit.prevent="login">
+  <div  id="login">
+    <bare-bones-header/>
+    <form class="center" @submit.prevent="login">
       <h1 >Please Sign In</h1>
       <div class="style" role="alert" v-if="invalidCredentials">
         Invalid username and password!
@@ -25,10 +26,14 @@
 
 <script>
 import authService from "../services/AuthService";
+import BareBonesHeader from '../components/BareBonesHeader.vue';
+
+
+
 
 export default {
   name: "login",
-  components: {},
+  components: {BareBonesHeader},
   data() {
     return {
       user: {
@@ -71,8 +76,15 @@ label {
 h1{
   font-family: 'Big Shoulders Display', cursive;
   color: rgba(80,71,66);
+
 }
 .style {
   font-family: 'Poppins', cursive;
+}
+.center {
+ position: absolute;
+ top: 40%;
+ left: 50%;
+ transform: translate(-50%, -50%);
 }
 </style>

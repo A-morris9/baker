@@ -1,6 +1,7 @@
 <template>
-  <div id="register" class="text-center">
-    <form @submit.prevent="register">
+  <div id="register" >
+    <bare-bones-header/>
+    <form class="text-center" @submit.prevent="register">
       <h1>Create Account</h1>
       <div role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
@@ -24,9 +25,11 @@
 </template>
 
 <script>
+import BareBonesHeader from '../components/BareBonesHeader.vue';
 import authService from '../services/AuthService';
 
 export default {
+  components: { BareBonesHeader },
   name: 'register',
   data() {
     return {
@@ -80,13 +83,17 @@ h1{
 .style{
   font-family: 'Poppins', cursive;
 }
-.text-center{
-  background-image: url('../assets/Background.png');
-}
+
 .form-input-group {
   margin-bottom: 1rem;
 }
 label {
   margin-right: 0.5rem;
+}
+.text-center {
+ position: absolute;
+ top: 42%;
+ left: 50%;
+ transform: translate(-50%, -50%);
 }
 </style>
