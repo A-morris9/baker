@@ -69,6 +69,8 @@ export default {
 <style scoped>
 .form-input-group {
   margin-bottom: 1rem;
+  font-weight: bold;
+  color: rgba(80,71,66);
 }
 label {
   margin-right: 0.5rem;
@@ -80,6 +82,7 @@ h1{
 }
 .style {
   font-family: 'Poppins', cursive;
+  font-weight: bold;
 }
 .center {
  position: absolute;

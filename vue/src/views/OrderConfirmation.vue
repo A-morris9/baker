@@ -1,7 +1,10 @@
 <template>
-  <div class="centered-content">
+  <div>
+    <bare-bones-header/>
+    <div class="centered-content">
     <h1> Thank You For Placing Your Order</h1>
     <h2> Feel free to track your order progress by entering your order number on our home page</h2>
+    </div>
     <table>
       <thead>
         <tr class="style">
@@ -20,8 +23,10 @@
 </template>
 
 <script>
+import BareBonesHeader from '../components/BareBonesHeader.vue'
 import CakeService from '../services/CakeService'
 export default {
+  components: { BareBonesHeader },
   data() {
     return {
      order : {}
@@ -49,10 +54,13 @@ body {
 .centered-content {
   text-align: center;
 }
-h1 , .style {
+h1 , h2, .style {
   font-family: 'Big Shoulders Display', cursive;
+  color: rgb(80, 71, 66);
 }
 h2 {
   font-family: 'Poppins', cursive;
+   color: rgb(80, 71, 66);
 }
+
 </style>

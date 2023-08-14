@@ -1,5 +1,6 @@
 <template>
   <div>
+      <bare-bones-header/>
       <order-status-baker/>
       <div class="divider"></div>
       <standard-cakes-baker/>
@@ -9,12 +10,14 @@
 <script>
 import OrderStatusBaker from "@/components/OrderStatusBaker.vue";
 import StandardCakesBaker from '../components/StandardCakesBaker.vue';
+import BareBonesHeader from '../components/BareBonesHeader.vue';
 
 export default {
     name: "BakerView",
     components: {
         OrderStatusBaker,
-        StandardCakesBaker
+        StandardCakesBaker,
+        BareBonesHeader
     }
 }
 </script>

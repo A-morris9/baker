@@ -79,12 +79,15 @@ export default {
 <style scoped>
 h1{
   font-family: 'Big Shoulders Display', cursive;
+  color: rgb(80, 71, 66);
 }
 .style{
   font-family: 'Poppins', cursive;
+ font-weight: bold;
 }
 
 .form-input-group {
+  color: rgb(80, 71, 66);
   margin-bottom: 1rem;
 }
 label {

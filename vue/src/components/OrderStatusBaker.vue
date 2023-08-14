@@ -1,7 +1,7 @@
 <template>
  <div>
   <h1>this is an order list page for bakers only</h1>
-  <label for="filter"> Filter Orders by Current Order Status: </label>
+  <label class = "style" for="filter"> Filter Orders by Current Order Status: </label>
   <input type="text" v-model="filter" />
   <table>
       <thead>
@@ -97,6 +97,10 @@ th {
 }
 .all-actions {
   margin-bottom: 40px;
+}
+
+.style {
+  color: rgb(80, 71, 66);
 }
 
 </style>

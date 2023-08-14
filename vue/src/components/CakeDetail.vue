@@ -135,12 +135,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 1px solid #504742; /* Add a border around the box */
-  border-radius: 10px; /* Rounded edges */
   padding: 20px 10px; /* Vertical padding: 20px, Horizontal padding: 10px */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
-  background-color: #fff; /* Background color for the box */
-  overflow: hidden;       /* Hide any content that overflows */
   background-image: url('../assets/Background.png');
  font-family: poppins, cursive;
  color: rgba(80,71,66);
