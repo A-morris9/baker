@@ -10,7 +10,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .me {
   background-color: rgb(	210, 80, 128);
 }
