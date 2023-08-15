@@ -10,6 +10,9 @@ import OrderConfirmation from '../views/OrderConfirmation.vue'
 import CustomCakeOrder from '../components/CustomCakeOrder.vue'
 import OrderStatusCustomer from '../components/OrderStatusCustomer.vue'
 import BakersView from '../views/BakersView.vue'
+import Details from '../views/Details.vue'
+import CustomerOrderStatus from '../views/CustomerOrderStatus.vue'
+import CustomCakeView from '../views/CustomCakeView.vue'
 
 Vue.use(Router)
 
@@ -30,6 +33,14 @@ const router = new Router({
       path: '/',
       name: 'home',
       component: Home,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: '/customCakeView',
+      name: 'CustomCakeView',
+      component: CustomCakeView,
       meta: {
         requiresAuth: false
       }
@@ -83,6 +94,14 @@ const router = new Router({
       }
     },
     {
+      path: "/customerOrderStatus",
+      name: "CustomerOrderStatus",
+      component: CustomerOrderStatus,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
       path: '/customCakeOrder',
       name: 'CustomCakeOrder',
       component: CustomCakeOrder,
@@ -96,6 +115,14 @@ const router = new Router({
       component: BakersView,
       meta: {
         requiresAuth: true
+      }
+    },
+    {
+      path: '/details',
+      name: 'Details',
+      component: Details,
+      meta: {
+        requiresAuth: false
       }
     },
   ]

@@ -1,10 +1,16 @@
 <template>
-  <div class="container">
-      <bare-bones-header style="grid-area: header"/>
-      <order-status-baker style="grid-area: order-status"/>
-      <div class="divider"></div>
-      <standard-cakes-baker style="grid-area: standard-cakes"/>
-  </div>   
+  <div>
+    <bare-bones-header />
+    <div class="grid-container">
+      <button @click="showOrderStatus = true">Show Order Status</button>
+      <button @click="showOrderStatus = false">Show Standard Cakes</button>
+
+      <div class="side-by-side">
+        <order-status-baker v-if="showOrderStatus" />
+        <standard-cakes-baker v-else />
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -18,6 +24,11 @@ export default {
         OrderStatusBaker,
         StandardCakesBaker,
         BareBonesHeader
+    },
+    data(){
+        return{
+            showOrderStatus: true,
+        }
     }
 }
 </script>
@@ -28,23 +39,17 @@ export default {
     height: 1px;
     background-color: rgb(	80, 71, 66);
 }
-.container{
-
- display: grid;
-  grid-template-columns: 150px 1fr 100px;
-  grid-template-rows: 220px 1fr 50px;
-  grid-template-areas:
-    "header header header"
-    "order-status order-status order-status"
-    "standard-cakes standard-cakes standard-cakes";
-  height: 100vh;
-  margin: 0;
-  padding: 0;
-  border: none;
-  gap:0;
-
-  justify-content: center;
-  align-content: center;
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr; /* Single column for the entire row */
+  grid-gap: 20px; /* Adjust the gap between components */
 }
+
+.side-by-side {
+  display: flex;
+  justify-content: space-between; /* Space between the components */
+  align-items: top; /* Center vertically within the row */
+}
+
 </style>>
 

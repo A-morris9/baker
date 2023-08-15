@@ -89,4 +89,64 @@ VALUES
     (5, 4)  -- CakeID 5 with FlavorID 4
     -- Add more associations here
 ;
+-- Generate 20 random orders for the next 30 days
+WITH random_orders AS (
+  SELECT
+    generate_series(
+      current_timestamp,
+      current_timestamp + interval '30 days',
+      interval '1 day'
+    )::date AS pickup_date
+),
+random_cakes AS (
+  SELECT
+    CakeID
+  FROM
+    cakes
+  ORDER BY
+    random()
+  LIMIT
+    20
+)
+
+INSERT INTO orders (
+  CakeID,
+  status,
+  customerFirstName,
+  customerLastName,
+  streetNumber,
+  streetName,
+  city,
+  state,
+  zip,
+  PhoneNumber,
+  OrderDate,
+  PickupDate,
+  Writing,
+  WritingFee,
+  TotalAmount
+)
+SELECT
+  rc.CakeID,
+  'Pending' AS status,
+  'John' AS customerFirstName,
+  'Doe' AS customerLastName,
+  floor(random() * 1000) AS streetNumber,
+  'Main St' AS streetName,
+  'City' AS city,
+  'State' AS state,
+  '12345' AS zip,
+  '555-1234' AS PhoneNumber,
+  current_timestamp AS OrderDate,
+  ro.pickup_date + random() * interval '12 hours' AS PickupDate,
+  'Happy Birthday' AS Writing,
+  5.00 AS WritingFee,
+  25.00 AS TotalAmount
+FROM
+  random_cakes rc
+CROSS JOIN
+  random_orders ro
+LIMIT
+  20;
+
 COMMIT TRANSACTION;

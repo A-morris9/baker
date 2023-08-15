@@ -23,7 +23,7 @@ export default {
     },
     methods: {
         viewCake(cake) {
-            this.$router.push({name:"CakeDetail",params:{id:cake.cake_id}})
+            this.$router.push({name:"Details",params:{id:cake.cake_id}})
         }
     },
 

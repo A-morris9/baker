@@ -126,7 +126,7 @@ export default {
         Styles: [
         { id: 1, name: 'Layer' },
         { id: 2, name: 'Sheet' },
-        { id: 3, name: 'Cupckaes' }   
+        { id: 3, name: 'Cupcakes' }   
         ],
         Flavors : [],
         Frostings : [],
