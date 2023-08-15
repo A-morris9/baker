@@ -66,7 +66,8 @@ font-family: 'Poppins', cursive;
 }
 
 h1, th {
-    color:rgb(80,71,66)
-
+    color:rgb(80,71,66);
+    align-content: center;
+    justify-content: center;
 }
 </style>

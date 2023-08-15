@@ -28,13 +28,12 @@ body {
 .home {
   display: grid;
   grid-template-columns: 150px 1fr 100px;
-  grid-template-rows: 220px 1fr 50px;
+  grid-template-rows: 220px 1fr 100px;
   grid-template-areas:
     "header header header"
     "list list list"
     "footer footer footer";
   height: 100vh;
-  background: gray;
   margin: 0;
   padding: 0;
   border: none;

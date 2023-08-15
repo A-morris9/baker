@@ -3,26 +3,27 @@
     <div class="me">
       <img class="logo" v-bind:src="require('../assets/logo.png')" />
     </div>
-    <router-link class="custom-style" v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;|&nbsp;
-      <router-link class="custom-style" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout |</router-link>
+    <router-link class="custom-style" v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;&nbsp;
+      
     <router-link class="custom-style" :to="{ name: 'login' }" id="left-aligned"
-      > Staff Login</router-link
+      >| Staff Login</router-link
     >
-    |
+    
     <router-link class="custom-style" v-bind:to="{ name: 'CustomCakeView' }">
-      Order A Custom Cake</router-link
+     | Order A Custom Cake</router-link
     >
-    |
+    
     <router-link
       class="custom-style"
       v-bind:to="{ name: 'CustomerOrderStatus' }"
     >
-      View Order Status
+    |  View Order Status
     </router-link>
-    |
+    
     <router-link class="custom-style" v-bind:to="{ name: 'BakersView' }">
-      Bakers Home Page
+    |  Bakers Home Page
     </router-link>
+     <router-link class="custom-style" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">| Logout </router-link>
   </div>
 </template>
 
