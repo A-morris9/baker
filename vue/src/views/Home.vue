@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+    
     <bare-bones-header class="header" style="grid-area: header" />
     <bare-bones-footer class="footer" style="grid-area: footer" />
     <cake-list style="grid-area: list" />

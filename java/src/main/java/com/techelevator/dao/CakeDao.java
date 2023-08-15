@@ -85,11 +85,11 @@ public class CakeDao {
 
     public int addCustomCake(Cake cake){
         int newCakeId = 0;
-        String sql = "INSERT INTO cakes (title, description, price, style, image)" +
-                "VALUES (?, ?, ?, ?, ?) RETURNING cakeid;";
+        String sql = "INSERT INTO cakes (title, description, price, image)" +
+                "VALUES (?, ?, ?, ?) RETURNING cakeid;";
         try {
             newCakeId = jdbcTemplate.queryForObject(sql, int.class, cake.getTitle(), cake.getDescription(),
-                    cake.getPrice(), cake.getStyle(), cake.getImage());
+                    cake.getPrice(), cake.getImage());
         } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database", e);
         } catch (BadSqlGrammarException e) {

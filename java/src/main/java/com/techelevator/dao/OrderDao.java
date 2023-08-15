@@ -27,7 +27,9 @@ public class OrderDao {
 
     public List<Order> getListOfOrders() {
         List<Order> orders = new ArrayList<>();
-        String sql ="Select * FROM orders";
+        String sql ="SELECT OrderID, CakeID, status, customerFirstName, customerLastName, " +
+        "streetNumber, streetName, city, state, zip, PhoneNumber, OrderDate, " +
+                "PickupDate, Writing, WritingFee, TotalAmount FROM orders";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while (results.next()) {
@@ -58,9 +60,11 @@ public class OrderDao {
                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING orderid;";
 
         LocalDateTime orderDate = LocalDateTime.now();
-        //TO DO: Add deliverydate as a database default
         LocalDateTime deliveryDate = orderDate.plusDays(3);
         BigDecimal writingFee = new BigDecimal(5);
+        if(order.getWriting().equals("") || order.getWriting() == null){
+            writingFee = new BigDecimal(0);
+        }
         BigDecimal totalPrice = order.getPrice().add(writingFee);
 
         try {

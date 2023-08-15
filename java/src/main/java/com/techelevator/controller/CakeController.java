@@ -2,10 +2,12 @@ package com.techelevator.controller;
 
 import com.techelevator.dao.CakeDao;
 import com.techelevator.model.Cake;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@PreAuthorize("isAuthenticated()")
 @RestController
 @CrossOrigin
 public class CakeController {
@@ -14,8 +16,8 @@ public class CakeController {
     public CakeController(CakeDao cakeDao) {
         this.cakeDao = cakeDao;
     }
-
     //Gives a full list of all standard cakes.
+    @PreAuthorize("permitAll")
     @RequestMapping(path = "cakes", method = RequestMethod.GET)
     public List<Cake> listOfStandardCakes() {
         return cakeDao.getListOfStandardCakes();
@@ -26,6 +28,7 @@ public class CakeController {
     }
 
     //allows a user to see a full cake model of a single standard cake.
+    @PreAuthorize("permitAll")
     @RequestMapping(path = "cakes/{id}", method = RequestMethod.GET)
     public Cake getSingleCake(@PathVariable int id) {
         return cakeDao.getStandardCakeById(id);
@@ -39,6 +42,7 @@ public class CakeController {
 
     //Gives a staff member the ability to create a new standard cake,
     //allowing for customization of Style, Size, Flavor, Frosting, and Filling, Name, and Price.
+    @PreAuthorize("permitAll")
     @RequestMapping(path = "cakes/custom", method = RequestMethod.POST)
     public Cake addCustomCake(@RequestBody Cake cake) {
         Cake newCake = new Cake();

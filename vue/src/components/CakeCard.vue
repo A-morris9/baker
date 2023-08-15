@@ -6,7 +6,7 @@
               <i class="fa fa-birthday-cake" style="font-size:20px;color:white;"></i>
             </div>
             <h5 class="carousel-item__details--title">{{ cake.title }}</h5>
-            <h6 class="carousel-item__details--subtitle">Date and Duration</h6>
+            <h6 class="carousel-item__details--subtitle"></h6>
           </div>
         </div>
     
