@@ -1,10 +1,13 @@
 <template>
-  <div class = "cake-box">  
-    <h2 class="title">{{cake.title}}</h2>
+  <div class="cake-box">
+    <h2 class="title">{{ cake.title }}</h2>
     <img class="cake-image" :src="cake.image" />
-    <h3>{{cake.description}} </h3>
-    <h3>Cake Type:  {{cake.style}} </h3>
-    <h3>Price: $ {{cake.price}}</h3>
+    <h3>{{ cake.description }}</h3>
+    <h3>Cake Type: {{ cake.style }}</h3>
+    <h3>Flavor: {{ cake.flavor }}</h3>
+    <h3>Frosting: {{ cake.frosting }}</h3>
+    <h3>Filling: {{ cake.filling }}</h3>
+    <h3>Price: ${{ cake.price }}</h3>
     <a
       id="show-form-button"
       href="#"
@@ -12,7 +15,11 @@
       v-if="showForm === false"
       >Place An Order (All fields are required)</a
     >
-    <form class="form-style" v-on:submit.prevent="submitOrder" v-if="showForm === true">
+    <form
+      class="form-style"
+      v-on:submit.prevent="submitOrder"
+      v-if="showForm === true"
+    >
       <div class="form-element">
         <label for="firstName">First Name: </label>
         <input id="firstName" type="text" v-model="newOrder.firstName" />
@@ -67,9 +74,8 @@
         />
       </div>
       <div class="actions" v-if="showForm === true">
-          <button type="submit" :disabled="!isFormValid">Submit</button>
+        <button type="submit" :disabled="!isFormValid">Submit</button>
         <button v-on:click="resetForm" type="button">Cancel</button>
-      
       </div>
     </form>
   </div>
@@ -77,7 +83,6 @@
 
 <script>
 import CakeService from "../services/CakeService";
-
 
 export default {
   data() {
@@ -115,11 +120,10 @@ export default {
       this.newOrder.price = this.cake.price;
       this.newOrder.cake_id = this.cake.cake_id;
       CakeService.placeOrder(this.newOrder).then((response) => {
-          this.$router.push({
-            name: "OrderConfirmation",
-            params: { orderid: response.data.order_id },
-          });
-        
+        this.$router.push({
+          name: "OrderConfirmation",
+          params: { orderid: response.data.order_id },
+        });
       });
     },
     displayTextArea() {
@@ -134,17 +138,17 @@ export default {
   computed: {
     isFormValid() {
       return (
-      this.newOrder.firstName &&
-      this.newOrder.lastName &&
-      this.newOrder.phoneNumber &&
-      this.newOrder.streetNumber &&
-      this.newOrder.streetName &&
-      this.newOrder.city &&
-      this.newOrder.state &&
-      this.newOrder.zip
-      )
-    }
-  }
+        this.newOrder.firstName &&
+        this.newOrder.lastName &&
+        this.newOrder.phoneNumber &&
+        this.newOrder.streetNumber &&
+        this.newOrder.streetName &&
+        this.newOrder.city &&
+        this.newOrder.state &&
+        this.newOrder.zip
+      );
+    },
+  },
 };
 </script>
 
@@ -158,23 +162,23 @@ export default {
   flex-direction: column;
   align-items: center;
   padding: 20px 10px; /* Vertical padding: 20px, Horizontal padding: 10px */
-  background-image: url('../assets/Background.png');
- font-family: poppins, cursive;
- color: rgba(80,71,66);
- }
-.title{
-   font-family:'Big Shoulders Display', cursive;
-   color: rgba(80,71,66);
+  background-image: url("../assets/Background.png");
+  font-family: poppins, cursive;
+  color: rgba(80, 71, 66);
+}
+.title {
+  font-family: "Big Shoulders Display", cursive;
+  color: rgba(80, 71, 66);
 }
 div.form-element {
   margin-top: 10px;
 }
-#show-form-button{
+#show-form-button {
   font-weight: bold;
 }
-.form-style{
-  font-family: poppins,cursive;
+.form-style {
+  font-family: poppins, cursive;
   font-weight: bold;
-  color: rgba(80,71,66);
+  color: rgba(80, 71, 66);
 }
 </style>

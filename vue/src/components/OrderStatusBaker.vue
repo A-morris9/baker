@@ -6,7 +6,7 @@
       Filter Orders by Current Order Status:
     </label>
     <input type="text" v-model="filter" />
-    <table>
+    <table class="container">
       <thead>
         <tr>
           <th>Order ID |</th>
@@ -51,70 +51,67 @@
 
 <script>
 import OrderService from "../services/OrderService";
-import {parseISO, format} from "date-fns";
+import { parseISO, format } from "date-fns";
 
- let events = [
-	{
-      title : 'We got cakes',
-      start : '2023-08-25',
-      end : '2023-08-27'
-    }
-]
+let events = [
+  {
+    title: "We got cakes",
+    start: "2023-08-25",
+    end: "2023-08-27",
+  },
+];
 
 export default {
-    data() {
+  data() {
     return {
       fcEvents: events,
-        filter : "",
-        listOfOrders : [],
-    }
-    },
-    components:{
-      'full-calendar':require('vue-fullcalendar')
-    },
-    created() {
-        OrderService.getOrders().then((response) => {
-            this.listOfOrders = response.data;
-            this.populateFcEvents();
-            this.sortOrders();
-        })
-        
-    },
-    methods:{
-      updateOrderStatus(order, newStatus) {
-          OrderService.changeOrderStatus(order.order_id, newStatus).then(() => {
-            order.status = newStatus;
-          })
-          },
-      sortOrders() {
-        this.listOfOrders.sort((a,b) => a.order_id - b.order_id);
-      },
-      formatDate(dateStr){
-        const date = parseISO(dateStr);
-        return format(date, "MM/dd/yyyy");
-      },
-        populateFcEvents() {
-    this.fcEvents = this.listOfOrders.map((order) => {
-      return {
-        title: `Order #${order.order_id}, ${order.lastName}`,
-        start: order.orderDate,   // Assuming orderDate is in a valid format
-        end: order.pickupDate,    // Assuming pickupDate is in a valid format
-      };
+      filter: "",
+      listOfOrders: [],
+    };
+  },
+  components: {
+    "full-calendar": require("vue-fullcalendar"),
+  },
+  created() {
+    OrderService.getOrders().then((response) => {
+      this.listOfOrders = response.data;
+      this.populateFcEvents();
+      this.sortOrders();
     });
   },
-      },
-     computed: {
-      filteredOrders() {
+  methods: {
+    updateOrderStatus(order, newStatus) {
+      OrderService.changeOrderStatus(order.order_id, newStatus).then(() => {
+        order.status = newStatus;
+      });
+    },
+    sortOrders() {
+      this.listOfOrders.sort((a, b) => a.order_id - b.order_id);
+    },
+    formatDate(dateStr) {
+      const date = parseISO(dateStr);
+      return format(date, "MM/dd/yyyy");
+    },
+    populateFcEvents() {
+      this.fcEvents = this.listOfOrders.map((order) => {
+        return {
+          title: `Order #${order.order_id}, ${order.lastName}`,
+          start: order.orderDate, // Assuming orderDate is in a valid format
+          end: order.pickupDate, // Assuming pickupDate is in a valid format
+        };
+      });
+    },
+  },
+  computed: {
+    filteredOrders() {
       if (this.filter) {
         return this.listOfOrders.filter((order) =>
           order.status.toLowerCase().includes(this.filter.toLowerCase())
         );
       } else return this.listOfOrders;
     },
-   } 
- } 
-
-  
+  },
+};
 </script>
 
 <style scoped>
@@ -132,5 +129,9 @@ th {
 
 .style {
   color: rgb(80, 71, 66);
+}
+.container {
+  align-content: center;
+  justify-content: center;
 }
 </style>
