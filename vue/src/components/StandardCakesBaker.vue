@@ -1,132 +1,157 @@
 <template>
-  <div>
-    <h1>Space to View Standard Cakes and mark available or unavailable</h1>
-    <table>
-      <thead>
-        <tr>
-          <th>Cake ID</th>
-          <th>Name</th>
-          <th>Cake Availability Status</th>
-        </tr>
-      </thead>
-      <tbody >
-        <tr v-for="cake in listOfCakes" v-bind:key="cake.cake_id">
-          <td>{{ cake.cake_id }}</td>
-          <td>{{ cake.title }}</td>
-          <td>{{ getAvailabilityText(cake.availability) }}</td>
-          <td>
-            <button @click="updateCakeStatus(cake.cake_id)">
-              Change Cake Availability
-            </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+  <div class="container">
+    <h1>List of all cakes</h1>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Cake ID</th>
+            <th>Name</th>
+            <th>Cake Availability Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="cake in listOfCakes" v-bind:key="cake.cake_id">
+            <td>{{ cake.cake_id }}</td>
+            <td>{{ cake.title }}</td>
+            <td>{{ getAvailabilityText(cake.availability) }}</td>
+            <td>
+              <button @click="updateCakeStatus(cake.cake_id)">
+                Change Cake Availability
+              </button>
+              <button @click="deleteCake(cake.cake_id)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
     <div class="divider"></div>
-    <table>
-      <thead>
-        <tr>
-          <th>Parameter</th>
-          <th>Options</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Cake Name</td>
-          <td>
-            <input id="cakeName" type="text" v-model="newStandardCake.title" />
-          </td>
-        </tr>
-        <tr>
-          <td>Cake Description</td>
-          <td>
-            <input
-              id="cakeDescription"
-              type="text"
-              v-model="newStandardCake.description"
-            />
-          </td>
-        </tr>
-        <tr>
-          <td>Cake Style</td>
-          <td>
-            <label v-for="style in Styles" v-bind:key="style.id">
+    <h1>Create a new standard cake</h1>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Parameter</th>
+            <th>Options</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Cake Name</td>
+            <td>
               <input
-                type="radio"
-                name="param1"
-                :value="style.id"
-                v-model="newStandardCake.style"
+                id="cakeName"
+                type="text"
+                v-model="newStandardCake.title"
               />
-              {{ style.name }}
-            </label>
-          </td>
-        </tr>
-        <tr>
-          <td>Flavor</td>
-          <td>
-            <label v-for="flavor in Flavors" v-bind:key="flavor.flavor_id">
+            </td>
+          </tr>
+          <tr>
+            <td>Cake Description</td>
+            <td>
               <input
-                type="radio"
-                name="param2"
-                :value="flavor.flavor_id"
-                v-model="newStandardCake.flavor"
+                id="cakeDescription"
+                type="text"
+                v-model="newStandardCake.description"
               />
-              {{ flavor.description }}
-            </label>
-          </td>
-        </tr>
-        <tr>
-          <td>Frosting</td>
-          <td>
-            <label
-              v-for="frosting in Frostings"
-              v-bind:key="frosting.frosting_id"
-            >
+            </td>
+          </tr>
+          <tr>
+            <td>Cake Style</td>
+            <td>
+              <div class="dropdown-container">
+                <select v-model="newStandardCake.style">
+                  <option value="" disabled>Select a style</option>
+                  <option
+                    v-for="style in Styles"
+                    :key="style.id"
+                    :value="style.id"
+                  >
+                    {{ style.name }}
+                  </option>
+                </select>
+              </div>
+            </td>
+          </tr>
+          <tr></tr>
+          <tr>
+            <td>Flavor</td>
+            <td>
+              <div class="dropdown-container">
+                <select v-model="newStandardCake.flavor">
+                  <option value="" disabled>Select a flavor</option>
+                  <option
+                    v-for="flavor in Flavors"
+                    :key="flavor.flavor_id"
+                    :value="flavor.flavor_id"
+                  >
+                    {{ flavor.description }}
+                  </option>
+                </select>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Frosting</td>
+            <td>
+              <div class="dropdown-container">
+                <select v-model="newStandardCake.frosting">
+                  <option value="" disabled>Select a frosting</option>
+                  <option
+                    v-for="frosting in Frostings"
+                    :key="frosting.frosting_id"
+                    :value="frosting.frosting_id"
+                  >
+                    {{ frosting.description }}
+                  </option>
+                </select>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Filling</td>
+            <td>
+              <div class="dropdown-container">
+                <select v-model="newStandardCake.filling">
+                  <option value="" disabled>Select a filling</option>
+                  <option
+                    v-for="filling in Fillings"
+                    :key="filling.filling_id"
+                    :value="filling.filling_id"
+                  >
+                    {{ filling.description }}
+                  </option>
+                </select>
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Price</td>
+            <td>
+              <input id="price" type="text" v-model="newStandardCake.price" />
+            </td>
+          </tr>
+          <tr>
+            <td>Image (url)</td>
+            <td>
               <input
-                type="radio"
-                name="param3"
-                :value="frosting.frosting_id"
-                v-model="newStandardCake.frosting"
+                id="cakeImage"
+                type="text"
+                v-model="newStandardCake.image"
               />
-              {{ frosting.description }}
-            </label>
-          </td>
-        </tr>
-        <tr>
-          <td>Filling</td>
-          <td>
-            <label v-for="filling in Fillings" v-bind:key="filling.filling_id">
-              <input
-                type="radio"
-                name="param4"
-                :value="filling.filling_id"
-                v-model="newStandardCake.filling"
-              />
-              {{ filling.description }}
-            </label>
-          </td>
-        </tr>
-        <tr>
-          <td>Price</td>
-          <td>
-            <input id="price" type="text" v-model="newStandardCake.price" />
-          </td>
-        </tr>
-        <tr>
-          <td>Image (url)</td>
-          <td>
-            <input id="cakeImage" type="text" v-model="newStandardCake.image" />
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <button @click="addStandardCake(newStandardCake)">
-              Add New Cake to Standard Offerings
-            </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <button @click="addStandardCake(newStandardCake)">
+                Add New Cake to Standard Offerings
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </template>
 
@@ -184,12 +209,17 @@ export default {
   },
   methods: {
     updateCakeStatus(id) {
-       CakeService.changeCakeAvailibility(id).then(() => {
-        const cakeToUpdate = this.listOfCakes.find(cake => cake.cake_id === id);
-        
+      CakeService.changeCakeAvailibility(id).then(() => {
+        const cakeToUpdate = this.listOfCakes.find(
+          (cake) => cake.cake_id === id
+        );
+
         // Toggle the availability status
         cakeToUpdate.availability = !cakeToUpdate.availability;
       });
+    },
+    deleteCake(id) {
+      CakeService.deleteCake(id);
     },
     getAvailabilityText(Availability) {
       return Availability ? "Available" : "Not Available";
@@ -202,9 +232,6 @@ export default {
 </script>
 
 <style scoped>
-
-
-
 .divider {
   width: 100%;
   height: 1px;
@@ -227,5 +254,11 @@ td {
 }
 th {
   font-size: 20px;
+}
+.table-container {
+  display: flex;
+  text-align: center;
+  margin: 0 auto 0 auto;
+  justify-content: center;
 }
 </style>

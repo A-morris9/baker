@@ -1,6 +1,5 @@
 <template>
   <div class="home">
-    
     <bare-bones-header class="header" style="grid-area: header" />
     <bare-bones-footer class="footer" style="grid-area: footer" />
     <cake-list style="grid-area: list" />
@@ -8,17 +7,17 @@
 </template>
 
 <script>
-import BareBonesFooter from '../components/BareBonesFooter.vue';
-import CakeList from '../components/CakeList.vue';
-import BareBonesHeader from '../components/BareBonesHeader.vue';
+import BareBonesFooter from "../components/BareBonesFooter.vue";
+import CakeList from "../components/CakeList.vue";
+import BareBonesHeader from "../components/BareBonesHeader.vue";
 
 export default {
   name: "home",
   components: {
     BareBonesFooter,
     CakeList,
-    BareBonesHeader
-  }
+    BareBonesHeader,
+  },
 };
 </script>
 
@@ -35,16 +34,15 @@ body {
     "list list list"
     "footer footer footer";
   height: 100vh;
-  background: gray;
   margin: 0;
   padding: 0;
   border: none;
-  gap:0;
+  gap: 0;
 }
-.header{
+.header {
   position: sticky;
 }
-.footer{
+.footer {
   position: sticky;
 }
 </style>

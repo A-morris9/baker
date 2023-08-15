@@ -1,11 +1,12 @@
 <template>
   <div>
     <bare-bones-header />
-    <div class="grid-container">
-      <button @click="showOrderStatus = true">Show Orders</button>
-      <button @click="showOrderStatus = false">Show Cakes</button>
+    <div class="container">
+      <button class="button" @click="showOrderStatus = !showOrderStatus">
+        Show Cakes/Orders
+      </button>
 
-      <div class="side-by-side">
+      <div>
         <order-status-baker v-if="showOrderStatus" />
         <standard-cakes-baker v-else />
       </div>
@@ -15,42 +16,48 @@
 
 <script>
 import OrderStatusBaker from "@/components/OrderStatusBaker.vue";
-import StandardCakesBaker from '../components/StandardCakesBaker.vue';
-import BareBonesHeader from '../components/BareBonesHeader.vue';
+import StandardCakesBaker from "../components/StandardCakesBaker.vue";
+import BareBonesHeader from "../components/BareBonesHeader.vue";
 
 export default {
-    name: "BakerView",
-    components: {
-        OrderStatusBaker,
-        StandardCakesBaker,
-        BareBonesHeader
-    },
-    data(){
-        return{
-            showOrderStatus: true,
-        }
-    }
-}
+  name: "BakerView",
+  components: {
+    OrderStatusBaker,
+    StandardCakesBaker,
+    BareBonesHeader,
+  },
+  data() {
+    return {
+      showOrderStatus: true,
+    };
+  },
+};
 </script>
 
 <style scoped>
-.divider{
-    width: 100%;
-    height: 1px;
-    background-color: rgb(	80, 71, 66);
-}
-.grid-container {
-  display: grid;
-  grid-template-columns: 1fr; /* Single column for the entire row */
-  grid-gap: 20px; /* Adjust the gap between components */
+.divider {
+  width: 100%;
+  height: 1px;
+  background-color: rgb(80, 71, 66);
 }
 
-.side-by-side {
-  display: flex;
-  justify-content: space-between; /* Space between the components */
-  align-items: top; /* Center vertically within the row */
+button {
+  background-color: #4caf50; /* Green */
+  border: none;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 12px;
+  width: 150px;
 }
-
-
+.container {
+  text-align: center;
+  margin: 0 auto 0 auto;
+}
 </style>>
 
