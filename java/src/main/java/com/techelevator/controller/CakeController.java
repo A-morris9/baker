@@ -22,6 +22,7 @@ public class CakeController {
     public List<Cake> listOfStandardCakes() {
         return cakeDao.getListOfStandardCakes();
     }
+    @PreAuthorize("permitAll")
     @RequestMapping(path = "cakes/all", method = RequestMethod.GET)
     public List<Cake> listOfAllStandardCakes() {
         return cakeDao.getListOfAllStandardCakes();

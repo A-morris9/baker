@@ -2,8 +2,8 @@
   <div>
     <bare-bones-header />
     <div class="grid-container">
-      <button @click="showOrderStatus = true">Show Order Status</button>
-      <button @click="showOrderStatus = false">Show Standard Cakes</button>
+      <button @click="showOrderStatus = true">Show Orders</button>
+      <button @click="showOrderStatus = false">Show Cakes</button>
 
       <div class="side-by-side">
         <order-status-baker v-if="showOrderStatus" />
@@ -50,6 +50,7 @@ export default {
   justify-content: space-between; /* Space between the components */
   align-items: top; /* Center vertically within the row */
 }
+
 
 </style>>
 
