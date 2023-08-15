@@ -19,7 +19,7 @@
       <tbody>
           <td>{{order.order_id}}</td>
           <td>{{order.firstName}} {{order.lastName}}</td>
-          <td>{{order.pickupDate}}</td>
+          <td>{{order.pickupDate ? formatDate(order.pickupDate) : '' }}</td>
           <td>{{cake.style}}</td>
           <td>{{cake.size}}</td>
           <td>{{cake.flavor}}</td>
@@ -33,6 +33,8 @@
 <script>
 import OrderService from "../services/OrderService";
 import CakeService from "../services/CakeService";
+import {parseISO, format} from "date-fns";
+
 
 export default {
     data() {
@@ -54,7 +56,11 @@ export default {
         CakeService.getCake(this.order.cake_id).then((response) => {
             this.cake = response.data
         }) 
-        }
+        },
+        formatDate(dateStr){
+        const date = parseISO(dateStr);
+        return format(date, "MM/dd/yyyy");
+      }
     } 
 
     }
