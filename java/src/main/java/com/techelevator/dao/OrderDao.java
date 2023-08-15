@@ -27,7 +27,9 @@ public class OrderDao {
 
     public List<Order> getListOfOrders() {
         List<Order> orders = new ArrayList<>();
-        String sql ="Select * FROM orders";
+        String sql ="SELECT OrderID, CakeID, status, customerFirstName, customerLastName, " +
+        "streetNumber, streetName, city, state, zip, PhoneNumber, OrderDate, " +
+                "PickupDate, Writing, WritingFee, TotalAmount FROM orders";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while (results.next()) {

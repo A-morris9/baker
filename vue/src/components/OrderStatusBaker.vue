@@ -25,8 +25,8 @@
               <td>{{order.cake_id}}</td>
               <td>{{order.lastName}}</td>
               <td>{{order.phoneNumber}}</td>
-              <td>{{order.orderDate}}</td>
-              <td>{{order.pickupDate}}</td>
+              <td>{{formatDate(order.orderDate)}}</td>
+              <td>{{formatDate(order.pickupDate)}}</td>
               <td>{{order.writing}}</td>
               <td>{{order.totalAmount}}</td>
               <td>{{order.phoneNumber}}</td>
@@ -48,6 +48,8 @@
 
 <script>
 import OrderService from "../services/OrderService";
+import {parseISO, format} from "date-fns";
+
 
 export default {
     data() {
@@ -71,7 +73,12 @@ export default {
           },
       sortOrders() {
         this.listOfOrders.sort((a,b) => a.order_id - b.order_id);
-      }    
+      },
+      formatDate(dateStr){
+        const date = parseISO(dateStr);
+        return format(date, "MM/dd/yyyy");
+      }
+
       },
      computed: {
       filteredOrders() {
