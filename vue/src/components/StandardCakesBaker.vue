@@ -9,7 +9,7 @@
           <th>Cake Availability Status</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody >
         <tr v-for="cake in listOfCakes" v-bind:key="cake.cake_id">
           <td>{{cake.cake_id}}</td>
           <td>{{cake.title}}</td>
@@ -158,6 +158,8 @@ export default {
 </script>
 
 <style scoped>
+
+
 
 .divider {
   width: 100%;
