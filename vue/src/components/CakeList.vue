@@ -1,7 +1,9 @@
 <template>
   <div class="fancy-background carousel">
+    <div class="filter-box">
     <label class="custom-style" for="filter"> Filter Cake Name By: </label>
     <input type="text" v-model="filter" class="fancy" />
+    </div>
     <div class="carousel__container">
       <cake-card
         v-for="cake in filteredCakes"
@@ -82,5 +84,8 @@ font-family: 'Big Shoulders Display', cursive;
 font-size: 20px;
 text-decoration: none;
 color: rgb(	80, 71, 66);
+}
+.filter-box{
+  position: fixed;
 }
 </style>
