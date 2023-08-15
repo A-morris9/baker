@@ -19,6 +19,7 @@
                 <td>
                     <label v-for="style in Styles" v-bind:key="style.id">
                         <input type="radio" name="param1" :value="style.id" v-model="newCustomCake.style"> {{style.name}}
+                        <span class="error" v-if="!newCustomCake.style"></span>
                     </label>
                 </td>
             </tr>
@@ -27,6 +28,7 @@
                 <td>
                     <label v-for="flavor in Flavors" v-bind:key="flavor.flavor_id">
                         <input type="radio" name="param2" v-bind:value="flavor.flavor_id" v-model="newCustomCake.flavor" /> {{ flavor.description }}
+                        <span class="error" v-if="!newCustomCake.flavor"></span>
                     </label>
                 </td>
             </tr>
@@ -35,6 +37,7 @@
                 <td>
                     <label v-for="frosting in Frostings" v-bind:key="frosting.frosting_id">
                         <input type="radio" name="param3" v-bind:value="frosting.frosting_id" v-model="newCustomCake.frosting"> {{ frosting.description }}
+                        <span class="error" v-if="!newCustomCake.frosting"></span>
                     </label>
                 </td>
             </tr>
@@ -43,6 +46,7 @@
                 <td>
                     <label v-for="filling in Fillings" v-bind:key="filling.filling_id">
                         <input type="radio" name="param4" v-bind:value="filling.filling_id" v-model="newCustomCake.filling"> {{ filling.description }}
+                        <span class="error" v-if="!newCustomCake.filling"></span>
                     </label>
                 </td>
             </tr>
@@ -53,34 +57,42 @@
       <div class="form-element">
         <label for="firstName">First Name: </label>
         <input id="firstName" type="text" v-model="newCustomOrder.firstName" />
+        <span class="error" v-if="!newCustomOrder.firstName"></span>
       </div>
       <div class="form-element">
         <label for="lastName">Last Name: </label>
         <input id="LastName" type="text" v-model="newCustomOrder.lastName" />
+        <span class="error" v-if="!newCustomOrder.lastName"></span>
       </div>
       <div class="form-element">
         <label for="phoneNumber">Phone Number: </label>
         <input id="phoneNumber" type="text" v-model="newCustomOrder.phoneNumber" />
+        <span class="error" v-if="!newCustomOrder.phoneNumber"></span>
       </div>
       <div class="form-element">
         <label for="streetNumber">Street Number: </label>
         <input id="streetNumber" type="text" v-model="newCustomOrder.streetNumber" />
+        <span class="error" v-if="!newCustomOrder.streetNumber"></span>
       </div>
       <div class="form-element">
         <label for="streetName">Street Name: </label>
         <input id="streetName" type="text" v-model="newCustomOrder.streetName" />
+        <span class="error" v-if="!newCustomOrder.streetName"></span>
       </div>
       <div class="form-element">
         <label for="city">City: </label>
         <input id="city" type="text" v-model="newCustomOrder.city" />
+        <span class="error" v-if="!newCustomOrder.city"></span>
       </div>
       <div class="form-element">
         <label for="state">State: </label>
         <input id="state" type="text" v-model="newCustomOrder.state" />
+        <span class="error" v-if="!newCustomOrder.state"></span>
       </div>
       <div class="form-element">
         <label for="zipCode">Zip Code: </label>
         <input id="zipCode" type="text" v-model="newCustomOrder.zip" />
+        <span class="error" v-if="!newCustomOrder.zip"></span>
       </div>
       <p>
         Would you like to add writing to your cake? (+5$)
@@ -96,7 +108,7 @@
         />
       </div>
       <div>
-        <button type="submit">Submit Order</button>
+        <button type="submit" :disabled="!isFormValid">Submit Order</button>
         <button v-on:click="resetForm" type="button">Cancel</button>
       </div>
     </form>
@@ -166,6 +178,25 @@ export default {
             })
            }
           
+      },
+      computed: {
+        isFormValid(){
+          return(
+          this.newCustomCake.style &&
+          this.newCustomCake.flavor &&
+          this.newCustomCake.frosting &&
+          this.newCustomCake.filling &&
+          this.newCustomOrder.firstName &&
+          this.newCustomOrder.lastName &&
+          this.newCustomOrder.phoneNumber &&
+          this.newCustomOrder.streetNumber &&
+          this.newCustomOrder.streetName &&
+          this.newCustomOrder.city &&
+          this.newCustomOrder.state &&
+          this.newCustomOrder.zip
+          )
+        }
+
       }
   };
 

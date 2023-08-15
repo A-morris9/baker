@@ -95,7 +95,7 @@ const router = new Router({
       name: 'BakersView',
       component: BakersView,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       }
     },
   ]
