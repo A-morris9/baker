@@ -6,46 +6,48 @@
       Filter Orders by Current Order Status:
     </label>
     <input type="text" v-model="filter" />
-    <table class="container">
-      <thead>
-        <tr>
-          <th>Order ID |</th>
-          <th>Cake ID |</th>
-          <th>Last Name |</th>
-          <th>Phone Number |</th>
-          <th>Order Date |</th>
-          <th>Pick-Up Date |</th>
-          <th>Writing |</th>
-          <th>Price |</th>
-          <th>Phone Number |</th>
-          <th>Current Order Status |</th>
-          <th>Change Order Status</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="order in filteredOrders" v-bind:key="order.order_id">
-          <td>{{ order.order_id }}</td>
-          <td>{{ order.cake_id }}</td>
-          <td>{{ order.lastName }}</td>
-          <td>{{ order.phoneNumber }}</td>
-          <td>{{ formatDate(order.orderDate) }}</td>
-          <td>{{ formatDate(order.pickupDate) }}</td>
-          <td>{{ order.writing }}</td>
-          <td>{{ order.totalAmount }}</td>
-          <td>{{ order.phoneNumber }}</td>
-          <td>{{ order.status }}</td>
-          <td>
-            <select @change="updateOrderStatus(order, $event.target.value)">
-              <option value="">Select Status</option>
-              <option value="Pending">Pending</option>
-              <option value="Canceled">Canceled</option>
-              <option value="Ready">Ready</option>
-              <option value="Complete">Complete</option>
-            </select>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="container">
+      <table>
+        <thead>
+          <tr>
+            <th>Order ID |</th>
+            <th>Cake ID |</th>
+            <th>Last Name |</th>
+            <th>Phone Number |</th>
+            <th>Order Date |</th>
+            <th>Pick-Up Date |</th>
+            <th>Writing |</th>
+            <th>Price |</th>
+            <th>Phone Number |</th>
+            <th>Current Order Status |</th>
+            <th>Change Order Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="order in filteredOrders" v-bind:key="order.order_id">
+            <td>{{ order.order_id }}</td>
+            <td>{{ order.cake_id }}</td>
+            <td>{{ order.lastName }}</td>
+            <td>{{ order.phoneNumber }}</td>
+            <td>{{ formatDate(order.orderDate) }}</td>
+            <td>{{ formatDate(order.pickupDate) }}</td>
+            <td>{{ order.writing }}</td>
+            <td>{{ order.totalAmount }}</td>
+            <td>{{ order.phoneNumber }}</td>
+            <td>{{ order.status }}</td>
+            <td>
+              <select @change="updateOrderStatus(order, $event.target.value)">
+                <option value="">Select Status</option>
+                <option value="Pending">Pending</option>
+                <option value="Canceled">Canceled</option>
+                <option value="Ready">Ready</option>
+                <option value="Complete">Complete</option>
+              </select>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </template>
 
@@ -131,7 +133,7 @@ th {
   color: rgb(80, 71, 66);
 }
 .container {
-  align-content: center;
-  justify-content: center;
+  width: fit-content;
+  margin: 0 auto 0 auto;
 }
 </style>
