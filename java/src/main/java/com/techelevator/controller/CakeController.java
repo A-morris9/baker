@@ -40,6 +40,11 @@ public class CakeController {
     public void toggleAvailabilityOfCake(@PathVariable int id) {
         cakeDao.toggleAvailabilityOfStandardCake(id);
     }
+    //Gives a staff member the ability to mark a cake as deleted
+    @RequestMapping(path = "cakes/deleted/{id}", method = RequestMethod.PUT)
+    public void toggleDeletedStatusOfStandardCake(@PathVariable int id) {
+        cakeDao.toggleDeletedStatusOfStandardCake(id);
+    }
 
     //Gives a staff member the ability to create a new standard cake,
     //allowing for customization of Style, Size, Flavor, Frosting, and Filling, Name, and Price.

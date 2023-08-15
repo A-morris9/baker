@@ -189,6 +189,23 @@ public class CakeDao {
         }
     }
 
+    public void toggleDeletedStatusOfStandardCake(int id){
+
+
+        String sql = "UPDATE cakes\n" +
+                "SET isdeleted = NOT isdeleted\n" +
+                "WHERE cakeid = ?";
+        try {
+            jdbcTemplate.update(sql, id);
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        } catch (BadSqlGrammarException e) {
+            throw new DaoException("SQL syntax error", e);
+        }
+    }
+
+
+
 
     private Cake mapRowToCake(SqlRowSet result) {
         Cake cake = new Cake();
