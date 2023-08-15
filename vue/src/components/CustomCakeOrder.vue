@@ -1,68 +1,73 @@
 <template>
   <div class="container">
-    <table>
+    <table class="form-style">
       <tbody>
         <tr>
           <td>Cake Style:</td>
           <td>
-            <label v-for="style in Styles" v-bind:key="style.id">
-              <input
-                type="radio"
-                name="param1"
-                :value="style.id"
-                v-model="newCustomCake.style"
-              />
-              {{ style.name }}
-              <span class="error" v-if="!newCustomCake.style"></span>
-            </label>
+            <select v-model="newCustomCake.style">
+              <option value="" disabled>Select a style</option>
+              <option v-for="style in Styles" :key="style.id" :value="style.id">
+                {{ style.name }}
+              </option>
+            </select>
+            <span class="error" v-if="!newCustomCake.style"
+              >Please select a style</span
+            >
           </td>
         </tr>
         <tr>
           <td>Flavor:</td>
           <td>
-            <label v-for="flavor in Flavors" v-bind:key="flavor.flavor_id">
-              <input
-                type="radio"
-                name="param2"
-                v-bind:value="flavor.flavor_id"
-                v-model="newCustomCake.flavor"
-              />
-              {{ flavor.description }}
-              <span class="error" v-if="!newCustomCake.flavor"></span>
-            </label>
+            <select v-model="newCustomCake.flavor">
+              <option value="" disabled>Select a flavor</option>
+              <option
+                v-for="flavor in Flavors"
+                :key="flavor.flavor_id"
+                :value="flavor.flavor_id"
+              >
+                {{ flavor.description }}
+              </option>
+            </select>
+            <span class="error" v-if="!newCustomCake.flavor"
+              >Please select a flavor</span
+            >
           </td>
         </tr>
         <tr>
           <td>Frosting:</td>
           <td>
-            <label
-              v-for="frosting in Frostings"
-              v-bind:key="frosting.frosting_id"
+            <select v-model="newCustomCake.frosting">
+              <option value="" disabled>Select a frosting</option>
+              <option
+                v-for="frosting in Frostings"
+                :key="frosting.frosting_id"
+                :value="frosting.frosting_id"
+              >
+                {{ frosting.description }}
+              </option>
+            </select>
+            <span class="error" v-if="!newCustomCake.frosting"
+              >Please select a frosting</span
             >
-              <input
-                type="radio"
-                name="param3"
-                v-bind:value="frosting.frosting_id"
-                v-model="newCustomCake.frosting"
-              />
-              {{ frosting.description }}
-              <span class="error" v-if="!newCustomCake.frosting"></span>
-            </label>
           </td>
         </tr>
         <tr>
           <td>Filling:</td>
           <td>
-            <label v-for="filling in Fillings" v-bind:key="filling.filling_id">
-              <input
-                type="radio"
-                name="param4"
-                v-bind:value="filling.filling_id"
-                v-model="newCustomCake.filling"
-              />
-              {{ filling.description }}
-              <span class="error" v-if="!newCustomCake.filling"></span>
-            </label>
+            <select v-model="newCustomCake.filling">
+              <option value="" disabled>Select a filling</option>
+              <option
+                v-for="filling in Fillings"
+                :key="filling.filling_id"
+                :value="filling.filling_id"
+              >
+                {{ filling.description }}
+              </option>
+            </select>
+            <span class="error" v-if="!newCustomCake.filling"
+              >Please select a filling</span
+            >
           </td>
         </tr>
         <!-- Add more parameter rows as needed -->
