@@ -110,7 +110,8 @@ export default {
 
 .carousel-item__details .carousel-item__details--title,
 .carousel-item__details--subtitle {
-  color: #fff;
+  color: #eee5dc;
   margin: 5px 0;
+  font-size: 15px;
 }
 </style>
