@@ -1,7 +1,9 @@
 <template>
   <div class="fancy-background carousel">
-    <label class="custom-style" for="filter"> Filter Cake Name By: </label>
-    <input type="text" v-model="filter" class="fancy" />
+    <div class="filter">
+      <label class="custom-style" for="filter"> Filter Cake Name By: </label>
+      <input type="text" v-model="filter" class="fancy" />
+    </div>
     <div class="carousel__container">
       <cake-card
         v-for="cake in filteredCakes"
@@ -11,7 +13,6 @@
       ></cake-card>
     </div>
   </div>
-
 </template>
 
 <script>
@@ -48,7 +49,6 @@ export default {
 </script>
 
 <style scoped>
-
 .carousel {
   width: 100%;
   overflow-x: scroll;
@@ -66,21 +66,22 @@ export default {
 }
 
 .fancy-background {
-  background-image: url('../assets/Background.png');
-  
+  background-image: url("../assets/Background.png");
 }
 .fancy {
   background-color: rgb(238, 229, 220e);
   margin-top: 10px;
 }
 .divider {
-  border: none; 
-
+  border: none;
 }
 .custom-style {
-font-family: 'Big Shoulders Display', cursive;
-font-size: 20px;
-text-decoration: none;
-color: rgb(	80, 71, 66);
+  font-family: "Big Shoulders Display", cursive;
+  font-size: 20px;
+  text-decoration: none;
+  color: rgb(80, 71, 66);
+}
+.filter {
+  position: absolute;
 }
 </style>

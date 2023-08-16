@@ -1,8 +1,8 @@
 <template>
   <div class="container">
     <h1>Enter order ID to view status and details</h1>
-    <input class="button" type="text" v-model="orderid" />
-    <button @click="findOrderDetails" class="button">
+    <input class="button-input" type="text" v-model="orderid" />
+    <button @click="findOrderDetails" class="button-input button">
       Retrieve Order Details
     </button>
     <table>
@@ -79,10 +79,23 @@ th {
   align-content: center;
   justify-content: center;
 }
-.button,
+.button-input,
 .container,
 h1 {
   width: fit-content;
   margin: 0 auto 0 auto;
+}
+.button {
+  background-color: #4caf50;
+  border: none;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 12px;
 }
 </style>

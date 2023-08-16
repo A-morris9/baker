@@ -16,10 +16,12 @@
             <td>{{ cake.title }}</td>
             <td>{{ getAvailabilityText(cake.availability) }}</td>
             <td>
-              <button @click="updateCakeStatus(cake.cake_id)">
+              <button class="button" @click="updateCakeStatus(cake.cake_id)">
                 Change Cake Availability
               </button>
-              <button @click="deleteCake(cake.cake_id)">Delete</button>
+              <button class="button" @click="deleteCake(cake.cake_id)">
+                Delete
+              </button>
             </td>
           </tr>
         </tbody>
@@ -144,7 +146,7 @@
           </tr>
           <tr>
             <td>
-              <button @click="addStandardCake(newStandardCake)">
+              <button class="button" @click="addStandardCake(newStandardCake)">
                 Add New Cake to Standard Offerings
               </button>
             </td>
@@ -260,5 +262,18 @@ th {
   text-align: center;
   margin: 0 auto 0 auto;
   justify-content: center;
+}
+.button {
+  background-color: #4caf50;
+  border: none;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 12px;
 }
 </style>
