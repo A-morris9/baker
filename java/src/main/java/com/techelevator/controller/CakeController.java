@@ -62,6 +62,7 @@ public class CakeController {
         return newCake;
     }
 
+    @PreAuthorize("permitAll")
     @RequestMapping(path = "cakes/standard", method = RequestMethod.POST)
     public void addStandardCake(@RequestBody Cake cake) {
         int cakeId = cakeDao.addStandardCake(cake);
