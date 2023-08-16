@@ -10,6 +10,7 @@
         <tr>
           <th>Order Number |</th>
           <th>Customer Name |</th>
+          <th>Price |</th>
           <th>Pickup Date |</th>
           <th>Cake Style |</th>
           <th>Cake Size |</th>
@@ -21,6 +22,7 @@
       <tbody>
         <td>{{ order.order_id }}</td>
         <td>{{ order.firstName }} {{ order.lastName }}</td>
+        <td>{{ order.totalAmount}}
         <td>{{ order.pickupDate ? formatDate(order.pickupDate) : "" }}</td>
         <td>{{ cake.style }}</td>
         <td>{{ cake.size }}</td>

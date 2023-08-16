@@ -36,8 +36,8 @@
             <td>{{ order.cake_id }}</td>
             <td>{{ order.lastName }}</td>
             <td>{{ order.phoneNumber }}</td>
-            <td>{{ order.orderDate ? formatDate(order.orderDate) : ""  }}</td>
-            <td>{{ order.pickupDate ? formatDate(order.pickupDate) : ""  }}</td>
+            <td>{{ order.orderDate ? formatDate(order.orderDate) : "" }}</td>
+            <td>{{ order.pickupDate ? formatDate(order.pickupDate) : "" }}</td>
             <td>{{ order.writing }}</td>
             <td>{{ order.totalAmount }}</td>
             <td>{{ order.phoneNumber }}</td>
@@ -161,7 +161,7 @@ td {
   font-size: 25px;
 }
 table {
-  background-color: #4caf4fa7;
+  background-color: white;
   width: 90%;
 }
 .calendar {
