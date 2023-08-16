@@ -1,8 +1,16 @@
 <template>
   <div class="fancy-background carousel">
-    <div class="filter">
-      <label class="custom-style" for="filter"> Filter Cake Name By: </label>
-      <input type="text" v-model="filter" class="fancy" />
+    <div class="writing">
+      <div class="filter">
+        <label class="custom-style" for="filter"> Filter Cake Name By: </label>
+        <input type="text" v-model="filter" class="fancy" />
+      </div>
+      <div>
+        <h1>
+          Choose one of our standard cakes or select Order A Custom Cake to make
+          your own!
+        </h1>
+      </div>
     </div>
     <div class="carousel__container">
       <cake-card
@@ -51,8 +59,8 @@ export default {
 <style scoped>
 .carousel {
   width: 100%;
-  overflow-x: scroll;
-  padding: 30px;
+  overflow-x: auto;
+
   padding-top: 80px;
   position: relative;
   -webkit-box-sizing: border-box;
@@ -60,14 +68,12 @@ export default {
 }
 
 .carousel__container {
-  margin: 70px 0px;
-  padding-bottom: 10px;
+  padding-left: 100px;
   display: inline-block;
+  overflow: hidden;
+  justify-content: center;
 }
 
-.fancy-background {
-  background-image: url("../assets/Background.png");
-}
 .fancy {
   background-color: rgb(238, 229, 220e);
   margin-top: 10px;
@@ -83,5 +89,14 @@ export default {
 }
 .filter {
   position: absolute;
+}
+.writing {
+  display: flex;
+  justify-content: center;
+}
+h1 {
+  padding-top: 50px;
+  font-family: "Big Shoulders Display", cursive;
+  color: rgb(80, 71, 66);
 }
 </style>

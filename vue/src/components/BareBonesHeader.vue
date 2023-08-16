@@ -92,6 +92,6 @@ export default {
   font-family: "Big Shoulders Display", cursive;
   font-size: 40px;
   text-decoration: none;
-  color: white;
+  color: rgb(238, 229, 220);
 }
 </style>

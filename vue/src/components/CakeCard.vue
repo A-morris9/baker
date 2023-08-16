@@ -1,37 +1,37 @@
 <template>
-        <div class="carousel-item" v-on:click="viewCake(cake)">
-          <img class="carousel-item__img" :src="cake.image"/>
-          <div class="carousel-item__details">
-            <div class="controls">
-              <i class="fa fa-birthday-cake" style="font-size:20px;color:white;"></i>
-            </div>
-            <h5 class="carousel-item__details--title">{{ cake.title }}</h5>
-            <h6 class="carousel-item__details--subtitle"></h6>
-          </div>
-        </div>
-    
+  <div class="carousel-item" v-on:click="viewCake(cake)">
+    <img class="carousel-item__img" :src="cake.image" />
+    <div class="carousel-item__details">
+      <div class="controls">
+        <i
+          class="fa fa-birthday-cake"
+          style="font-size: 20px; color: white"
+        ></i>
+      </div>
+      <h5 class="carousel-item__details--title">{{ cake.title }}</h5>
+      <h6 class="carousel-item__details--subtitle"></h6>
+    </div>
+  </div>
 </template>
 
 <script>
 export default {
-    name: 'cake-card',
-    props: {
+  name: "cake-card",
+  props: {
     cake: {
-        type: Object,
-        required: true,
-    }    
+      type: Object,
+      required: true,
     },
-    methods: {
-        viewCake(cake) {
-            this.$router.push({name:"Details",params:{id:cake.cake_id}})
-        }
+  },
+  methods: {
+    viewCake(cake) {
+      this.$router.push({ name: "Details", params: { id: cake.cake_id } });
     },
-
-}
+  },
+};
 </script>
 
 <style scoped>
-
 .carousel-item {
   width: 200px;
   height: 250px;
@@ -48,15 +48,12 @@ export default {
   -webkit-transform-origin: center left;
   transform-origin: center left;
   position: relative;
-  
 }
 
 .carousel-item:hover ~ .carousel-item {
- -webkit-transform: translate3d(100px, 0, 0);
+  -webkit-transform: translate3d(100px, 0, 0);
   transform: translate3d(100px, 0, 0);
 }
-
-
 
 .carousel__container:hover .carousel-item:hover {
   -webkit-transform: scale(1.5);
@@ -72,7 +69,10 @@ export default {
 }
 
 .carousel-item__details {
-  background: -webkit-gradient(linear, left bottom, left top,
+  background: -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
     from(rgba(0, 0, 0, 0.9)),
     to(rgba(0, 0, 0, 0))
   );
@@ -102,7 +102,6 @@ export default {
   height: 10px; */
   font-size: 0.9rem;
   color: #2ecc71;
-  /* background-color: white; */
 }
 
 .carousel-item__details .controls {
@@ -114,5 +113,4 @@ export default {
   color: #fff;
   margin: 5px 0;
 }
-
 </style>
