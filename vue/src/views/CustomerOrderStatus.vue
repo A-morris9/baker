@@ -26,7 +26,7 @@ export default {
     "header header header"
     "status status status"
     "footer footer footer";
-  height: 100vh;
+  height: 95vh;
   margin: 0;
   padding: 0;
   border: none;
