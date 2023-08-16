@@ -227,7 +227,9 @@ export default {
       return Availability ? "Available" : "Not Available";
     },
     addStandardCake(newStandardCake) {
-      CakeService.addStandardCake(newStandardCake);
+      CakeService.addStandardCake(newStandardCake).then(() => {
+        window.location.reload();
+      });
     },
   },
 };

@@ -153,7 +153,7 @@ th, td {
   
 }
 table{
-  background-color: #4caf4fa7;
+  background-color: white;
   width: 90%;
 }
 .calendar{
