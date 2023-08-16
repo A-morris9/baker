@@ -72,6 +72,7 @@ export default {
   display: inline-block;
   overflow: hidden;
   justify-content: center;
+  padding-bottom: 60px;
 }
 
 .fancy {
