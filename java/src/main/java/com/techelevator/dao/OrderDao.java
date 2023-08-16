@@ -11,6 +11,7 @@ import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -59,8 +60,8 @@ public class OrderDao {
                "pickupdate, writing, writingfee, totalamount)" +
                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING orderid;";
 
-        LocalDateTime orderDate = LocalDateTime.now();
-        LocalDateTime deliveryDate = orderDate.plusDays(3);
+        LocalDateTime orderDate = order.getOrderDate();
+        LocalDateTime deliveryDate = order.getPickupDate();
         BigDecimal writingFee = new BigDecimal(5);
         if(order.getWriting().equals("") || order.getWriting() == null){
             writingFee = new BigDecimal(0);
@@ -124,10 +125,15 @@ public class OrderDao {
         order.setZip(result.getInt("zip"));
         order.setPhoneNumber(result.getString("phonenumber"));
         if (result.getObject("orderdate") != null) {
-            order.setOrderDate(result.getDate("orderdate").toLocalDate().atTime(LocalTime.now()));
+            Timestamp orderDateTimestamp = result.getTimestamp("orderdate");
+            LocalDateTime orderDate = orderDateTimestamp.toLocalDateTime();
+            order.setOrderDate(orderDate);
         }
+
         if (result.getObject("pickupdate") != null) {
-            order.setPickupDate(result.getDate("pickupdate").toLocalDate().atTime(LocalTime.now()));
+            Timestamp pickupDateTimestamp = result.getTimestamp("pickupdate");
+            LocalDateTime pickupDate = pickupDateTimestamp.toLocalDateTime();
+            order.setPickupDate(pickupDate);
         }
         order.setWriting(result.getString("writing"));
         order.setWritingFee(result.getBigDecimal("writingfee"));

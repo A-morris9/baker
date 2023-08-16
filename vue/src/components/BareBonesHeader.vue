@@ -1,8 +1,8 @@
 <template>
   <div class="template-container">
-    <div class="me">
+    
       <img class="logo" v-bind:src="require('../assets/logo.png')" />
-    </div>
+    
     <router-link class="custom-style" v-bind:to="{ name: 'home' }"
       >Home</router-link
     >&nbsp;&nbsp;
@@ -57,7 +57,7 @@
 }
 .custom-style {
   font-family: "Big Shoulders Display", cursive;
-  font-size: 20px;
+  font-size: 40px;
   text-decoration: none;
   color: rgb(80, 71, 66);
 }

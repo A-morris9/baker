@@ -1,7 +1,8 @@
 <template>
   <div>
-    <h1>this is an order list page for bakers only</h1>
-    <full-calendar :events="fcEvents" locale="en"></full-calendar>
+    <h1>Orders Calendar</h1>
+    <full-calendar class="calendar" :events="fcEvents" locale="en"></full-calendar>
+    <h1>Orders List</h1>
     <label class="style" for="filter">
       Filter Orders by Current Order Status:
     </label>
@@ -10,16 +11,16 @@
       <table>
         <thead>
           <tr>
-            <th>Order ID |</th>
-            <th>Cake ID |</th>
-            <th>Last Name |</th>
-            <th>Phone Number |</th>
-            <th>Order Date |</th>
-            <th>Pick-Up Date |</th>
-            <th>Writing |</th>
-            <th>Price |</th>
-            <th>Phone Number |</th>
-            <th>Current Order Status |</th>
+            <th>Order ID </th>
+            <th>Cake ID </th>
+            <th>Last Name </th>
+            <th>Phone Number </th>
+            <th>Order Date </th>
+            <th>Pick-Up Date </th>
+            <th>Writing </th>
+            <th>Price </th>
+            <th>Phone Number </th>
+            <th>Current Order Status </th>
             <th>Change Order Status</th>
           </tr>
         </thead>
@@ -98,8 +99,8 @@ export default {
       this.fcEvents = this.listOfOrders.map((order) => {
         return {
           title: `Order #${order.order_id}, ${order.lastName}`,
-          start: order.orderDate, // Assuming orderDate is in a valid format
-          end: order.pickupDate, // Assuming pickupDate is in a valid format
+          start: order.pickupDate // Assuming orderDate is in a valid format
+           // Assuming pickupDate is in a valid format
         };
       });
     },
@@ -110,7 +111,11 @@ export default {
         return this.listOfOrders.filter((order) =>
           order.status.toLowerCase().includes(this.filter.toLowerCase())
         );
-      } else return this.listOfOrders;
+      } else return this.listOfOrders.slice().sort((a, b) => {
+        const pickupDateA = new Date(a.pickupDate);
+        const pickupDateB = new Date(b.pickupDate);
+        return pickupDateA - pickupDateB;
+      });
     },
   },
 };
@@ -118,9 +123,10 @@ export default {
 
 <style scoped>
 h1,
-th {
+th, label {
   font-family: "Big Shoulders Display", cursive;
   color: rgb(80, 71, 66);
+  font-size: 20;
 }
 th {
   font-size: 20px;
@@ -133,7 +139,26 @@ th {
   color: rgb(80, 71, 66);
 }
 .container {
-  width: fit-content;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
   margin: 0 auto 0 auto;
+}
+th, td {
+  border: 1px solid black;
+  padding: 8px;
+  text-align: left;
+  font-size: 25px;
+  
+}
+table{
+  background-color: #4caf4fa7;
+  width: 90%;
+}
+.calendar{
+  max-width: 88%;
+  font-size: 20px;
+
 }
 </style>
