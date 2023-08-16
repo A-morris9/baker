@@ -27,6 +27,6 @@ export default {
     "header header header"
     "custom custom custom"
     "footer footer footer";
-  height: 100vh;
+  height: 95vh;
 }
 </style>
