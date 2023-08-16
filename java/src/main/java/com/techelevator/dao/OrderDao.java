@@ -60,10 +60,10 @@ public class OrderDao {
                "pickupdate, writing, writingfee, totalamount)" +
                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING orderid;";
 
-        LocalDateTime orderDate = order.getOrderDate();
-        LocalDateTime deliveryDate = order.getPickupDate();
+        LocalDateTime orderDate = LocalDateTime.now();
+        LocalDateTime deliveryDate = orderDate.plusDays(3);
         BigDecimal writingFee = new BigDecimal(5);
-        if(order.getWriting().equals("") || order.getWriting() == null){
+        if(order.getWriting() == null){
             writingFee = new BigDecimal(0);
         }
         BigDecimal totalPrice = order.getPrice().add(writingFee);

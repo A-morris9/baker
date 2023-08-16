@@ -16,7 +16,7 @@
       <tbody>
           <td>{{order.order_id}}</td>
           <td>{{order.firstName}} {{order.lastName}}</td>
-          <td>{{order.pickupDate}}</td>
+          <td>{{order.pickupDate ? formatDate(order.pickupDate) : ""}}</td>
       </tbody>
     </table>      
   </div>  
@@ -25,6 +25,7 @@
 <script>
 import BareBonesHeader from '../components/BareBonesHeader.vue'
 import CakeService from '../services/CakeService'
+import { parseISO, format } from "date-fns";
 export default {
   components: { BareBonesHeader },
   data() {
@@ -32,6 +33,12 @@ export default {
      order : {}
   
     }
+  },
+  methods:{
+    formatDate(dateStr) {
+      const date = parseISO(dateStr);
+      return format(date, "MM/dd/yyyy");
+    },
   },
   created() {
     CakeService.getOrder(this.$route.params.orderid).then((response) => {

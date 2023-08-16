@@ -36,8 +36,8 @@
             <td>{{ order.cake_id }}</td>
             <td>{{ order.lastName }}</td>
             <td>{{ order.phoneNumber }}</td>
-            <td>{{ formatDate(order.orderDate) }}</td>
-            <td>{{ formatDate(order.pickupDate) }}</td>
+            <td>{{ order.orderDate ? formatDate(order.orderDate) : ""  }}</td>
+            <td>{{ order.pickupDate ? formatDate(order.pickupDate) : ""  }}</td>
             <td>{{ order.writing }}</td>
             <td>{{ order.totalAmount }}</td>
             <td>{{ order.phoneNumber }}</td>
