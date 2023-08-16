@@ -2,17 +2,15 @@
   <div class="grid">
     <bare-bones-header style="grid-area: header" />
     <order-status-customer class="status" style="grid-area: status" />
-    <bare-bones-footer style="grid-area: footer" />
   </div>
 </template>
 
 <script>
-import BareBonesFooter from "../components/BareBonesFooter.vue";
 import BareBonesHeader from "../components/BareBonesHeader.vue";
 import OrderStatusCustomer from "../components/OrderStatusCustomer.vue";
 
 export default {
-  components: { BareBonesHeader, BareBonesFooter, OrderStatusCustomer },
+  components: { BareBonesHeader, OrderStatusCustomer },
   setup() {},
 };
 </script>
@@ -24,8 +22,7 @@ export default {
   grid-template-rows: 220px 1fr 50px;
   grid-template-areas:
     "header header header"
-    "status status status"
-    "footer footer footer";
+    "status status status";
   height: 95vh;
   margin: 0;
   padding: 0;

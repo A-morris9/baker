@@ -2,17 +2,17 @@
   <div class="style">
     <bare-bones-header class="header" style="grid-area: header" />
     <custom-cake-order class="custom" style="grid-area: custom" />
-    <bare-bones-footer class="footer" style="grid-area: footer" />
+    
   </div>
 </template>
 
 <script>
-import BareBonesFooter from "../components/BareBonesFooter.vue";
+
 import BareBonesHeader from "../components/BareBonesHeader.vue";
 import CustomCakeOrder from "../components/CustomCakeOrder.vue";
 
 export default {
-  components: { BareBonesHeader, BareBonesFooter, CustomCakeOrder },
+  components: { BareBonesHeader, CustomCakeOrder },
   setup() {},
 };
 </script>
@@ -26,7 +26,7 @@ export default {
   grid-template-areas:
     "header header header"
     "custom custom custom"
-    "footer footer footer";
+    ;
   height: 95vh;
 }
 </style>
