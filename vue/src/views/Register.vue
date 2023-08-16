@@ -1,6 +1,6 @@
 <template>
-  <div id="register" >
-    <bare-bones-header/>
+  <div id="register">
+    <bare-bones-header />
     <form class="text-center" @submit.prevent="register">
       <h1>Create Account</h1>
       <div role="alert" v-if="registrationErrors">
@@ -8,7 +8,13 @@
       </div>
       <div class="form-input-group">
         <label class="style" for="username">Username</label>
-        <input type="text" id="username" v-model="user.username" required autofocus />
+        <input
+          type="text"
+          id="username"
+          v-model="user.username"
+          required
+          autofocus
+        />
       </div>
       <div class="form-input-group">
         <label class="style" for="password">Password</label>
@@ -16,46 +22,55 @@
       </div>
       <div class="form-input-group">
         <label class="style" for="confirmPassword">Confirm Password</label>
-        <input type="password" id="confirmPassword" v-model="user.confirmPassword" required />
+        <input
+          type="password"
+          id="confirmPassword"
+          v-model="user.confirmPassword"
+          required
+        />
       </div>
-      <button class="style" type="submit">Create Account</button>
-      <p><router-link class="style" :to="{ name: 'login' }">Already have an account? Log in.</router-link></p>
+      <button class="style button" type="submit">Create Account</button>
+      <p>
+        <router-link class="style" :to="{ name: 'login' }"
+          >Already have an account? Log in.</router-link
+        >
+      </p>
     </form>
   </div>
 </template>
 
 <script>
-import BareBonesHeader from '../components/BareBonesHeader.vue';
-import authService from '../services/AuthService';
+import BareBonesHeader from "../components/BareBonesHeader.vue";
+import authService from "../services/AuthService";
 
 export default {
   components: { BareBonesHeader },
-  name: 'register',
+  name: "register",
   data() {
     return {
       user: {
-        username: '',
-        password: '',
-        confirmPassword: '',
-        role: 'user',
+        username: "",
+        password: "",
+        confirmPassword: "",
+        role: "user",
       },
       registrationErrors: false,
-      registrationErrorMsg: 'There were problems registering this user.',
+      registrationErrorMsg: "There were problems registering this user.",
     };
   },
   methods: {
     register() {
       if (this.user.password != this.user.confirmPassword) {
         this.registrationErrors = true;
-        this.registrationErrorMsg = 'Password & Confirm Password do not match.';
+        this.registrationErrorMsg = "Password & Confirm Password do not match.";
       } else {
         authService
           .register(this.user)
           .then((response) => {
             if (response.status == 201) {
               this.$router.push({
-                path: '/login',
-                query: { registration: 'success' },
+                path: "/login",
+                query: { registration: "success" },
               });
             }
           })
@@ -63,27 +78,27 @@ export default {
             const response = error.response;
             this.registrationErrors = true;
             if (response.status === 400) {
-              this.registrationErrorMsg = 'Bad Request: Validation Errors';
+              this.registrationErrorMsg = "Bad Request: Validation Errors";
             }
           });
       }
     },
     clearErrors() {
       this.registrationErrors = false;
-      this.registrationErrorMsg = 'There were problems registering this user.';
+      this.registrationErrorMsg = "There were problems registering this user.";
     },
   },
 };
 </script>
 
 <style scoped>
-h1{
-  font-family: 'Big Shoulders Display', cursive;
+h1 {
+  font-family: "Big Shoulders Display", cursive;
   color: rgb(80, 71, 66);
 }
-.style{
-  font-family: 'Poppins', cursive;
- font-weight: bold;
+.style {
+  font-family: "Poppins", cursive;
+  font-weight: bold;
 }
 
 .form-input-group {
@@ -94,9 +109,22 @@ label {
   margin-right: 0.5rem;
 }
 .text-center {
- position: absolute;
- top: 42%;
- left: 50%;
- transform: translate(-50%, -50%);
+  position: absolute;
+  top: 42%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.button {
+  background-color: #4caf50; /* Green */
+  border: none;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 12px;
 }
 </style>

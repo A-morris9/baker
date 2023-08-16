@@ -140,8 +140,12 @@
         />
       </div>
       <div>
-        <button type="submit" :disabled="!isFormValid">Submit Order</button>
-        <button v-on:click="resetForm" type="button">Cancel</button>
+        <button class="button" type="submit" :disabled="!isFormValid">
+          Submit Order
+        </button>
+        <button class="button" v-on:click="resetForm" type="button">
+          Cancel
+        </button>
       </div>
     </form>
   </div>
@@ -255,5 +259,18 @@ body {
 .form-style {
   width: fit-content;
   margin: 0 auto 0 auto;
+}
+.button {
+  background-color: #4caf50;
+  border: none;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 12px;
 }
 </style>

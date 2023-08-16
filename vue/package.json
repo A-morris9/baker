@@ -11,6 +11,7 @@
     "axios": "^0.21.1",
     "core-js": "^3.9.1",
     "date-fns": "^2.30.0",
+    "v-calendar": "^2.4.1",
     "vue": "^2.6.12",
     "vue-fullcalendar": "^1.0.9",
     "vue-router": "^3.5.1",
