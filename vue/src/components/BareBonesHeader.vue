@@ -36,18 +36,19 @@
       </router-link>
       <router-link
         class="custom-style"
+        :to="{ name: 'login' }"
+        id="left-aligned"
+        v-bind:class="{ active: isRouteActive('login') }"
+      >
+        | Staff Login
+      </router-link>
+      <router-link
+        class="custom-style"
         v-bind:to="{ name: 'logout' }"
         v-if="$store.state.token != ''"
         v-bind:class="{ active: isRouteActive('logout') }"
         >| Logout
       </router-link>
-      <router-link
-        class="custom-style"
-        :to="{ name: 'login' }"
-        id="left-aligned"
-        v-bind:class="{ active: isRouteActive('login') }"
-        >| Staff Login</router-link
-      >
     </div>
   </div>
 </template>
@@ -71,7 +72,8 @@ export default {
 }
 .template-container {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
+  align-items: center;
   font-family: "Big Shoulders Display", cursive;
   color: #444;
   background-color: rgb(210, 80, 128);

@@ -26,7 +26,7 @@ body {
   overflow: hidden;
   display: grid;
   grid-template-columns: 150px 1fr;
-  grid-template-rows: 220px 1fr;
+  grid-template-rows: 200px 1fr;
   grid-template-areas:
     "header header header"
     "list list list";
