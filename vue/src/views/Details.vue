@@ -1,26 +1,19 @@
 <template>
-    <div>
-        <bare-bones-header/>
-        <cake-detail/>
-        <bare-bones-footer/>
-    </div>
+  <div>
+    <bare-bones-header />
+    <cake-detail />
+  </div>
 </template>
 
 <script>
-import BareBonesFooter from '../components/BareBonesFooter.vue';
 import BareBonesHeader from "../components/BareBonesHeader.vue";
-import CakeDetail from '../components/CakeDetail.vue';
-
-
+import CakeDetail from "../components/CakeDetail.vue";
 
 export default {
-  components: { BareBonesHeader, BareBonesFooter, CakeDetail },
-    setup() {
-        
-    },
-}
+  components: { BareBonesHeader, CakeDetail },
+  setup() {},
+};
 </script>
 
 <style scoped>
-
 </style>
