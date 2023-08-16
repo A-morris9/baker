@@ -98,64 +98,17 @@ VALUES
     (7, 2);
     -- Add more associations here
 ;
--- Generate 20 random orders for the next 30 days
-WITH random_orders AS (
-  SELECT
-    generate_series(
-      current_timestamp,
-      current_timestamp + interval '30 days',
-      interval '1 day'
-    )::date AS pickup_date
-),
-random_cakes AS (
-  SELECT
-    CakeID
-  FROM
-    cakes
-  ORDER BY
-    random()
-  LIMIT
-    20
-)
-
-INSERT INTO orders (
-  CakeID,
-  status,
-  customerFirstName,
-  customerLastName,
-  streetNumber,
-  streetName,
-  city,
-  state,
-  zip,
-  PhoneNumber,
-  OrderDate,
-  PickupDate,
-  Writing,
-  WritingFee,
-  TotalAmount
-)
-SELECT
-  rc.CakeID,
-  'Pending' AS status,
-  'John' AS customerFirstName,
-  'Doe' AS customerLastName,
-  floor(random() * 1000) AS streetNumber,
-  'Main St' AS streetName,
-  'City' AS city,
-  'State' AS state,
-  '12345' AS zip,
-  '555-1234' AS PhoneNumber,
-  current_timestamp AS OrderDate,
-  ro.pickup_date + random() * interval '12 hours' AS PickupDate,
-  'Happy Birthday' AS Writing,
-  5.00 AS WritingFee,
-  25.00 AS TotalAmount
-FROM
-  random_cakes rc
-CROSS JOIN
-  random_orders ro
-LIMIT
-  20;
+INSERT INTO orders (CakeID, customerFirstName, customerLastName, streetNumber, streetName, city, state, zip, PhoneNumber, OrderDate, PickupDate, Writing, WritingFee, TotalAmount)
+VALUES
+    (1, 'John', 'Doe', 123, 'Main St', 'Cityville', 'Stateville', '12345', '123-456-7890', '2023-08-10 10:00:00', '2023-08-18 14:00:00', 'Happy Birthday', 5.00, 25.00),
+    (2, 'Jane', 'Smith', 456, 'Maple Ave', 'Townsville', 'Stateville', '67890', '987-654-3210', '2023-08-10 11:00:00', '2023-08-20 13:00:00', 'Congratulations', 5.00, 30.00),
+    (3, 'Michael', 'Johnson', 789, 'Oak St', 'Villageville', 'Stateville', '54321', '456-789-0123', '2023-08-11 12:00:00', '2023-08-22 15:00:00', 'Best Wishes', 5.00, 15.00),
+    (4, 'Emily', 'Brown', 101, 'Cedar Rd', 'Hamletville', 'Stateville', '98765', '789-012-3456', '2023-08-12 13:00:00', '2023-08-25 12:00:00', 'Good Luck', 5.00, 28.00),
+    (5, 'Daniel', 'Wilson', 222, 'Pine St', 'Forestville', 'Stateville', '12345', '345-678-9012', '2023-08-12 14:00:00', '2023-08-28 16:00:00', 'Happy Anniversary', 5.00, 18.00),
+    (6, 'Sarah', 'Miller', 333, 'Elm St', 'Villageton', 'Stateville', '56789', '234-567-8901', '2023-08-13 10:00:00', '2023-08-20 14:00:00', 'Congratulations!', 5.00, 35.00),
+    (7, 'Christopher', 'Taylor', 444, 'Birch Rd', 'Grovetown', 'Stateville', '67890', '345-678-9012', '2023-08-13 11:00:00', '2023-08-22 13:00:00', 'Happy Birthday!', 5.00, 28.00),
+    (8, 'Olivia', 'Anderson', 555, 'Chestnut Ave', 'Havenfield', 'Stateville', '78901', '456-789-0123', '2023-08-13 12:00:00', '2023-08-24 15:00:00', 'Best Wishes!', 5.00, 20.00),
+    (9, 'William', 'Martinez', 666, 'Willow St', 'Meadowville', 'Stateville', '89012', '567-890-1234', '2023-08-14 13:00:00', '2023-08-26 12:00:00', 'Good Luck!', 5.00, 40.00),
+    (10, 'Ava', 'Garcia', 777, 'Sycamore Rd', 'Riverdale', 'Stateville', '90123', '678-901-2345', '2023-08-15 14:00:00', '2023-08-28 16:00:00', 'Happy Anniversary!', 5.00, 30.00);
 
 COMMIT TRANSACTION;

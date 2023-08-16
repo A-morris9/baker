@@ -154,7 +154,7 @@ public class Order {
     }
 
     public void setOrderDate(LocalDateTime orderDate) {
-        this.orderDate = LocalDateTime.now();
+        this.orderDate = orderDate;
     }
 
     public LocalDateTime getPickupDate() {
@@ -162,7 +162,7 @@ public class Order {
     }
 
     public void setPickupDate(LocalDateTime pickupDate) {
-        this.pickupDate = LocalDateTime.now().plusDays(3);
+        this.pickupDate = pickupDate;
     }
 
     public String getWriting() {

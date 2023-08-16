@@ -36,6 +36,7 @@ public class CakeController {
     }
 
     //Gives a staff member the ability to toggle the availability of a standard cake.
+    @PreAuthorize("permitAll")
     @RequestMapping(path = "cakes/availability/{id}", method = RequestMethod.PUT)
     public void toggleAvailabilityOfCake(@PathVariable int id) {
         cakeDao.toggleAvailabilityOfStandardCake(id);

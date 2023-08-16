@@ -1,8 +1,8 @@
 <template>
   <div class="template-container">
-    <div class="me">
+    <div>
       <img class="logo" v-bind:src="require('../assets/logo.png')" />
-    </div>
+      </div>
     <router-link class="custom-style" v-bind:to="{ name: 'home' }"
       >Home</router-link
     >&nbsp;&nbsp;
@@ -38,11 +38,10 @@
 
 <style scoped>
 .template-container {
+  display: flex;
   font-family: "Big Shoulders Display", cursive;
   color: #444;
   background-color: rgb(210, 80, 128);
-  margin: none;
-  padding: none;
 }
 .me {
   text-align: center; /* Center the content horizontally */
@@ -57,7 +56,7 @@
 }
 .custom-style {
   font-family: "Big Shoulders Display", cursive;
-  font-size: 20px;
+  font-size: 40px;
   text-decoration: none;
   color: rgb(80, 71, 66);
 }
