@@ -22,7 +22,7 @@
       <tbody>
         <td>{{ order.order_id }}</td>
         <td>{{ order.firstName }} {{ order.lastName }}</td>
-        <td>{{ order.totalAmount}}
+        <td>${{ order.totalAmount}}
         <td>{{ order.pickupDate ? formatDate(order.pickupDate) : "" }}</td>
         <td>{{ cake.style }}</td>
         <td>{{ cake.size }}</td>
