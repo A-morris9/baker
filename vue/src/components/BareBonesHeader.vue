@@ -26,14 +26,6 @@
       >
         | View Order Status
       </router-link>
-
-      <router-link
-        class="custom-style"
-        v-bind:to="{ name: 'BakersView' }"
-        v-bind:class="{ active: isRouteActive('BakersView') }"
-      >
-        | Bakers Home Page
-      </router-link>
       <router-link
         class="custom-style"
         :to="{ name: 'login' }"
@@ -42,6 +34,15 @@
       >
         | Staff Login
       </router-link>
+      <router-link
+        class="custom-style"
+        v-bind:to="{ name: 'BakersView' }"
+        v-if="$store.state.token != ''"
+        v-bind:class="{ active: isRouteActive('BakersView') }"
+      >
+        | Bakers Home Page
+      </router-link>
+
       <router-link
         class="custom-style"
         v-bind:to="{ name: 'logout' }"
