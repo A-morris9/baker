@@ -138,46 +138,56 @@ export default {
 </script>
 
 <style scoped>
-h1,
-th,
-label {
-  font-family: "Big Shoulders Display", cursive;
-  color: rgb(80, 71, 66);
-  font-size: 20;
-}
+table,
+.button,
+td,
 th {
-  font-size: 20px;
-}
-.all-actions {
-  margin-bottom: 40px;
+  font-family: "Poppins", cursive;
+  border-collapse: collapse;
+  width: 100%; /* Make the table take up full container width */
 }
 
-.style {
-  color: rgb(80, 71, 66);
+table {
+  table-layout: fixed;
 }
-.container {
-  display: flex;
+
+h1,
+th {
+  color: rgb(80, 71, 66);
+  align-content: center;
   justify-content: center;
-  width: 100%;
+  font-family: sans-serif, "Poppins";
+}
+
+.button-input,
+.container,
+h1 {
+  width: fit-content;
   margin: 0 auto 0 auto;
   padding-bottom: 100px;
 }
+
+.button {
+  background-color: #4caf50;
+  border: none;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 12px;
+}
+
+/* Set a fixed width for each cell */
 th,
 td {
-  border: 1px solid black;
+  width: calc(100% / 10); /* Divide by the number of columns */
   padding: 8px;
   text-align: left;
-  font-size: 25px;
-}
-table {
+  border: 1px solid black; /* Add this line to set a black border */
   background-color: white;
-  width: 90%;
-}
-.calendar {
-  max-width: 88%;
-  font-size: 20px;
-}
-.filter-box {
-  padding-bottom: 30px;
 }
 </style>

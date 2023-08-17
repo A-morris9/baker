@@ -74,7 +74,8 @@ export default {
 .template-container {
   display: flex;
   justify-content: space-around;
-  
+  align-items: center;
+
   font-family: "Big Shoulders Display", cursive;
   color: #444;
   background-color: rgb(210, 80, 128);

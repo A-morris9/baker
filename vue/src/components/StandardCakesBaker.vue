@@ -67,7 +67,7 @@
                   <option
                     v-for="style in Styles"
                     :key="style.id"
-                    :value="style.id"
+                    :value="style.name"
                   >
                     {{ style.name }}
                   </option>
