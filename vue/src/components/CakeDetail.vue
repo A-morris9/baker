@@ -155,6 +155,7 @@ export default {
 <style scoped>
 .cake-image {
   width: 20%;
+  border-radius: 15px;
 }
 
 .cake-box {
