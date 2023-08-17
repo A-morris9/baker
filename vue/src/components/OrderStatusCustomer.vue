@@ -8,15 +8,16 @@
     <table>
       <thead>
         <tr>
-          <th>Order Number |</th>
-          <th>Customer Name |</th>
-          <th>Price |</th>
-          <th>Pickup Date |</th>
-          <th>Cake Style |</th>
-          <th>Cake Size |</th>
-          <th>Cake Flavor |</th>
-          <th>Cake Frosting |</th>
-          <th>Cake Filling</th>
+          <th>Order Number </th>
+          <th>Customer Name </th>
+          <th>Price </th>
+          <th>Pickup Date </th>
+          <th>Cake Style </th>
+          <th>Cake Size </th>
+          <th>Cake Flavor </th>
+          <th>Cake Frosting </th>
+          <th>Cake Filling </th>
+          <th>Order Status </th>
         </tr>
       </thead>
       <tbody>
@@ -29,6 +30,7 @@
         <td>{{ cake.flavor }}</td>
         <td>{{ cake.frosting }}</td>
         <td>{{ cake.filling }}</td>
+        <td>{{ order.status }}</td>
       </tbody>
     </table>
   </div>
@@ -71,8 +73,15 @@ export default {
 <style scoped>
 table,
 .button,
-td {
+td,
+th {
   font-family: "Poppins", cursive;
+  border-collapse: collapse;
+  width: 100%; /* Make the table take up full container width */
+}
+
+table {
+  table-layout: fixed;
 }
 
 h1,
@@ -80,13 +89,16 @@ th {
   color: rgb(80, 71, 66);
   align-content: center;
   justify-content: center;
+  font-family: sans-serif, "Poppins";
 }
+
 .button-input,
 .container,
 h1 {
   width: fit-content;
   margin: 0 auto 0 auto;
 }
+
 .button {
   background-color: #4caf50;
   border: none;
@@ -99,5 +111,15 @@ h1 {
   margin: 4px 2px;
   cursor: pointer;
   border-radius: 12px;
+}
+
+/* Set a fixed width for each cell */
+th,
+td {
+  width: calc(100% / 10); /* Divide by the number of columns */
+  padding: 8px;
+  text-align: left;
+  border: 1px solid black; /* Add this line to set a black border */
+  background-color: white;
 }
 </style>
