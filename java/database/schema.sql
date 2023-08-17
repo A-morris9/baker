@@ -85,9 +85,11 @@ CREATE TABLE cakes_frostings (
     FrostingID INT REFERENCES frostings(FrostingID)
 );
 
---CREATE Type order_status AS ENUM('Pending', 'Canceled', 'Ready', 'Complete');
+CREATE SEQUENCE order_id_seq START 100575;
+
+-- Then, create the table using the sequence for the OrderID column
 CREATE TABLE orders (
-    OrderID SERIAL PRIMARY KEY,
+    OrderID INT DEFAULT nextval('order_id_seq') PRIMARY KEY,
     CakeID INT REFERENCES cakes(CakeID),
     status VARCHAR(15) NOT NULL DEFAULT 'Pending',
     customerFirstName VARCHAR(255),
