@@ -8,22 +8,22 @@
     <table>
       <thead>
         <tr>
-          <th>Order Number </th>
-          <th>Customer Name </th>
-          <th>Price </th>
-          <th>Pickup Date </th>
-          <th>Cake Style </th>
-          <th>Cake Size </th>
-          <th>Cake Flavor </th>
-          <th>Cake Frosting </th>
-          <th>Cake Filling </th>
-          <th>Order Status </th>
+          <th>Order Number</th>
+          <th>Customer Name</th>
+          <th>$ Price</th>
+          <th>Pickup Date</th>
+          <th>Cake Style</th>
+          <th>Cake Size</th>
+          <th>Cake Flavor</th>
+          <th>Cake Frosting</th>
+          <th>Cake Filling</th>
+          <th>Order Status</th>
         </tr>
       </thead>
       <tbody>
         <td>{{ order.order_id }}</td>
         <td>{{ order.firstName }} {{ order.lastName }}</td>
-        <td>{{ order.totalAmount}}
+        <td>{{ order.totalAmount }}</td>
         <td>{{ order.pickupDate ? formatDate(order.pickupDate) : "" }}</td>
         <td>{{ cake.style }}</td>
         <td>{{ cake.size }}</td>

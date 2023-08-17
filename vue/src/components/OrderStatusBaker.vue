@@ -104,17 +104,17 @@ export default {
       return format(date, "MM/dd/yyyy");
     },
     populateFcEvents() {
-  this.fcEvents = this.listOfOrders
-    .filter(order => order.status === 'Pending')
-    .map(order => {
-      return {
-        title: `Order #${order.order_id}, ${order.lastName}`,
-        start: order.pickupDate,
-      };
-    });
-},
+      this.fcEvents = this.listOfOrders
+        .filter((order) => order.status === "Pending")
+        .map((order) => {
+          return {
+            title: `Order #${order.order_id}, ${order.lastName}`,
+            start: order.pickupDate,
+          };
+        });
+    },
   },
-   computed: {
+  computed: {
     filteredOrders() {
       let filtered = [];
 
@@ -189,5 +189,9 @@ td {
   text-align: left;
   border: 1px solid black; /* Add this line to set a black border */
   background-color: white;
+}
+.filter-box {
+  padding-bottom: 40px;
+  padding-top: 40px;
 }
 </style>

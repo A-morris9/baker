@@ -7,8 +7,10 @@
       </div>
       <div>
         <h1>
-          Choose one of our standard cakes or select Order A Custom Cake to make
-          your own!
+          Choose one of our standard cakes or
+          <router-link v-bind:to="{ name: 'CustomCakeView' }">
+            create your own</router-link
+          >!
         </h1>
       </div>
     </div>
