@@ -237,18 +237,22 @@ export default {
 </script>
 
 <style scoped>
-.form-style {
+.container {
+  display: grid;
+  grid-template-columns: 1fr;
   font-family: "poppins", cursive;
   font-weight: bold;
   color: rgba(80, 71, 66);
+  width: fit-content;
+  margin: auto;
 }
-
 div.form-element {
   margin-top: 10px;
 }
 
 th,
-td {
+td{
+  text-align: left;
   color: rgba(80, 71, 66);
   font-family: "Poppins", cursive;
 }
@@ -256,14 +260,12 @@ td {
 td {
   font-weight: bold;
 }
+
 body {
   background-image: none;
 }
 
-.form-style {
-  width: fit-content;
-  margin: 0 auto 0 auto;
-}
+
 .button {
   background-color: #4caf50;
   border: none;

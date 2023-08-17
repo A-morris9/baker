@@ -14,12 +14,14 @@
           <tr class="style">
             <th>Order Number</th>
             <th>Customer Name</th>
+            <th>Price</th>
             <th>Pickup Date</th>
           </tr>
         </thead>
         <tbody>
           <td>{{ order.order_id }}</td>
           <td>{{ order.firstName }} {{ order.lastName }}</td>
+          <td>${{ order.totalAmount}}
           <td>{{ order.pickupDate ? formatDate(order.pickupDate) : "" }}</td>
         </tbody>
       </table>

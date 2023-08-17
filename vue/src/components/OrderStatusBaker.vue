@@ -39,7 +39,7 @@
             <td>{{ order.orderDate ? formatDate(order.orderDate) : "" }}</td>
             <td>{{ order.pickupDate ? formatDate(order.pickupDate) : "" }}</td>
             <td>{{ order.writing }}</td>
-            <td>{{ order.totalAmount }}</td>
+            <td>${{ order.totalAmount }}</td>
             <td>{{ order.phoneNumber }}</td>
             <td>{{ order.status }}</td>
             <td>
