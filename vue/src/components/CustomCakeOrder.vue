@@ -7,7 +7,11 @@
           <td>
             <select v-model="newCustomCake.style">
               <option value="" disabled>Select a style</option>
-              <option v-for="style in Styles" :key="style.id" :value="style.id">
+              <option
+                v-for="style in Styles"
+                :key="style.id"
+                :value="style.name"
+              >
                 {{ style.name }}
               </option>
             </select>
