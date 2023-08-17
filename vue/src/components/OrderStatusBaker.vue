@@ -92,6 +92,8 @@ export default {
     updateOrderStatus(order, newStatus) {
       OrderService.changeOrderStatus(order.order_id, newStatus).then(() => {
         order.status = newStatus;
+        this.populateFcEvents(); // Update fcEvents when order status changes
+        this.sortOrders();
       });
     },
     sortOrders() {
@@ -102,27 +104,34 @@ export default {
       return format(date, "MM/dd/yyyy");
     },
     populateFcEvents() {
-      this.fcEvents = this.listOfOrders.map((order) => {
-        return {
-          title: `Order #${order.order_id}, ${order.lastName}`,
-          start: order.pickupDate, // Assuming orderDate is in a valid format
-          // Assuming pickupDate is in a valid format
-        };
-      });
-    },
+  this.fcEvents = this.listOfOrders
+    .filter(order => order.status === 'Pending')
+    .map(order => {
+      return {
+        title: `Order #${order.order_id}, ${order.lastName}`,
+        start: order.pickupDate,
+      };
+    });
+},
   },
-  computed: {
+   computed: {
     filteredOrders() {
+      let filtered = [];
+
       if (this.filter) {
-        return this.listOfOrders.filter((order) =>
+        filtered = this.listOfOrders.filter((order) =>
           order.status.toLowerCase().includes(this.filter.toLowerCase())
         );
-      } else
-        return this.listOfOrders.slice().sort((a, b) => {
+      } else {
+        // No filter applied, sort by pickupDate
+        filtered = this.listOfOrders.slice().sort((a, b) => {
           const pickupDateA = new Date(a.pickupDate);
           const pickupDateB = new Date(b.pickupDate);
           return pickupDateA - pickupDateB;
         });
+      }
+
+      return filtered;
     },
   },
 };
@@ -155,6 +164,7 @@ th {
 h1 {
   width: fit-content;
   margin: 0 auto 0 auto;
+  padding-bottom: 100px;
 }
 
 .button {
