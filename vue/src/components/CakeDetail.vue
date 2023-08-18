@@ -229,4 +229,7 @@ div.form-element {
   flex-direction: column;
   align-items: center;
 }
+.cake-image {
+  border-radius: 12px;
+}
 </style>

@@ -181,13 +181,12 @@ h1 {
   border-radius: 12px;
 }
 
-/* Set a fixed width for each cell */
 th,
 td {
-  width: calc(100% / 10); /* Divide by the number of columns */
+  width: calc(100% / 10);
   padding: 8px;
   text-align: left;
-  border: 1px solid black; /* Add this line to set a black border */
+  border: 1px solid black;
   background-color: white;
 }
 .filter-box {
