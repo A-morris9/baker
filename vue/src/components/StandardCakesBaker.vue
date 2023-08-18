@@ -63,7 +63,9 @@
             <td>
               <div class="dropdown-container">
                 <select v-model="newStandardCake.style">
-                  <option value="" disabled>Select a style</option>
+                  <option value="" disabled>
+                    ------- Select a style -------
+                  </option>
                   <option
                     v-for="style in Styles"
                     :key="style.id"
@@ -81,7 +83,9 @@
             <td>
               <div class="dropdown-container">
                 <select v-model="newStandardCake.flavor">
-                  <option value="" disabled>Select a flavor</option>
+                  <option value="" disabled>
+                    ------ Select a flavor ------
+                  </option>
                   <option
                     v-for="flavor in Flavors"
                     :key="flavor.flavor_id"
@@ -98,7 +102,9 @@
             <td>
               <div class="dropdown-container">
                 <select v-model="newStandardCake.frosting">
-                  <option value="" disabled>Select a frosting</option>
+                  <option value="" disabled>
+                    ----- Select a frosting -----
+                  </option>
                   <option
                     v-for="frosting in Frostings"
                     :key="frosting.frosting_id"
@@ -115,7 +121,9 @@
             <td>
               <div class="dropdown-container">
                 <select v-model="newStandardCake.filling">
-                  <option value="" disabled>Select a filling</option>
+                  <option value="" disabled>
+                    ------- Select a filling ------
+                  </option>
                   <option
                     v-for="filling in Fillings"
                     :key="filling.filling_id"
