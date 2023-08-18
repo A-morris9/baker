@@ -15,69 +15,112 @@
       v-if="showForm === false"
       >Place An Order (All fields are required)</a
     >
-    <form
-      class="form-style"
-      v-on:submit.prevent="submitOrder"
-      v-if="showForm === true"
-    >
-      <div class="form-element">
-        <label for="firstName">First Name: </label>
-        <input id="firstName" type="text" v-model="newOrder.firstName" />
-        <span class="error" v-if="!newOrder.firstName"></span>
-      </div>
-      <div class="form-element">
-        <label for="lastName">Last Name: </label>
-        <input id="LastName" type="text" v-model="newOrder.lastName" />
-        <span class="error" v-if="!newOrder.lastName"></span>
-      </div>
-      <div class="form-element">
-        <label for="phoneNumber">Phone Number: </label>
-        <input id="phoneNumber" type="text" v-model="newOrder.phoneNumber" />
-        <span class="error" v-if="!newOrder.phoneNumber"></span>
-      </div>
-      <div class="form-element">
-        <label for="streetNumber">Street Number: </label>
-        <input id="streetNumber" type="text" v-model="newOrder.streetNumber" />
-        <span class="error" v-if="!newOrder.streetNumber"></span>
-      </div>
-      <div class="form-element">
-        <label for="streetName">Street Name: </label>
-        <input id="streetName" type="text" v-model="newOrder.streetName" />
-        <span class="error" v-if="!newOrder.streetName"></span>
-      </div>
-      <div class="form-element">
-        <label for="city">City: </label>
-        <input id="city" type="text" v-model="newOrder.city" />
-        <span class="error" v-if="!newOrder.city"></span>
-      </div>
-      <div class="form-element">
-        <label for="state">State: </label>
-        <input id="state" type="text" v-model="newOrder.state" />
-        <span class="error" v-if="!newOrder.state"></span>
-      </div>
-      <div class="form-element">
-        <label for="zipCode">Zip Code: </label>
-        <input id="zipCode" type="text" v-model="newOrder.zip" />
-        <span class="error" v-if="!newOrder.zip"></span>
-      </div>
-      <p>
-        Would you like to add writing to your cake? (+5$)
-        <input type="checkbox" v-on:change="displayTextArea()" />
-      </p>
-      <div class="form-element" v-if="showTextArea === true">
-        <label for="cakeWriting">Writing to Appear on cake: </label>
-        <textarea
-          id="cakeWriting"
-          rows="8"
-          cols="60"
-          v-model="newOrder.writing"
-        />
-      </div>
-      <div class="actions" v-if="showForm === true">
-        <button type="submit" :disabled="!isFormValid">Submit</button>
-        <button v-on:click="resetForm" type="button">Cancel</button>
-      </div>
-    </form>
+    <div class="form-box">
+      <form
+        class="form-style"
+        v-on:submit.prevent="submitOrder"
+        v-if="showForm === true"
+      >
+        <div class="form-element">
+          <label for="firstName"></label>
+          <input
+            placeholder="First Name"
+            id="firstName"
+            type="text"
+            v-model="newOrder.firstName"
+          />
+          <span class="error" v-if="!newOrder.firstName"></span>
+        </div>
+        <div class="form-element">
+          <label for="lastName"></label>
+          <input
+            placeholder="Last Name"
+            id="LastName"
+            type="text"
+            v-model="newOrder.lastName"
+          />
+          <span class="error" v-if="!newOrder.lastName"></span>
+        </div>
+        <div class="form-element">
+          <label for="phoneNumber"></label>
+          <input
+            placeholder="Phone Number"
+            id="phoneNumber"
+            type="text"
+            v-model="newOrder.phoneNumber"
+          />
+          <span class="error" v-if="!newOrder.phoneNumber"></span>
+        </div>
+        <div class="form-element">
+          <label for="streetNumber"></label>
+          <input
+            placeholder="Street Number"
+            id="streetNumber"
+            type="text"
+            v-model="newOrder.streetNumber"
+          />
+          <span class="error" v-if="!newOrder.streetNumber"></span>
+        </div>
+        <div class="form-element">
+          <label for="streetName"></label>
+          <input
+            placeholder="Street Name"
+            id="streetName"
+            type="text"
+            v-model="newOrder.streetName"
+          />
+          <span class="error" v-if="!newOrder.streetName"></span>
+        </div>
+        <div class="form-element">
+          <label for="city"></label>
+          <input
+            placeholder="City"
+            id="city"
+            type="text"
+            v-model="newOrder.city"
+          />
+          <span class="error" v-if="!newOrder.city"></span>
+        </div>
+        <div class="form-element">
+          <label for="state"></label>
+          <input
+            placeholder="State"
+            id="state"
+            type="text"
+            v-model="newOrder.state"
+          />
+          <span class="error" v-if="!newOrder.state"></span>
+        </div>
+        <div class="form-element">
+          <label for="zipCode"></label>
+          <input
+            placeholder="Zip Code"
+            id="zipCode"
+            type="text"
+            v-model="newOrder.zip"
+          />
+          <span class="error" v-if="!newOrder.zip"></span>
+        </div>
+        <p>
+          Would you like to add writing to your cake? (+5$)
+          <input type="checkbox" v-on:change="displayTextArea()" />
+        </p>
+        <div class="form-element" v-if="showTextArea === true">
+          <label for="cakeWriting"></label>
+          <textarea
+            placeholder="Writing to Appear on cake"
+            id="cakeWriting"
+            rows="8"
+            cols="60"
+            v-model="newOrder.writing"
+          />
+        </div>
+        <div class="actions" v-if="showForm === true">
+          <button type="submit" :disabled="!isFormValid">Submit</button>
+          <button v-on:click="resetForm" type="button">Cancel</button>
+        </div>
+      </form>
+    </div>
   </div>
 </template>
 
@@ -155,7 +198,6 @@ export default {
 <style scoped>
 .cake-image {
   width: 20%;
-  border-radius: 15px;
 }
 
 .cake-box {
