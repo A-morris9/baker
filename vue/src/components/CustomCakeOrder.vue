@@ -55,7 +55,7 @@
           <td>Filling:</td>
           <td>
             <select v-model="newCustomCake.filling">
-              <option value="" disabled>----- Select a filling ------</option>
+              <option value="" disabled>------ Select a filling ------</option>
               <option
                 v-for="filling in Fillings"
                 :key="filling.filling_id"
@@ -302,5 +302,10 @@ body {
 }
 h1 {
   font-family: "Big Shoulders Display", cursive;
+}
+.form-style {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 </style>

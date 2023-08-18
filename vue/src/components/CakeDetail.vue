@@ -204,10 +204,12 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px 10px; /* Vertical padding: 20px, Horizontal padding: 10px */
+  justify-content: center;
+  padding: 20px 10px;
   background-image: url("../assets/Background.png");
-  font-family: poppins, cursive;
+  font-family: "poppins", cursive;
   color: rgba(80, 71, 66);
+  min-height: 100vh;
 }
 .title {
   font-family: "Big Shoulders Display", cursive;
@@ -223,5 +225,8 @@ div.form-element {
   font-family: poppins, cursive;
   font-weight: bold;
   color: rgba(80, 71, 66);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 </style>
